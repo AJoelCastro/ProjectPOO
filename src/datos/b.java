@@ -24,9 +24,6 @@ public class b {
     System.out.print("Ingrese la identificación (DNI o  pasaporte): ");
     String identificacion = scanner.nextLine();
     
-    System.out.print("Ingrese la fecha de nacimiento (dd/mm/aaaa): ");
-    String fechaNacimiento = scanner.nextLine();
-    
     System.out.print("Ingrese la dirección:");
     String direccion = scanner.nextLine();
     
@@ -39,7 +36,7 @@ public class b {
     System.out.print("Ingrese el estado civil:");
     String estadoCivil = scanner.nextLine(); 
     
-    ClienteNatural clienteNatural = new ClienteNatural(identificacion, fechaNacimiento, estadoCivil, telefono, email, direccion, nombre, apellido,1);
+    ClienteNatural clienteNatural = new ClienteNatural(identificacion, fechaNacimiento(), estadoCivil, telefono, email, direccion, nombre, apellido,1);
    
     cliente.add(clienteNatural);
     
@@ -92,5 +89,46 @@ public class b {
                 System.out.println(clientes);  
             }
         }
+    }
+    
+    public String fechaNacimiento (){
+        GregorianCalendar fechaNacimiento = solicitarFecha("Ingresa tu fecha de nacimiento en el formato dd-mm-aaaa:");
+        
+        return  String.format("%02d/%02d/%04d%n",
+                fechaNacimiento.get(GregorianCalendar.DAY_OF_MONTH),
+                fechaNacimiento.get(GregorianCalendar.MONTH),
+                fechaNacimiento.get(GregorianCalendar.YEAR));
+    }
+   public static GregorianCalendar solicitarFecha(String mensaje) {
+        Scanner scanner = new Scanner(System.in);
+        GregorianCalendar fecha = null;
+
+        while (fecha == null) {
+            System.out.println(mensaje);
+            String entrada = scanner.nextLine();
+
+            try {
+                String[] partes = entrada.split("-");
+                if (partes.length != 3) throw new IllegalArgumentException("Formato incorrecto");
+
+                int dia = Integer.parseInt(partes[0]);
+                int mes = Integer.parseInt(partes[1]) - 1;
+                int anio = Integer.parseInt(partes[2]);
+
+                GregorianCalendar tempFecha = new GregorianCalendar(anio, mes, dia);
+
+                if (tempFecha.get(GregorianCalendar.YEAR) == anio &&
+                        tempFecha.get(GregorianCalendar.MONTH) == mes &&
+                        tempFecha.get(GregorianCalendar.DAY_OF_MONTH) == dia) {
+                    fecha = tempFecha; 
+                } else {
+                    throw new IllegalArgumentException("Fecha no válida");
+                }
+            } catch (Exception e) {
+                System.out.println("Fecha inválida o formato incorrecto,inténtalo nuevamente");
+            }
+        }
+
+        return fecha; 
     }
 }
