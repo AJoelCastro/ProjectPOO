@@ -21,7 +21,7 @@ public class CuentaAhorro extends Cuenta implements ImptoTransaccionesFinanciera
     public CuentaAhorro(String dni, String nombreCliente, String apellidoCliente, int tipoCliente,
             String clave, int tipoCuenta) {
         super(clave, tipoCuenta);
-        titular = new ClienteNatural(dni, nombreCliente, apellidoCliente, tipoCliente);
+        //titular = new ClienteNatural(dni, nombreCliente, apellidoCliente, tipoCliente);
         operaciones = new ArrayList<>();
     }
     
@@ -29,7 +29,7 @@ public class CuentaAhorro extends Cuenta implements ImptoTransaccionesFinanciera
     public CuentaAhorro(String dni, String nombreCliente, String apellidoCliente, int tipoCliente, 
             String clave, float saldoCuenta, int tipoCuenta) { 
         super(saldoCuenta, clave, tipoCuenta);
-        titular = new ClienteNatural(dni, nombreCliente, apellidoCliente, tipoCliente);  
+        //titular = new ClienteNatural(dni, nombreCliente, apellidoCliente, tipoCliente);  
         operaciones = new ArrayList<>();
     }
     
