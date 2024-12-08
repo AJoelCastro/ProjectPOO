@@ -16,7 +16,7 @@ public abstract class Cuenta {
     private float saldoCuenta;
     private String clave;
     private GregorianCalendar fechaCreacion;
-    private int tipoCuenta;
+    private int tipoCuenta; // 0: Cuenta Corriente, 1: Cuenta Ahorro
     private static int totalCtaAhorro = 0;
     private static int totalCtaCorriente = 0;
          
