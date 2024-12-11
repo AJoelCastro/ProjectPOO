@@ -262,7 +262,6 @@ public class ifrmClienteJuridico extends javax.swing.JInternalFrame {
         String nombre,apellido,telefono,email,razonSocial,tipoRuc,direccion,documento;
         String fechaN;
         int tipoCliente=2;
-
         nombre = txtNombres.getText();
         if (!ListaClientes.validacionLetras(nombre)) {
         JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras y espacios.", "Error",0);
