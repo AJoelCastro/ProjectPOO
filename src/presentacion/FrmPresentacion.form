@@ -15,10 +15,10 @@
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="mnuRegistro">
+            <Menu class="javax.swing.JMenu" name="mnuRegistroCliente">
               <Properties>
                 <Property name="mnemonic" type="int" value="82"/>
-                <Property name="text" type="java.lang.String" value="Registro"/>
+                <Property name="text" type="java.lang.String" value="Registro Cliente"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mniClienteNatural">
@@ -38,6 +38,23 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniClienteJuridicoActionPerformed"/>
                   </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuRegistroCuenta">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registro Cuenta"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniCuentaAhorro">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" Cuenta Ahorro"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniCuentaCorriente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
+                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
