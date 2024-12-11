@@ -14,36 +14,26 @@ import java.util.GregorianCalendar;
 public abstract class Cuenta {
     private String numeroCuenta;
     private float saldoCuenta;
+    private int tipoMoneda; // 0: soles, 1: dolares
     private String clave;
     private GregorianCalendar fechaCreacion;
     private int tipoCuenta; // 0: Cuenta Corriente, 1: Cuenta Ahorro
     private static int totalCtaAhorro = 0;
     private static int totalCtaCorriente = 0;
-         
+    private Cliente cliente;
+
     // Constructor con parametros
-    public Cuenta(float saldoCuenta, String clave, int tipoCuenta) { 
-        this.tipoCuenta = tipoCuenta;
+    public Cuenta(String numeroCuenta, Cliente cliente, float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta){ 
         this.saldoCuenta = saldoCuenta;
-        this.clave = clave;
-        fechaCreacion = new GregorianCalendar();
-        if(tipoCuenta == 1)
-            ++totalCtaAhorro;
-        else
-            ++totalCtaCorriente;
-        numeroCuenta = generarNumeroCuenta();
-    }
-    
-    // Constructor con parametros
-    public Cuenta(String clave, int tipoCuenta) { 
         this.tipoCuenta = tipoCuenta;
-        saldoCuenta = 0.0f;
         this.clave = clave;
-        fechaCreacion = new GregorianCalendar();
+        this.tipoMoneda = tipoMoneda;
+        this.fechaCreacion = new GregorianCalendar();
         if(tipoCuenta == 1)
             ++totalCtaAhorro;
         else
             ++totalCtaCorriente;
-        numeroCuenta = generarNumeroCuenta();
+        this.numeroCuenta = generarNumeroCuenta();
     }
     
     private String generarNumeroCuenta() {
@@ -69,49 +59,6 @@ public abstract class Cuenta {
         numCuenta += dato;        
         return numCuenta;
     }   
-  
-    public String getNumeroCuenta() {
-        return numeroCuenta;
-    }
-       
-    public void setSaldoCuenta(float saldoCuenta) {
-        this.saldoCuenta = saldoCuenta;
-    }
-    
-    public float getSaldoCuenta() {
-        return saldoCuenta;
-    }
-    
-    public void setClave(String clave) {
-        this.clave = clave;
-    }
-    
-    public String getClave() {
-        return clave;
-    }
-
-    public GregorianCalendar getFechaCreacion() {
-        return fechaCreacion;
-    }
-    
-    public int getTipoCuenta() {
-        return tipoCuenta;
-    }
-    
-    public static int obtenerTotalCtaAhorro() {
-        return totalCtaAhorro;
-    }
-    
-    public static int obtenerTotalCtaCorriente() {
-        return totalCtaCorriente;
-    }
-    
-    @Override
-    public String toString() {
-        return "\n\tTipo de cuenta: " + (tipoCuenta==1?"Cuenta de Ahorro":"Cuenta Corriente") +
-               "\n\tNumero de cuenta: " + getNumeroCuenta() + 
-               "\n\tFecha de apertura: " + getFechaCreacionCorta();
-    }
     
     public String getFechaCreacionCorta() {
         int dia, mes, anio;
@@ -123,5 +70,77 @@ public abstract class Cuenta {
 
     public boolean validarClave(String clave) {
         return (getClave().compareTo(clave)==0);
+    }
+
+    public String getNumeroCuenta() {
+        return numeroCuenta;
+    }
+
+    public void setNumeroCuenta(String numeroCuenta) {
+        this.numeroCuenta = numeroCuenta;
+    }
+
+    public float getSaldoCuenta() {
+        return saldoCuenta;
+    }
+
+    public void setSaldoCuenta(float saldoCuenta) {
+        this.saldoCuenta = saldoCuenta;
+    }
+
+    public int getTipoMoneda() {
+        return tipoMoneda;
+    }
+
+    public void setTipoMoneda(int tipoMoneda) {
+        this.tipoMoneda = tipoMoneda;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public GregorianCalendar getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(GregorianCalendar fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public int getTipoCuenta() {
+        return tipoCuenta;
+    }
+
+    public void setTipoCuenta(int tipoCuenta) {
+        this.tipoCuenta = tipoCuenta;
+    }
+
+    public static int getTotalCtaAhorro() {
+        return totalCtaAhorro;
+    }
+
+    public static void setTotalCtaAhorro(int totalCtaAhorro) {
+        Cuenta.totalCtaAhorro = totalCtaAhorro;
+    }
+
+    public static int getTotalCtaCorriente() {
+        return totalCtaCorriente;
+    }
+
+    public static void setTotalCtaCorriente(int totalCtaCorriente) {
+        Cuenta.totalCtaCorriente = totalCtaCorriente;
+    }
+    
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

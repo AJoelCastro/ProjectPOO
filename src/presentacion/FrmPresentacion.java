@@ -46,9 +46,12 @@ public class FrmPresentacion extends javax.swing.JFrame {
         dpsFondo = new javax.swing.JDesktopPane();
         mnbMenu = new javax.swing.JMenuBar();
         mnuOpciones = new javax.swing.JMenu();
-        mnuRegistro = new javax.swing.JMenu();
+        mnuRegistroCliente = new javax.swing.JMenu();
         mniClienteNatural = new javax.swing.JMenuItem();
         mniClienteJuridico = new javax.swing.JMenuItem();
+        mnuRegistroCuenta = new javax.swing.JMenu();
+        mniCuentaAhorro = new javax.swing.JMenuItem();
+        mniCuentaCorriente = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,8 +74,8 @@ public class FrmPresentacion extends javax.swing.JFrame {
         mnuOpciones.setMnemonic('O');
         mnuOpciones.setText("Opciones");
 
-        mnuRegistro.setMnemonic('R');
-        mnuRegistro.setText("Registro");
+        mnuRegistroCliente.setMnemonic('R');
+        mnuRegistroCliente.setText("Registro Cliente");
 
         mniClienteNatural.setMnemonic('N');
         mniClienteNatural.setText("Cliente Natural");
@@ -81,7 +84,7 @@ public class FrmPresentacion extends javax.swing.JFrame {
                 mniClienteNaturalActionPerformed(evt);
             }
         });
-        mnuRegistro.add(mniClienteNatural);
+        mnuRegistroCliente.add(mniClienteNatural);
 
         mniClienteJuridico.setMnemonic('J');
         mniClienteJuridico.setText("Cliente Juridico");
@@ -90,9 +93,19 @@ public class FrmPresentacion extends javax.swing.JFrame {
                 mniClienteJuridicoActionPerformed(evt);
             }
         });
-        mnuRegistro.add(mniClienteJuridico);
+        mnuRegistroCliente.add(mniClienteJuridico);
 
-        mnuOpciones.add(mnuRegistro);
+        mnuOpciones.add(mnuRegistroCliente);
+
+        mnuRegistroCuenta.setText("Registro Cuenta");
+
+        mniCuentaAhorro.setText(" Cuenta Ahorro");
+        mnuRegistroCuenta.add(mniCuentaAhorro);
+
+        mniCuentaCorriente.setText("Cuenta Corriente");
+        mnuRegistroCuenta.add(mniCuentaCorriente);
+
+        mnuOpciones.add(mnuRegistroCuenta);
 
         jMenuItem1.setMnemonic('S');
         jMenuItem1.setText("Salir");
@@ -176,8 +189,11 @@ public class FrmPresentacion extends javax.swing.JFrame {
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mniClienteJuridico;
     private javax.swing.JMenuItem mniClienteNatural;
+    private javax.swing.JMenuItem mniCuentaAhorro;
+    private javax.swing.JMenuItem mniCuentaCorriente;
     private javax.swing.JMenu mnuOpciones;
-    private javax.swing.JMenu mnuRegistro;
+    private javax.swing.JMenu mnuRegistroCliente;
+    private javax.swing.JMenu mnuRegistroCuenta;
     // End of variables declaration//GEN-END:variables
 private ListaClientes listaClientes = new ListaClientes();
 }
