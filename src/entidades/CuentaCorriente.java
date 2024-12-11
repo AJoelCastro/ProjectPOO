@@ -12,8 +12,9 @@ public class CuentaCorriente extends Cuenta {
     private String razonSocial;
     private String nombreRepLegal;
     private String apellidoRepLegal;
+    
     private float limiteGasto;
-
+    
     public CuentaCorriente(String razonSocial, String nombreRepLegal, String apellidoRepLegal, 
             float limiteGasto, String clave, int tipoCuenta) {
         super(clave, tipoCuenta);

@@ -19,6 +19,7 @@ public class ClienteNatural extends Cliente {
         this.fechaNacimiento = fechaNacimiento;
         this.estadoCivil = estadoCivil;
     } 
+    
 
     public String getIdentificacion() {
         return identificacion;
