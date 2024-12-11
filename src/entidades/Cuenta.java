@@ -13,7 +13,6 @@ import java.util.GregorianCalendar;
  */
 public abstract class Cuenta {
     private String numeroCuenta;
-    private String titular;
     private float saldoCuenta;
     private int tipoMoneda; // 0: soles, 1: dolares
     private String clave;
@@ -21,20 +20,20 @@ public abstract class Cuenta {
     private int tipoCuenta; // 0: Cuenta Corriente, 1: Cuenta Ahorro
     private static int totalCtaAhorro = 0;
     private static int totalCtaCorriente = 0;
-         
+    private Cliente cliente;
+
     // Constructor con parametros
-    public Cuenta(float saldoCuenta, String clave, int tipoCuenta, String titular, int tipoMoneda) { 
-        this.tipoCuenta = tipoCuenta;
+    public Cuenta(String numeroCuenta, Cliente cliente, float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta){ 
         this.saldoCuenta = saldoCuenta;
+        this.tipoCuenta = tipoCuenta;
         this.clave = clave;
-        this.titular= titular;
         this.tipoMoneda = tipoMoneda;
-        fechaCreacion = new GregorianCalendar();
+        this.fechaCreacion = new GregorianCalendar();
         if(tipoCuenta == 1)
             ++totalCtaAhorro;
         else
             ++totalCtaCorriente;
-        numeroCuenta = generarNumeroCuenta();
+        this.numeroCuenta = generarNumeroCuenta();
     }
     
     private String generarNumeroCuenta() {
@@ -79,14 +78,6 @@ public abstract class Cuenta {
 
     public void setNumeroCuenta(String numeroCuenta) {
         this.numeroCuenta = numeroCuenta;
-    }
-
-    public String getTitular() {
-        return titular;
-    }
-
-    public void setTitular(String titular) {
-        this.titular = titular;
     }
 
     public float getSaldoCuenta() {
@@ -145,5 +136,11 @@ public abstract class Cuenta {
         Cuenta.totalCtaCorriente = totalCtaCorriente;
     }
     
-    
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
