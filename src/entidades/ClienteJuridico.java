@@ -9,7 +9,7 @@ package entidades;
  * @author Asus
  */
 public class ClienteJuridico extends Cliente {
-   private String razonSocial;
+    private String razonSocial;
     private String ruc;
     private String documentoDeConstitucion;
 
