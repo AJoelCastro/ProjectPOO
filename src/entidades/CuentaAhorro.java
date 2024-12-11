@@ -27,9 +27,11 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         this.beneficiarios = new ArrayList<>();
     }
     
-    public CuentaAhorro(String numeroCuenta, ClienteJuridico clienteJur,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta) { 
+    public CuentaAhorro(String numeroCuenta, ClienteJuridico clienteJur,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
         super(numeroCuenta, clienteJur ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
-        
+        this.limiteRetiros = limiteRetiros;
+        this.fechaCorte = fechaCorte;
+        this.beneficiarios = new ArrayList<>();
     }
     
     public static void modificarTasaInteresAnual(float tasaInteresA) {
