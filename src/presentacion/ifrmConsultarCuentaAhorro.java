@@ -19,14 +19,22 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
      */
     public ifrmConsultarCuentaAhorro() {
         initComponents();
+        txtSaldo.setEditable(false);
         Mov = new DefaultListModel();
         jlistMov.setModel(Mov);
     }
 
     private void limpiar(){
-            txtClave.setText(null);
-            txtApellido.setText(null);
-}
+        txtClave.setText(null);
+        txtApellido.setText(null);
+        txtSaldo.setText(null);
+        jlistMov.setToolTipText(null);
+    }
+    
+    private void activar(boolean estado) {
+        txtSaldo.setEnabled(estado);
+        jlistMov.setEnabled(estado);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -193,6 +201,7 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
         return;
         }
         if (listCuenta.obtenerCuenta(busqueda).validarClave(clave)) {
+            activar(true);
             Mov.addElement(listCuenta.obtenerCuenta(busqueda).toString() + "\n");
             txtSaldo.setText(listCuenta.obtenerCuenta(busqueda).getSaldoCuenta()+ "");
         }
@@ -203,7 +212,8 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+        limpiar();
+        activar(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
 
