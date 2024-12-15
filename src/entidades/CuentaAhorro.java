@@ -5,7 +5,6 @@
 package entidades;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -40,6 +39,10 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     
     public static float obtenerTasaInteresAnual() {
         return tasaInteresAnual;
+    }
+    
+     public String getApellidoCliente() {
+        return clienteNat.getApellido();
     }
 
     public ClienteNatural getClienteNat() {
