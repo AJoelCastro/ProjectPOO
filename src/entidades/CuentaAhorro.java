@@ -84,6 +84,9 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     public void setBeneficiarios(ArrayList<String> beneficiarios) {
         this.beneficiarios = beneficiarios;
     }
+    public String getApellidoCliente() {
+        return clienteNat.getApellido();
+    }
     
     @Override
     public void calcularInteresMensual() {
