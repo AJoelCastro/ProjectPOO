@@ -4,6 +4,8 @@
  */
 package entidades;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Asus
@@ -12,12 +14,13 @@ public class ClienteNatural extends Cliente {
     private String identificacion;
     private String fechaNacimiento;
     private String estadoCivil;
-
+    private ArrayList<Cuenta> cuentas;
     public ClienteNatural(String identificacion, String fechaNacimiento, String estadoCivil, String telefono, String correoElectronico, String direccion, String nombre, String apellido, int tipoCliente) {
         super(telefono, correoElectronico, direccion, nombre, apellido, tipoCliente);
         this.identificacion = identificacion;
         this.fechaNacimiento = fechaNacimiento;
         this.estadoCivil = estadoCivil;
+        this.cuentas = new ArrayList<>();
     } 
     
 
@@ -45,6 +48,9 @@ public class ClienteNatural extends Cliente {
         this.estadoCivil = estadoCivil;
     }
    
+    public void agregarCuenta(Cuenta cuenta) {
+        cuentas.add(cuenta);
+    }
 
     @Override
     public String toString() {
