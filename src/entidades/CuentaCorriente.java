@@ -20,7 +20,11 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         this.comisionPorCheque = comisionPorCheque;
         this.titularCuenta = titularCuenta;
     }
-
+    
+    public String getTitularCuenta() {
+        return titularCuenta;
+    }
+    
     // Métodos de la interfaz OperacionesCuenta
     @Override
     public void depositar(float monto) {
