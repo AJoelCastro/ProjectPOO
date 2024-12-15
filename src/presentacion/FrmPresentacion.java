@@ -168,7 +168,7 @@ public class FrmPresentacion extends javax.swing.JFrame {
     }//GEN-LAST:event_mniClienteNaturalActionPerformed
 
     private void mniClienteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniClienteJuridicoActionPerformed
-        ifrmClienteJuridico ifrmClienteJuridico = new ifrmClienteJuridico(listaClientes);
+        IfrmClienteJuridico ifrmClienteJuridico = new IfrmClienteJuridico(listaClientes);
         centrarInternalFrame(ifrmClienteJuridico);
     }//GEN-LAST:event_mniClienteJuridicoActionPerformed
 
