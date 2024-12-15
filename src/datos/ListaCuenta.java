@@ -41,7 +41,7 @@ public class ListaCuenta {
                         return i;
                     break;
                 case 2: 
-                    if(((CuentaCorriente)cuentaB).getApellidoRepLegal().compareToIgnoreCase(Cliente)==0)
+                    if(((CuentaCorriente)cuentaB).getTitularCuenta().compareToIgnoreCase(Cliente)==0)
                         return i;
                     break;
             }
