@@ -46,10 +46,17 @@ public class FrmPresentacion extends javax.swing.JFrame {
         dpsFondo = new javax.swing.JDesktopPane();
         mnbMenu = new javax.swing.JMenuBar();
         mnuOpciones = new javax.swing.JMenu();
-        mnuRegistro = new javax.swing.JMenu();
+        mnuRegistroCliente = new javax.swing.JMenu();
         mniClienteNatural = new javax.swing.JMenuItem();
         mniClienteJuridico = new javax.swing.JMenuItem();
+        mnuRegistroCuenta = new javax.swing.JMenu();
+        mniCuentaAhorro = new javax.swing.JMenuItem();
+        mniCuentaCorriente = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        mnuListado = new javax.swing.JMenu();
+        mnuClientes = new javax.swing.JMenu();
+        mniClieneteNatural = new javax.swing.JMenuItem();
+        mniClieneteJuridico = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,11 +66,11 @@ public class FrmPresentacion extends javax.swing.JFrame {
         dpsFondo.setLayout(dpsFondoLayout);
         dpsFondoLayout.setHorizontalGroup(
             dpsFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
+            .addGap(0, 1045, Short.MAX_VALUE)
         );
         dpsFondoLayout.setVerticalGroup(
             dpsFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 456, Short.MAX_VALUE)
+            .addGap(0, 723, Short.MAX_VALUE)
         );
 
         mnbMenu.setBackground(new java.awt.Color(230, 235, 240));
@@ -71,8 +78,8 @@ public class FrmPresentacion extends javax.swing.JFrame {
         mnuOpciones.setMnemonic('O');
         mnuOpciones.setText("Opciones");
 
-        mnuRegistro.setMnemonic('R');
-        mnuRegistro.setText("Registro");
+        mnuRegistroCliente.setMnemonic('R');
+        mnuRegistroCliente.setText("Registro Cliente");
 
         mniClienteNatural.setMnemonic('N');
         mniClienteNatural.setText("Cliente Natural");
@@ -81,7 +88,7 @@ public class FrmPresentacion extends javax.swing.JFrame {
                 mniClienteNaturalActionPerformed(evt);
             }
         });
-        mnuRegistro.add(mniClienteNatural);
+        mnuRegistroCliente.add(mniClienteNatural);
 
         mniClienteJuridico.setMnemonic('J');
         mniClienteJuridico.setText("Cliente Juridico");
@@ -90,9 +97,19 @@ public class FrmPresentacion extends javax.swing.JFrame {
                 mniClienteJuridicoActionPerformed(evt);
             }
         });
-        mnuRegistro.add(mniClienteJuridico);
+        mnuRegistroCliente.add(mniClienteJuridico);
 
-        mnuOpciones.add(mnuRegistro);
+        mnuOpciones.add(mnuRegistroCliente);
+
+        mnuRegistroCuenta.setText("Registro Cuenta");
+
+        mniCuentaAhorro.setText(" Cuenta Ahorro");
+        mnuRegistroCuenta.add(mniCuentaAhorro);
+
+        mniCuentaCorriente.setText("Cuenta Corriente");
+        mnuRegistroCuenta.add(mniCuentaCorriente);
+
+        mnuOpciones.add(mnuRegistroCuenta);
 
         jMenuItem1.setMnemonic('S');
         jMenuItem1.setText("Salir");
@@ -104,6 +121,30 @@ public class FrmPresentacion extends javax.swing.JFrame {
         mnuOpciones.add(jMenuItem1);
 
         mnbMenu.add(mnuOpciones);
+
+        mnuListado.setText("Listado");
+
+        mnuClientes.setText("Clientes");
+
+        mniClieneteNatural.setText("Cliente Natural");
+        mniClieneteNatural.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniClieneteNaturalActionPerformed(evt);
+            }
+        });
+        mnuClientes.add(mniClieneteNatural);
+
+        mniClieneteJuridico.setText("Cliente Juridico");
+        mniClieneteJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniClieneteJuridicoActionPerformed(evt);
+            }
+        });
+        mnuClientes.add(mniClieneteJuridico);
+
+        mnuListado.add(mnuClientes);
+
+        mnbMenu.add(mnuListado);
 
         setJMenuBar(mnbMenu);
 
@@ -134,6 +175,16 @@ public class FrmPresentacion extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void mniClieneteNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniClieneteNaturalActionPerformed
+        ifrmListadoClienteNatural ifrListadoClienteNatural = new ifrmListadoClienteNatural(listaClientes);
+        centrarInternalFrame(ifrListadoClienteNatural);        
+    }//GEN-LAST:event_mniClieneteNaturalActionPerformed
+
+    private void mniClieneteJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniClieneteJuridicoActionPerformed
+        ifrmListadoClienteJuridico ifrListadoClienteJuridico = new ifrmListadoClienteJuridico(listaClientes);
+        centrarInternalFrame(ifrListadoClienteJuridico);
+    }//GEN-LAST:event_mniClieneteJuridicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,10 +225,20 @@ public class FrmPresentacion extends javax.swing.JFrame {
     private javax.swing.JDesktopPane dpsFondo;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuBar mnbMenu;
+    private javax.swing.JMenuItem mniClieneteJuridico;
+    private javax.swing.JMenuItem mniClieneteNatural;
     private javax.swing.JMenuItem mniClienteJuridico;
     private javax.swing.JMenuItem mniClienteNatural;
+
+    private javax.swing.JMenuItem mniCuentaAhorro;
+    private javax.swing.JMenuItem mniCuentaCorriente;
+
+    private javax.swing.JMenu mnuClientes;
+    private javax.swing.JMenu mnuListado;
+
     private javax.swing.JMenu mnuOpciones;
-    private javax.swing.JMenu mnuRegistro;
+    private javax.swing.JMenu mnuRegistroCliente;
+    private javax.swing.JMenu mnuRegistroCuenta;
     // End of variables declaration//GEN-END:variables
 private ListaClientes listaClientes = new ListaClientes();
 }

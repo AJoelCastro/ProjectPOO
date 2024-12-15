@@ -15,10 +15,10 @@
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="mnuRegistro">
+            <Menu class="javax.swing.JMenu" name="mnuRegistroCliente">
               <Properties>
                 <Property name="mnemonic" type="int" value="82"/>
-                <Property name="text" type="java.lang.String" value="Registro"/>
+                <Property name="text" type="java.lang.String" value="Registro Cliente"/>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mniClienteNatural">
@@ -41,6 +41,23 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuRegistroCuenta">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registro Cuenta"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniCuentaAhorro">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value=" Cuenta Ahorro"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniCuentaCorriente">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
                 <Property name="mnemonic" type="int" value="83"/>
@@ -50,6 +67,36 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
               </Events>
             </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="mnuListado">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Listado"/>
+          </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="mnuClientes">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clientes"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniClieneteNatural">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cliente Natural"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniClieneteNaturalActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniClieneteJuridico">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cliente Juridico"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniClieneteJuridicoActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -98,12 +145,12 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="768" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1045" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="456" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="723" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>

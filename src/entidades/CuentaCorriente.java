@@ -1,71 +1,95 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package entidades;
 
-/**
- *
- * @author jf451
- */
-public class CuentaCorriente extends Cuenta {
-    private String razonSocial;
-    private String nombreRepLegal;
-    private String apellidoRepLegal;
-    private float limiteGasto;
+import java.util.GregorianCalendar;
 
-    public CuentaCorriente(String razonSocial, String nombreRepLegal, String apellidoRepLegal, 
-            float limiteGasto, String clave, int tipoCuenta) {
-        super(clave, tipoCuenta);
-        this.razonSocial = razonSocial;
-        this.nombreRepLegal = nombreRepLegal;
-        this.apellidoRepLegal = apellidoRepLegal;
-        this.limiteGasto = limiteGasto;
-    }
+public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
+    private float limiteSobregiro;         
+    private int limiteCheques;             
+    private String numeroChequera;         
+    private float comisionPorCheque;       
+    private String titularCuenta;          
 
-    public CuentaCorriente(String razonSocial, String nombreRepLegal, String apellidoRepLegal, 
-            float limiteGasto, String clave, float saldoCuenta, int tipoCuenta) {
-        super(saldoCuenta, clave, tipoCuenta);
-        this.razonSocial = razonSocial;
-        this.nombreRepLegal = nombreRepLegal;
-        this.apellidoRepLegal = apellidoRepLegal;
-        this.limiteGasto = limiteGasto;
+    // Constructor
+    public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
+                           GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
+                           String numeroChequera, float comisionPorCheque, String titularCuenta) {
+        super("", cliente, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
+        this.limiteSobregiro = limiteSobregiro;
+        this.limiteCheques = limiteCheques;
+        this.numeroChequera = numeroChequera;
+        this.comisionPorCheque = comisionPorCheque;
+        this.titularCuenta = titularCuenta;
     }
 
-    public String getRazonSocial() {
-        return razonSocial;
+    // Métodos de la interfaz OperacionesCuenta
+    @Override
+    public void depositar(float monto) {
+        if (monto > 0) {
+            setSaldoCuenta(getSaldoCuenta() + monto);
+            System.out.println("Depósito realizado: " + monto + " Nuevo saldo: " + getSaldoCuenta());
+        } else {
+            System.out.println("El monto a depositar debe ser mayor a cero.");
+        }
     }
 
-    public void setNombreRepLegal(String nombreRepLegal) {
-        this.nombreRepLegal = nombreRepLegal;
-    }
-    
-    public String getNombreRepLegal() {
-        return nombreRepLegal;
+    @Override
+    public boolean retirar(float monto) {
+        if (monto <= 0) {
+            System.out.println("El monto a retirar debe ser mayor a cero.");
+            return false;
+        }
+
+        float saldoDisponible = getSaldoCuenta() + limiteSobregiro;
+        if (monto <= saldoDisponible) {
+            setSaldoCuenta(getSaldoCuenta() - monto);
+            System.out.println("Retiro exitoso: " + monto + " Nuevo saldo: " + getSaldoCuenta());
+            return true;
+        } else {
+            System.out.println("Fondos insuficientes. Saldo disponible (incluyendo sobregiro): " + saldoDisponible);
+            return false;
+        }
     }
 
-    public void setApellidoRepLegal(String apellidoRepLegal) {
-        this.apellidoRepLegal = apellidoRepLegal;
-    }
-    
-    public String getApellidoRepLegal() {
-        return apellidoRepLegal;
+    @Override
+    public boolean transferir(float monto, Cuenta cuentaDestino) {
+        if (monto <= 0) {
+            System.out.println("El monto a transferir debe ser mayor a cero.");
+            return false;
+        }
+
+        float saldoDisponible = getSaldoCuenta() + limiteSobregiro;
+        if (monto <= saldoDisponible) {
+            setSaldoCuenta(getSaldoCuenta() - monto);
+            cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + monto);
+            System.out.println("Transferencia exitosa: " + monto +
+                    " Nuevo saldo: " + getSaldoCuenta() +
+                    " Saldo cuenta destino: " + cuentaDestino.getSaldoCuenta());
+            return true;
+        } else {
+            System.out.println("Fondos insuficientes para realizar la transferencia.");
+            return false;
+        }
     }
 
-    public void setLimiteGasto(float limiteGasto) {
-        this.limiteGasto = limiteGasto;
+    // Getters y Setters adicionales
+    public float getLimiteSobregiro() {
+        return limiteSobregiro;
     }
-    
-    public float getLimiteGasto() {
-        return limiteGasto;
+
+    public void setLimiteSobregiro(float limiteSobregiro) {
+        this.limiteSobregiro = limiteSobregiro;
     }
-    
+
     @Override
     public String toString() {
-        return super.toString() +
-               "\n\tRazon Social: " + getRazonSocial() +
-               "\n\tRepresentante Legal: " + getNombreRepLegal() + " " + getApellidoRepLegal() +
-               "\n\tSaldo de ahorros: " + getSaldoCuenta() +
-               "\n\tLimite de gasto: " + getLimiteGasto();
+        return "Cuenta Corriente:\n" +
+               "\tNúmero de cuenta: " + getNumeroCuenta() + "\n" +
+               "\tFecha de apertura: " + getFechaCreacionCorta() + "\n" +
+               "\tSaldo actual: " + getSaldoCuenta() + "\n" +
+               "\tLímite de sobregiro: " + limiteSobregiro + "\n" +
+               "\tLímite de cheques: " + limiteCheques + "\n" +
+               "\tNúmero de chequera: " + numeroChequera + "\n" +
+               "\tComisión por cheque: " + comisionPorCheque + "\n" +
+               "\tTitular de la cuenta: " + titularCuenta;
     }
 }
