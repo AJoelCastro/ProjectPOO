@@ -40,6 +40,20 @@ public class ListaClientes {
         return -1;
     }
     
+    public int buscarPorIdentificacion(String identificacion) {
+        for (int i = 0; i < listaClientes.size(); i++) {
+            Cliente clienteB = listaClientes.get(i);
+            if (clienteB instanceof ClienteNatural) {
+                ClienteNatural clienteNatural = (ClienteNatural) clienteB;
+                if (clienteNatural.getIdentificacion().equalsIgnoreCase(identificacion)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+
+    
     public int getTamanio() {
         return listaClientes.size();
     }

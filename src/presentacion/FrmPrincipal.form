@@ -9,19 +9,47 @@
             <Property name="text" type="java.lang.String" value="Personal"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mniLogNatural">
+            <Menu class="javax.swing.JMenu" name="mnuLogNatural">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Iniciar sesion"/>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogNaturalActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniAbrirAhorro">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniLogAhorroNat">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Ahorro"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogAhorroNatActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniLogCorrienteNat">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogCorrienteNatActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuAbrirNatural">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir una cuenta"/>
               </Properties>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirAhorroNat">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuente Ahorro"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirCorrienteNat">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="mniRegistrarNatural">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrarse"/>
@@ -37,19 +65,47 @@
             <Property name="text" type="java.lang.String" value="Empresas e Instituciones"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mniLogJuridico">
+            <Menu class="javax.swing.JMenu" name="mnuLogJuridico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Iniciar sesion"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogJuridicoActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="mniAbrirCorriente">
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniLogAhorroJur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Ahorro"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogAhorroJurActionPerformed"/>
+                  </Events>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniLogCorrientejur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniLogCorrientejurActionPerformed"/>
+                  </Events>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="mnuAbrirJuridico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir una cuenta"/>
               </Properties>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirAhorroJur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuenta Ahorro "/>
+                    <Property name="toolTipText" type="java.lang.String" value=""/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirCorrienteJur">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Cuente Corriente"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="mniRegistrarJuridico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrarse"/>
@@ -100,7 +156,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="Banco Camilin"/>
+    <Property name="title" type="java.lang.String" value="Bank of America"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="mnbMenu"/>
@@ -147,10 +203,5 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jButton1"/>
-      </Properties>
-    </Component>
   </SubComponents>
 </Form>
