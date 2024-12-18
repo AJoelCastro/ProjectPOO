@@ -40,7 +40,7 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
         lblIdentificacion = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
         pwdPass = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
+        lblBienvenido = new javax.swing.JLabel();
         panDatos = new javax.swing.JPanel();
         scpMovimientos = new javax.swing.JScrollPane();
         btnRetiro = new javax.swing.JButton();
@@ -86,10 +86,10 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("BIENVENIDO");
+        lblBienvenido.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
+        lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBienvenido.setText("BIENVENIDO");
 
         javax.swing.GroupLayout panInicioLayout = new javax.swing.GroupLayout(panInicio);
         panInicio.setLayout(panInicioLayout);
@@ -102,13 +102,9 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
                     .addComponent(lblIdentificacion)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                     .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                    .addComponent(pwdPass))
+                    .addComponent(pwdPass)
+                    .addComponent(lblBienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(30, Short.MAX_VALUE))
-            .addGroup(panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panInicioLayout.createSequentialGroup()
-                    .addGap(29, 29, 29)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(48, Short.MAX_VALUE)))
         );
         panInicioLayout.setVerticalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,12 +119,9 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addComponent(pwdPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(390, Short.MAX_VALUE))
-            .addGroup(panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panInicioLayout.createSequentialGroup()
-                    .addGap(265, 265, 265)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(266, Short.MAX_VALUE)))
+                .addGap(60, 60, 60)
+                .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         btnRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -385,7 +378,7 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnTransferencia;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JPanel panDatos;
