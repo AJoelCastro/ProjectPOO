@@ -1,14 +1,6 @@
 package entidades;
 
 import java.util.GregorianCalendar;
-
-
-public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
-    private float limiteSobregiro;         
-    private int limiteCheques;             
-    private String numeroChequera;         
-    private float comisionPorCheque;       
-
 import datos.*;
 import java.util.Random;
 import javax.swing.*;
@@ -27,13 +19,8 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     // Constructor
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
-
                            GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
                            String numeroChequera, float comisionPorCheque, String titularCuenta, ClienteJuridico clienteJur) {
-
-            GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
-            String numeroChequera, String titularCuenta, ClienteJuridico clienteJur) {
-
         super("", cliente, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
         this.limiteSobregiro = limiteSobregiro;
         this.limiteCheques = limiteCheques;
@@ -114,17 +101,6 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     @Override
     public String toString() {
-
-        return "Cuenta Corriente:\n" +
-               "\tNúmero de cuenta: " + getNumeroCuenta() + "\n" +
-               "\tFecha de apertura: " + getFechaCreacionCorta() + "\n" +
-               "\tSaldo actual: " + getSaldoCuenta() + "\n" +
-               "\tLímite de sobregiro: " + limiteSobregiro + "\n" +
-               "\tLímite de cheques: " + limiteCheques + "\n" +
-               "\tNúmero de chequera: " + numeroChequera + "\n" +
-               "\tComisión por cheque: " + comisionPorCheque + "\n" +
-               "\tTitular de la cuenta: " + titularCuenta;
-
         return "Cuenta Corriente:\n"
                 + "\tNúmero de cuenta: " + getNumeroCuenta() + "\n"
                 + "\tFecha de apertura: " + getFechaCreacionCorta() + "\n"
