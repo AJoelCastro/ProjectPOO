@@ -13,8 +13,7 @@ public class Cliente extends Persona {
     private String correoElectronico;
     private String direccion;
     private int tipoCliente;
-    private ClienteNatural clienteNat;
-    private ClienteJuridico clienteJur;
+
     public Cliente(String nombre, String apellido) {
         super(nombre, apellido);
         tipoCliente = 1;
@@ -28,23 +27,7 @@ public class Cliente extends Persona {
         this.direccion = direccion;
         this.tipoCliente = tipoCliente;
     }
-    
-    public Cliente(ClienteNatural clienteNat ,String telefono, String correoElectronico, String direccion, String nombre, String apellido, int tipoCliente) {
-        super(nombre, apellido);
-        this.telefono = telefono;
-        this.correoElectronico = correoElectronico;
-        this.direccion = direccion;
-        this.tipoCliente = tipoCliente;
-    }
-    
-    public Cliente(ClienteJuridico clienteJur, String telefono, String correoElectronico, String direccion, String nombre, String apellido, int tipoCliente) {
-        super(nombre, apellido);
-        this.telefono = telefono;
-        this.correoElectronico = correoElectronico;
-        this.direccion = direccion;
-        this.tipoCliente = tipoCliente;
-    }
-    
+
     public String getTelefono() {
         return telefono;
     }

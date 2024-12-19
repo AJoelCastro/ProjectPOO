@@ -5,7 +5,6 @@
 package presentacion;
 import datos.*;
 import javax.swing.*;
-import presentacion.*;
 
 /**
  *
@@ -30,24 +29,25 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         dpsFondo = new javax.swing.JDesktopPane();
-        jButton1 = new javax.swing.JButton();
         mnbMenu = new javax.swing.JMenuBar();
         mnuPersonal = new javax.swing.JMenu();
-        mniLogNatural = new javax.swing.JMenuItem();
-        mniAbrirAhorro = new javax.swing.JMenuItem();
+        mnuLogNatural = new javax.swing.JMenu();
+        mniLogAhorroNat = new javax.swing.JMenuItem();
+        mniLogCorrienteNat = new javax.swing.JMenuItem();
+        mniAbrirNatural = new javax.swing.JMenuItem();
         mniRegistrarNatural = new javax.swing.JMenuItem();
         mnuEmpresas = new javax.swing.JMenu();
-        mniLogJuridico = new javax.swing.JMenuItem();
-        mniAbrirCorriente = new javax.swing.JMenuItem();
+        mnuLogJuridico = new javax.swing.JMenu();
+        mniLogAhorroJur = new javax.swing.JMenuItem();
+        mniLogCorrientejur = new javax.swing.JMenuItem();
+        mniAbrirJuridico = new javax.swing.JMenuItem();
         mniRegistrarJuridico = new javax.swing.JMenuItem();
-        mnuListados = new javax.swing.JMenu();
-        mniNatural = new javax.swing.JMenuItem();
         mnuReportes = new javax.swing.JMenu();
         mnuAyuda = new javax.swing.JMenu();
         mniAcerca = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Banco Camilin");
+        setTitle("Bank of America");
 
         javax.swing.GroupLayout dpsFondoLayout = new javax.swing.GroupLayout(dpsFondo);
         dpsFondo.setLayout(dpsFondoLayout);
@@ -60,20 +60,36 @@ public class FrmPrincipal extends javax.swing.JFrame {
             .addGap(0, 655, Short.MAX_VALUE)
         );
 
-        jButton1.setText("jButton1");
-
         mnuPersonal.setText("Personal");
 
-        mniLogNatural.setText("Iniciar sesion");
-        mniLogNatural.addActionListener(new java.awt.event.ActionListener() {
+        mnuLogNatural.setText("Iniciar sesion");
+        mnuLogNatural.setToolTipText("");
+
+        mniLogAhorroNat.setText("Cuenta Ahorro");
+        mniLogAhorroNat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniLogNaturalActionPerformed(evt);
+                mniLogAhorroNatActionPerformed(evt);
             }
         });
-        mnuPersonal.add(mniLogNatural);
+        mnuLogNatural.add(mniLogAhorroNat);
 
-        mniAbrirAhorro.setText("Abrir una cuenta");
-        mnuPersonal.add(mniAbrirAhorro);
+        mniLogCorrienteNat.setText("Cuenta Corriente");
+        mniLogCorrienteNat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLogCorrienteNatActionPerformed(evt);
+            }
+        });
+        mnuLogNatural.add(mniLogCorrienteNat);
+
+        mnuPersonal.add(mnuLogNatural);
+
+        mniAbrirNatural.setText("Abrir una cuenta");
+        mniAbrirNatural.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAbrirNaturalActionPerformed(evt);
+            }
+        });
+        mnuPersonal.add(mniAbrirNatural);
 
         mniRegistrarNatural.setText("Registrarse");
         mniRegistrarNatural.addActionListener(new java.awt.event.ActionListener() {
@@ -86,17 +102,39 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnbMenu.add(mnuPersonal);
 
         mnuEmpresas.setText("Empresas e Instituciones");
-
-        mniLogJuridico.setText("Iniciar sesion");
-        mniLogJuridico.addActionListener(new java.awt.event.ActionListener() {
+        mnuEmpresas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniLogJuridicoActionPerformed(evt);
+                mnuEmpresasActionPerformed(evt);
             }
         });
-        mnuEmpresas.add(mniLogJuridico);
 
-        mniAbrirCorriente.setText("Abrir una cuenta");
-        mnuEmpresas.add(mniAbrirCorriente);
+        mnuLogJuridico.setText("Iniciar sesion");
+
+        mniLogAhorroJur.setText("Cuenta Ahorro");
+        mniLogAhorroJur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLogAhorroJurActionPerformed(evt);
+            }
+        });
+        mnuLogJuridico.add(mniLogAhorroJur);
+
+        mniLogCorrientejur.setText("Cuenta Corriente");
+        mniLogCorrientejur.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLogCorrientejurActionPerformed(evt);
+            }
+        });
+        mnuLogJuridico.add(mniLogCorrientejur);
+
+        mnuEmpresas.add(mnuLogJuridico);
+
+        mniAbrirJuridico.setText("Abrir una cuenta");
+        mniAbrirJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAbrirJuridicoActionPerformed(evt);
+            }
+        });
+        mnuEmpresas.add(mniAbrirJuridico);
 
         mniRegistrarJuridico.setText("Registrarse");
         mniRegistrarJuridico.addActionListener(new java.awt.event.ActionListener() {
@@ -107,18 +145,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnuEmpresas.add(mniRegistrarJuridico);
 
         mnbMenu.add(mnuEmpresas);
-
-        mnuListados.setText("Listados");
-
-        mniNatural.setText("Personas");
-        mniNatural.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniNaturalActionPerformed(evt);
-            }
-        });
-        mnuListados.add(mniNatural);
-
-        mnbMenu.add(mnuListados);
 
         mnuReportes.setText("Reportes");
         mnbMenu.add(mnuReportes);
@@ -155,19 +181,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_mniAcercaActionPerformed
 
-    private void mniNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniNaturalActionPerformed
-        IfrmListaClienteNatural ifrmListaClienteNatural = new IfrmListaClienteNatural(listaClientes);
-        centrarInternalFrame(ifrmListaClienteNatural);
-        
-    }//GEN-LAST:event_mniNaturalActionPerformed
-
-    private void mniLogNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogNaturalActionPerformed
-        IfrmPersonal ifrmPersonal = new IfrmPersonal();
-        centrarInternalFrame(ifrmPersonal);
-    }//GEN-LAST:event_mniLogNaturalActionPerformed
-
     private void mniRegistrarNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRegistrarNaturalActionPerformed
-        ifrmClienteNatural ifrmClienteNatural = new ifrmClienteNatural(listaClientes);
+        IfrmClienteNatural ifrmClienteNatural = new IfrmClienteNatural(listaClientes);
         centrarInternalFrame(ifrmClienteNatural);
     }//GEN-LAST:event_mniRegistrarNaturalActionPerformed
 
@@ -176,10 +191,39 @@ public class FrmPrincipal extends javax.swing.JFrame {
         centrarInternalFrame(ifrmClienteJuridico);
     }//GEN-LAST:event_mniRegistrarJuridicoActionPerformed
 
-    private void mniLogJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogJuridicoActionPerformed
-        IfrmEmpresas ifrmEmpresas = new IfrmEmpresas();
-        centrarInternalFrame(ifrmEmpresas);
-    }//GEN-LAST:event_mniLogJuridicoActionPerformed
+    private void mniLogAhorroNatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogAhorroNatActionPerformed
+        IfrmCuentaAhorro ifrmCuentaAhorro = new IfrmCuentaAhorro(listaClientes,listaCuentas,listaMovimientos);
+        centrarInternalFrame(ifrmCuentaAhorro);
+    }//GEN-LAST:event_mniLogAhorroNatActionPerformed
+
+    private void mniLogCorrienteNatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogCorrienteNatActionPerformed
+        IfrmCuentaCorriente ifrmCuentaCorriente = new IfrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
+        centrarInternalFrame(ifrmCuentaCorriente);
+    }//GEN-LAST:event_mniLogCorrienteNatActionPerformed
+
+    private void mniLogAhorroJurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogAhorroJurActionPerformed
+        IfrmCuentaAhorro ifrmCuentaAhorro = new IfrmCuentaAhorro(listaClientes,listaCuentas,listaMovimientos);
+        centrarInternalFrame(ifrmCuentaAhorro);
+    }//GEN-LAST:event_mniLogAhorroJurActionPerformed
+
+    private void mniLogCorrientejurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogCorrientejurActionPerformed
+        IfrmCuentaCorriente ifrmCuentaCorriente = new IfrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
+        centrarInternalFrame(ifrmCuentaCorriente);
+    }//GEN-LAST:event_mniLogCorrientejurActionPerformed
+
+    private void mniAbrirNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirNaturalActionPerformed
+        IfrmAbrirNatural ifrmAbrirNatural = new IfrmAbrirNatural(listaClientes,listaCuentas);
+        centrarInternalFrame(ifrmAbrirNatural);
+    }//GEN-LAST:event_mniAbrirNaturalActionPerformed
+
+    private void mnuEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEmpresasActionPerformed
+        
+    }//GEN-LAST:event_mnuEmpresasActionPerformed
+
+    private void mniAbrirJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirJuridicoActionPerformed
+        IfrmAbrirJuridico ifrmAbrirJuridico = new IfrmAbrirJuridico(listaClientes,listaCuentas);
+        centrarInternalFrame(ifrmAbrirJuridico);
+    }//GEN-LAST:event_mniAbrirJuridicoActionPerformed
 
     private void centrarInternalFrame (JInternalFrame interna) {
         int x,y;
@@ -233,21 +277,24 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpsFondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenuBar mnbMenu;
-    private javax.swing.JMenuItem mniAbrirAhorro;
-    private javax.swing.JMenuItem mniAbrirCorriente;
+    private javax.swing.JMenuItem mniAbrirJuridico;
+    private javax.swing.JMenuItem mniAbrirNatural;
     private javax.swing.JMenuItem mniAcerca;
-    private javax.swing.JMenuItem mniLogJuridico;
-    private javax.swing.JMenuItem mniLogNatural;
-    private javax.swing.JMenuItem mniNatural;
+    private javax.swing.JMenuItem mniLogAhorroJur;
+    private javax.swing.JMenuItem mniLogAhorroNat;
+    private javax.swing.JMenuItem mniLogCorrienteNat;
+    private javax.swing.JMenuItem mniLogCorrientejur;
     private javax.swing.JMenuItem mniRegistrarJuridico;
     private javax.swing.JMenuItem mniRegistrarNatural;
     private javax.swing.JMenu mnuAyuda;
     private javax.swing.JMenu mnuEmpresas;
-    private javax.swing.JMenu mnuListados;
+    private javax.swing.JMenu mnuLogJuridico;
+    private javax.swing.JMenu mnuLogNatural;
     private javax.swing.JMenu mnuPersonal;
     private javax.swing.JMenu mnuReportes;
     // End of variables declaration//GEN-END:variables
     private ListaClientes listaClientes = new ListaClientes();
+    private ListaCuenta listaCuentas = new ListaCuenta();
+    private ListaMovimientos listaMovimientos = new ListaMovimientos();
 }

@@ -4,8 +4,6 @@
  */
 package entidades;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Asus
@@ -14,10 +12,9 @@ public class ClienteJuridico extends Cliente {
     private String razonSocial;
     private String ruc;
     private String documentoDeConstitucion;
-    private ArrayList<Cuenta> cuentas;
 
     public ClienteJuridico(String razonSocial, String ruc, String documentoDeConstitucion, String telefono, String correoElectronico, String direccion, String nombre, String apellido, int tipoCliente) {
-        super(telefono, correoElectronico, direccion, nombre, apellido, 2);
+        super(telefono, correoElectronico, direccion, nombre, apellido, tipoCliente);
         this.razonSocial = razonSocial;
         this.ruc = ruc;
         this.documentoDeConstitucion = documentoDeConstitucion;
@@ -46,10 +43,7 @@ public class ClienteJuridico extends Cliente {
     public void setDocumentoDeConstitucion(String documentoDeConstitucion) {
         this.documentoDeConstitucion = documentoDeConstitucion;
     }
-    
-    public void agregarCuenta(Cuenta cuenta) {
-        cuentas.add(cuenta);
-    }
+
 
     @Override
     public String toString() {
