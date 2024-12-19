@@ -72,6 +72,9 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
 
     public void setBeneficiarios(ArrayList<String> beneficiarios) {
         this.beneficiarios = beneficiarios;
+
+    }    
+
     }
 
 
@@ -94,6 +97,7 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
 
     }
     
+
     @Override
     public void calcularInteresMensual() {
         

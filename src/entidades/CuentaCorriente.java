@@ -91,6 +91,19 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         return clienteJur.getApellido();
     }
 
+    @Override
+    public String toString() {
+        return "Cuenta Corriente:\n" 
+                + "\tNúmero de cuenta: " + getNumeroCuenta() + "\n"
+                + "\tFecha de apertura: " + getFechaCreacionCorta() + "\n"
+                + "\tSaldo actual: " + getSaldoCuenta() + "\n"
+                + "\tLímite de sobregiro: " + limiteSobregiro + "\n"
+                + "\tLímite de cheques: " + limiteCheques + "\n"
+                + "\tNúmero de chequera: " + numeroChequera + "\n"
+                + "\tComisión por cheque: " + comisionPorCheque + "\n"
+                + "\tTitular de la cuenta: " + titularCuenta;
+    }
+
     public class Cheques {
 
         private String nroCheque;

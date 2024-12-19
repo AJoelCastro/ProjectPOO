@@ -172,7 +172,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniRegistrarNaturalActionPerformed
 
     private void mniRegistrarJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRegistrarJuridicoActionPerformed
-        IfrmClienteJuridico ifrmClienteJuridico = new IfrmClienteJuridico(listaClientes);
+        ifrmClienteJuridico ifrmClienteJuridico = new ifrmClienteJuridico(listaClientes);
         centrarInternalFrame(ifrmClienteJuridico);
     }//GEN-LAST:event_mniRegistrarJuridicoActionPerformed
 
