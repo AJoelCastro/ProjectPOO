@@ -10,12 +10,8 @@ import java.util.*;
  * @author artur
  */
 public class ListaClientes {
-    private ArrayList<Cliente> listaClientes=new ArrayList<>();
+    private ArrayList<Cliente> listaClientes = new ArrayList<>();
      
-    public ListaClientes(){
-        
-    }
-    
     public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
@@ -34,13 +30,45 @@ public class ListaClientes {
         return null;
     }
     
-    public Cliente buscarPorApellido(String apellido) {
-        for(Cliente client: listaClientes) {
-            if(client.getApellido().compareToIgnoreCase(apellido)==0)
-                return client;
+    public int buscarPorApellido(String apellido) {
+        Cliente clienteB;
+        for(int i=0; i<listaClientes.size(); i++) {
+            clienteB = listaClientes.get(i);
+            if(clienteB.getApellido().compareToIgnoreCase(apellido)==0)
+                return i;
+        }
+        return -1;
+    }
+    
+    public int buscarPorIdentificacion(String identificacion) {
+        for (int i = 0; i < listaClientes.size(); i++) {
+            Cliente clienteB = listaClientes.get(i);
+            if (clienteB instanceof ClienteNatural) {
+                ClienteNatural clienteNatural = (ClienteNatural) clienteB;
+                if (clienteNatural.getIdentificacion().equalsIgnoreCase(identificacion)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+    public ClienteJuridico buscarPorRuc(String ruc) {
+        if (ruc == null || ruc.trim().isEmpty()) {
+            return null;
+        }
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente instanceof ClienteJuridico) {
+                ClienteJuridico clienteJur = (ClienteJuridico) cliente;
+                if (clienteJur.getRuc().equalsIgnoreCase(ruc)) {
+                    return clienteJur;
+                }
+            }
         }
         return null;
     }
+
+
     
     public int getTamanio() {
         return listaClientes.size();

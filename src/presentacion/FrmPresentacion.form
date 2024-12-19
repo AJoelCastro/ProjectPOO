@@ -50,17 +50,11 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value=" Cuenta Ahorro"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniCuentaAhorroActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mniCuentaCorriente">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniCuentaCorrienteActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
