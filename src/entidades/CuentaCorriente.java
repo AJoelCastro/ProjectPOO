@@ -90,7 +90,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     @Override
     public String toString() {
-        return "Cuenta Corriente:\n"
+        return "Cuenta Corriente:\n" 
                 + "\tNúmero de cuenta: " + getNumeroCuenta() + "\n"
                 + "\tFecha de apertura: " + getFechaCreacionCorta() + "\n"
                 + "\tSaldo actual: " + getSaldoCuenta() + "\n"
