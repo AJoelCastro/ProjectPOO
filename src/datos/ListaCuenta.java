@@ -49,7 +49,7 @@ public class ListaCuenta {
         return -1;
     }
     
-     public int buscarPorNroCuenta(String nroCuenta) {
+    public int buscarPorNroCuenta(String nroCuenta) {
         Cuenta cuentaB;
         for(int i=0; i<listaCuentas.size(); i++) {
             cuentaB = listaCuentas.get(i);
