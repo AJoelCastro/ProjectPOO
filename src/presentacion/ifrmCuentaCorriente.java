@@ -3,26 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
-
 import datos.*;
 import entidades.*;
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
-
 /**
  *
  * @author sanar
  */
-public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
+public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form IfrmPersonal
+     * Creates new form IfrmEmpresas
      */
-    public IfrmCuentaAhorro() {
+    public IfrmCuentaCorriente() {
         initComponents();
     }
-    public IfrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
+    public IfrmCuentaCorriente(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
         initComponents();
         this.listaClientes = listaClientes;
         this.listaCuentas = listaCuentas;
@@ -43,53 +41,68 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jOptionPane1 = new javax.swing.JOptionPane();
         panInicio = new javax.swing.JPanel();
-        panRegistro = new javax.swing.JPanel();
-        lblIdentificacion = new javax.swing.JLabel();
-        txtIdentificacion = new javax.swing.JTextField();
-        pwdPass = new javax.swing.JPasswordField();
-        btnEntrar = new javax.swing.JButton();
-        lblPassword = new javax.swing.JLabel();
         lblBienvenido = new javax.swing.JLabel();
+        panRegistro = new javax.swing.JPanel();
+        btnEntrar = new javax.swing.JButton();
+        lblIdentificacion = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
+        pwdPass = new javax.swing.JPasswordField();
+        txtIdentificacion = new javax.swing.JTextField();
         panDatos = new javax.swing.JPanel();
+        scpMovimientos = new javax.swing.JScrollPane();
+        btnRetiro = new javax.swing.JButton();
+        btnDeposito = new javax.swing.JButton();
+        btnTransferencia = new javax.swing.JButton();
         panSaldo = new javax.swing.JPanel();
         txtSaldo = new javax.swing.JTextField();
         btnSaldo = new javax.swing.JButton();
-        scpMovimientos = new javax.swing.JScrollPane();
-        btnDeposito = new javax.swing.JButton();
-        btnRetiro = new javax.swing.JButton();
-        btnTransferencia = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         btnMovimientos = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 0, 0));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        panInicio.setBackground(new java.awt.Color(0, 153, 153));
+        panInicio.setBackground(new java.awt.Color(0, 102, 102));
 
-        panRegistro.setBackground(new java.awt.Color(0, 153, 153));
+        lblBienvenido.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
+        lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBienvenido.setText("==BIENVENIDO==");
 
-        lblIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
-        lblIdentificacion.setText("Identificacion de usuario");
+        panRegistro.setBackground(new java.awt.Color(0, 102, 102));
 
-        txtIdentificacion.setForeground(new java.awt.Color(102, 102, 102));
-        txtIdentificacion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-
-        btnEntrar.setBackground(new java.awt.Color(0, 102, 102));
+        btnEntrar.setBackground(new java.awt.Color(0, 51, 51));
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
-        btnEntrar.setToolTipText("");
-        btnEntrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        btnEntrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
         btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEntrarActionPerformed(evt);
             }
         });
 
+        lblIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
+        lblIdentificacion.setText("Identificacion de usuario");
+
         lblPassword.setForeground(new java.awt.Color(255, 255, 255));
         lblPassword.setText("Contraseña");
+        lblPassword.setToolTipText("");
+
+        pwdPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pwdPassActionPerformed(evt);
+            }
+        });
+
+        txtIdentificacion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtIdentificacion.setPreferredSize(new java.awt.Dimension(145, 22));
 
         javax.swing.GroupLayout panRegistroLayout = new javax.swing.GroupLayout(panRegistro);
         panRegistro.setLayout(panRegistroLayout);
@@ -98,11 +111,11 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
             .addGroup(panRegistroLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblIdentificacion)
                     .addComponent(lblPassword)
-                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
-                    .addComponent(pwdPass))
+                    .addComponent(lblIdentificacion)
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pwdPass, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         panRegistroLayout.setVerticalGroup(
@@ -121,43 +134,61 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
-        lblBienvenido.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
-        lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
-        lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblBienvenido.setText("==BIENVENIDO==");
-
         javax.swing.GroupLayout panInicioLayout = new javax.swing.GroupLayout(panInicio);
         panInicio.setLayout(panInicioLayout);
         panInicioLayout.setHorizontalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panInicioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panInicioLayout.createSequentialGroup()
+                        .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblBienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(lblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panInicioLayout.setVerticalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panInicioLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(16, 16, 16)
                 .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        panSaldo.setBackground(new java.awt.Color(0, 153, 153));
-        panSaldo.setPreferredSize(new java.awt.Dimension(170, 34));
+        btnRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnRetiro.setText("RETIRO");
+        btnRetiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRetiroActionPerformed(evt);
+            }
+        });
+
+        btnDeposito.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnDeposito.setText("DEPOSITO");
+        btnDeposito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDepositoActionPerformed(evt);
+            }
+        });
+
+        btnTransferencia.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnTransferencia.setText("TRANSFERENCIA");
+        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferenciaActionPerformed(evt);
+            }
+        });
+
+        panSaldo.setBackground(new java.awt.Color(0, 102, 102));
 
         txtSaldo.setEditable(false);
-        txtSaldo.setBackground(new java.awt.Color(0, 153, 153));
+        txtSaldo.setBackground(new java.awt.Color(0, 102, 102));
         txtSaldo.setForeground(new java.awt.Color(255, 255, 255));
         txtSaldo.setBorder(null);
 
-        btnSaldo.setForeground(new java.awt.Color(0, 102, 102));
         btnSaldo.setText("Mostrar saldo");
-        btnSaldo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnSaldo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         btnSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaldoActionPerformed(evt);
@@ -172,7 +203,7 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(btnSaldo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panSaldoLayout.setVerticalGroup(
@@ -185,37 +216,20 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        btnDeposito.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnDeposito.setForeground(new java.awt.Color(0, 102, 102));
-        btnDeposito.setText("DEPOSITO");
-        btnDeposito.addActionListener(new java.awt.event.ActionListener() {
+        jButton6.setText("Emisión de cheques");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDepositoActionPerformed(evt);
+                jButton6ActionPerformed(evt);
             }
         });
 
-        btnRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnRetiro.setForeground(new java.awt.Color(0, 102, 102));
-        btnRetiro.setText("RETIRO");
-        btnRetiro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRetiroActionPerformed(evt);
-            }
-        });
+        jButton1.setText("Cobro de cheques");
 
-        btnTransferencia.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        btnTransferencia.setForeground(new java.awt.Color(0, 102, 102));
-        btnTransferencia.setText("TRANSFERENCIA");
-        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTransferenciaActionPerformed(evt);
-            }
-        });
+        jButton3.setText("Devolución de cheques");
 
-        btnMovimientos.setForeground(new java.awt.Color(0, 102, 102));
-        btnMovimientos.setText("Mostrar Movimientos");
-        btnMovimientos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMovimientos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jButton2.setText("Verificación de cheques");
+
+        btnMovimientos.setText("Mostrar movimientos");
         btnMovimientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMovimientosActionPerformed(evt);
@@ -226,41 +240,58 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
         panDatos.setLayout(panDatosLayout);
         panDatosLayout.setHorizontalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
             .addGroup(panDatosLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDatosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnMovimientos))
-                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(scpMovimientos)
-                        .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                        .addGroup(panDatosLayout.createSequentialGroup()
-                            .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(139, 139, 139)
+                        .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panDatosLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panDatosLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(btnMovimientos))
+                            .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
+                                    .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(scpMovimientos)
+                                .addGroup(panDatosLayout.createSequentialGroup()
+                                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panDatosLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addComponent(btnMovimientos)
-                .addGap(12, 12, 12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,15 +306,19 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(84, 84, 84))
+                .addContainerGap())
+            .addComponent(panInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void pwdPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pwdPassActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String numeroCuenta = txtIdentificacion.getText().trim();
@@ -323,48 +358,19 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
             return;
         }
         mostrarDatosCuenta();
-    
     }//GEN-LAST:event_btnEntrarActionPerformed
-
-    private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
-        if (saldoVisible) {
-            txtSaldo.setText("");
-            btnSaldo.setText("Mostrar saldo");
-        } else {
-            if (cuentaActual != null) {
-                String moneda = cuentaActual.getTipoMoneda() == 0 ? "S/." : "US$";
-                txtSaldo.setText(moneda + " " + String.format("%.2f", cuentaActual.getSaldoCuenta()));
-            } else {
-                txtSaldo.setText("Saldo no disponible");
-            }
-            btnSaldo.setText("Ocultar saldo");
+    private void mostrarDatosCuenta() {
+        panRegistro.setVisible(false);
+        panDatos.setVisible(true);
+        panInicio.setVisible(true);
+        lblBienvenido.setVisible(true);
+    }                                         
+    private void actualizarSaldo() {
+        if (cuentaActual != null) {
+            String moneda = cuentaActual.getTipoMoneda() == 0 ? "S/." : "US$";
+            txtSaldo.setText(moneda + " " + String.format("%.2f", cuentaActual.getSaldoCuenta()));
         }
-        saldoVisible = !saldoVisible;
-    }//GEN-LAST:event_btnSaldoActionPerformed
-
-    private void btnMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientosActionPerformed
-        if (cuentaActual == null) {
-            JOptionPane.showMessageDialog(this, "Seleccione una cuenta primero.");
-            return;
-        }
-
-        ArrayList<ListaMovimientos.Movimiento> movimientos = listaMovimientos.obtenerHistorialMovimientos(cuentaActual);
-
-        String[] columnNames = {"Tipo", "Monto", "Fecha", "Cuenta Destino"};
-        Object[][] data = new Object[movimientos.size()][4];
-
-        for (int i = 0; i < movimientos.size(); i++) {
-            ListaMovimientos.Movimiento mov = movimientos.get(i);
-            data[i][0] = mov.getTipoMovimiento();
-            data[i][1] = String.format("%.2f", mov.getMonto());
-            data[i][2] = mov.getFechaFormateada();
-            data[i][3] = mov.getCuentaDestino() != null ? mov.getCuentaDestino().getNumeroCuenta() : "-";
-        }
-
-        JTable tblMovimientos = new JTable(data, columnNames);
-        scpMovimientos.setViewportView(tblMovimientos);
-    }//GEN-LAST:event_btnMovimientosActionPerformed
-
+    } 
     private void btnRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetiroActionPerformed
         if (cuentaActual == null) {
             return;
@@ -482,19 +488,50 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnTransferenciaActionPerformed
-    private void mostrarDatosCuenta() {
-        panRegistro.setVisible(false);
-        panDatos.setVisible(true);
-        panInicio.setVisible(true);
-        lblBienvenido.setVisible(true);
-    }                                         
-    private void actualizarSaldo() {
-        if (cuentaActual != null) {
-            String moneda = cuentaActual.getTipoMoneda() == 0 ? "S/." : "US$";
-            txtSaldo.setText(moneda + " " + String.format("%.2f", cuentaActual.getSaldoCuenta()));
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
+        if (saldoVisible) {
+            txtSaldo.setText("");
+            btnSaldo.setText("Mostrar saldo");
+        } else {
+            if (cuentaActual != null) {
+                String moneda = cuentaActual.getTipoMoneda() == 0 ? "S/." : "US$";
+                txtSaldo.setText(moneda + " " + String.format("%.2f", cuentaActual.getSaldoCuenta()));
+            } else {
+                txtSaldo.setText("Saldo no disponible");
+            }
+            btnSaldo.setText("Ocultar saldo");
         }
-    }    
-    
+        saldoVisible = !saldoVisible;
+    }//GEN-LAST:event_btnSaldoActionPerformed
+
+    private void btnMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientosActionPerformed
+        if (cuentaActual == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione una cuenta primero.");
+            return;
+        }
+
+        ArrayList<ListaMovimientos.Movimiento> movimientos = listaMovimientos.obtenerHistorialMovimientos(cuentaActual);
+
+        String[] columnNames = {"Tipo", "Monto", "Fecha", "Cuenta Destino"};
+        Object[][] data = new Object[movimientos.size()][4];
+
+        for (int i = 0; i < movimientos.size(); i++) {
+            ListaMovimientos.Movimiento mov = movimientos.get(i);
+            data[i][0] = mov.getTipoMovimiento();
+            data[i][1] = String.format("%.2f", mov.getMonto());
+            data[i][2] = mov.getFechaFormateada();
+            data[i][3] = mov.getCuentaDestino() != null ? mov.getCuentaDestino().getNumeroCuenta() : "-";
+        }
+
+        JTable tblMovimientos = new JTable(data, columnNames);
+        scpMovimientos.setViewportView(tblMovimientos);
+    }//GEN-LAST:event_btnMovimientosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeposito;
@@ -503,6 +540,11 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnSaldo;
     private javax.swing.JButton btnTransferencia;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblPassword;

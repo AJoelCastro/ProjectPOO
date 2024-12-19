@@ -27,11 +27,11 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="lbldocumento" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                      <Component id="txtDocumento" min="-2" pref="204" max="-2" attributes="0"/>
+                      <Component id="txtDocumento" pref="244" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="btnNuevo" min="-2" pref="101" max="-2" attributes="0"/>
@@ -52,21 +52,19 @@
                           <Component id="lblDireccion" alignment="0" min="-2" pref="66" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNombres" alignment="0" pref="308" max="32767" attributes="0"/>
-                              <Component id="txtApellidos" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtRazonSocial" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="txttelefono" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                          <Component id="txtDireccion" alignment="1" min="-2" pref="308" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtNombres" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtApellidos" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtRazonSocial" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtDireccion" alignment="0" pref="308" max="32767" attributes="0"/>
+                          <Component id="txttelefono" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="cmbTipoRuc" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                      <Component id="txtRuc" min="-2" pref="148" max="-2" attributes="0"/>
+                      <Component id="txtRuc" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="45" max="32767" attributes="0"/>
@@ -80,41 +78,39 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="lblNombres" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lblApellidos" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lblTelefono" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="lblEmail" min="-2" pref="22" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="txtNombres" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="txtNombres" min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtApellidos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                      <Component id="txttelefono" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="txttelefono" min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblRazonSocial" min="-2" pref="22" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtRuc" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbTipoRuc" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="lblRazonSocial" alignment="0" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="txtRazonSocial" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="txtRuc" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="cmbTipoRuc" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="txtDireccion" min="-2" pref="35" max="-2" attributes="0"/>
                   <Component id="lblDireccion" alignment="0" min="-2" pref="35" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lbldocumento" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="txtDocumento" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -125,7 +121,7 @@
                   <Component id="btnRegistrar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="btnSalir" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -188,16 +184,25 @@
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombresActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtApellidos">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtApellidosActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txttelefono">
       <Properties>
         <Property name="enabled" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txttelefonoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
       <Properties>
@@ -252,6 +257,9 @@
             <StringItem index="0" value="Ruc Persona Natural"/>
             <StringItem index="1" value="Ruc Empresa"/>
           </StringArray>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
         </Property>
       </Properties>
       <Events>
