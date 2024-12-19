@@ -89,4 +89,51 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     public void calcularInteresMensual() {
 
     }   
+    
+    public void depositar(float monto) {
+        if (monto > 0) {
+            setSaldoCuenta(getSaldoCuenta() + monto);
+            System.out.println("Depósito realizado: " + monto + " Nuevo saldo: " + getSaldoCuenta());
+        } else {
+            System.out.println("El monto a depositar debe ser mayor a cero.");
+        }
+    }
+
+    public boolean retirar(float monto) {
+        if (monto <= 0) {
+            System.out.println("El monto a retirar debe ser mayor a cero.");
+            return false;
+        }
+
+        float saldoDisponible = getSaldoCuenta();
+        if (monto <= saldoDisponible) {
+            setSaldoCuenta(getSaldoCuenta() - monto);
+            System.out.println("Retiro exitoso: " + monto + " Nuevo saldo: " + getSaldoCuenta());
+            return true;
+        } else {
+            System.out.println("Fondos insuficientes. Saldo disponible (incluyendo sobregiro): " + saldoDisponible);
+            return false;
+        }
+    }
+
+    public boolean transferir(float monto, Cuenta cuentaDestino) {
+        if (monto <= 0) {
+            System.out.println("El monto a transferir debe ser mayor a cero.");
+            return false;
+        }
+
+        float saldoDisponible = getSaldoCuenta();
+        if (monto <= saldoDisponible) {
+            setSaldoCuenta(getSaldoCuenta() - monto);
+            cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + monto);
+            System.out.println("Transferencia exitosa: " + monto +
+                    " Nuevo saldo: " + getSaldoCuenta() +
+                    " Saldo cuenta destino: " + cuentaDestino.getSaldoCuenta());
+            return true;
+        } else {
+            System.out.println("Fondos insuficientes para realizar la transferencia.");
+            return false;
+        }
+    }
+    
 }  // fin de la clase CuentaAhorro
