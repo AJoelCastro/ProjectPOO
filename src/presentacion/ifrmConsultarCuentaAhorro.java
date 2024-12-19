@@ -5,7 +5,6 @@
 package presentacion;
 
 import datos.*;
-import entidades.*;
 import javax.swing.*;
 /**
  *

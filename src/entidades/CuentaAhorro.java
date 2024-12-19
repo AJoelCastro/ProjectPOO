@@ -37,6 +37,10 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     public static float obtenerTasaInteresAnual() {
         return tasaInteresAnual;
     }
+    
+     public String getApellidoCliente() {
+        return clienteNat.getApellido();
+    }
 
     public ClienteNatural getClienteNat() {
         return clienteNat;
