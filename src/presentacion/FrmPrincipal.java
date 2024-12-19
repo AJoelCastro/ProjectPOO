@@ -192,7 +192,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniRegistrarJuridicoActionPerformed
 
     private void mniLogAhorroNatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogAhorroNatActionPerformed
-        IfrmCuentaAhorro ifrmCuentaAhorro = new IfrmCuentaAhorro(listaClientes,listaCuentas,listaMovimientos);
+        ifrmCuentaAhorro ifrmCuentaAhorro = new ifrmCuentaAhorro(listaClientes,listaCuentas,listaMovimientos);
         centrarInternalFrame(ifrmCuentaAhorro);
     }//GEN-LAST:event_mniLogAhorroNatActionPerformed
 
@@ -202,7 +202,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniLogCorrienteNatActionPerformed
 
     private void mniLogAhorroJurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogAhorroJurActionPerformed
-        IfrmCuentaAhorro ifrmCuentaAhorro = new IfrmCuentaAhorro(listaClientes,listaCuentas,listaMovimientos);
+        ifrmCuentaAhorro ifrmCuentaAhorro = new ifrmCuentaAhorro(listaClientes,listaCuentas,listaMovimientos);
         centrarInternalFrame(ifrmCuentaAhorro);
     }//GEN-LAST:event_mniLogAhorroJurActionPerformed
 

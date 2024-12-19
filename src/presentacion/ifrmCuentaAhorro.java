@@ -14,15 +14,15 @@ import java.util.*;
  *
  * @author sanar
  */
-public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
+public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmPersonal
      */
-    public IfrmCuentaAhorro() {
+    public ifrmCuentaAhorro() {
         initComponents();
     }
-    public IfrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
+    public ifrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
         initComponents();
         this.listaClientes = listaClientes;
         this.listaCuentas = listaCuentas;
@@ -31,7 +31,7 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
         panDatos.setVisible(false);
         lblBienvenido.setVisible(false);
         btnSaldo.setText("Mostrar saldo");
-
+        txtNombre.setVisible(true);
     }
 
     /**
@@ -51,6 +51,7 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
         btnEntrar = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
         lblBienvenido = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
         panDatos = new javax.swing.JPanel();
         panSaldo = new javax.swing.JPanel();
         txtSaldo = new javax.swing.JTextField();
@@ -103,7 +104,7 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                     .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                     .addComponent(pwdPass))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         panRegistroLayout.setVerticalGroup(
             panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,15 +127,25 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
         lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBienvenido.setText("==BIENVENIDO==");
 
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panInicioLayout = new javax.swing.GroupLayout(panInicio);
         panInicio.setLayout(panInicioLayout);
         panInicioLayout.setHorizontalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panInicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addComponent(lblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panInicioLayout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panInicioLayout.setVerticalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +154,8 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -243,7 +256,7 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                             .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,47 +297,6 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        String numeroCuenta = txtIdentificacion.getText().trim();
-        String clave = new String(pwdPass.getPassword());
-        
-        if (numeroCuenta.isEmpty() || clave.isEmpty()) {
-            JOptionPane.showMessageDialog(this, 
-                "Por favor ingrese el número de cuenta y la clave",
-                "Error de validación",
-                JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        boolean cuentaEncontrada = false;
-        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
-            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
-                if (cuenta.validarClave(clave)) {
-                    cuentaActual = cuenta;
-                    cuentaEncontrada = true;
-                    break;
-                } else {
-                    JOptionPane.showMessageDialog(this,
-                        "Clave incorrecta",
-                        "Error de autenticación",
-                        JOptionPane.ERROR_MESSAGE);
-                    pwdPass.setText("");
-                    return;
-                }
-            }
-        }
-        
-        if (!cuentaEncontrada) {
-            JOptionPane.showMessageDialog(this,
-                "Cuenta no encontrada",
-                "Error de autenticación",
-                JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        mostrarDatosCuenta();
-    
-    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
         if (saldoVisible) {
@@ -482,11 +454,67 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnTransferenciaActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+        //txtNombre.setText(cuentaActual);
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        String numeroCuenta = txtIdentificacion.getText().trim();
+        String clave = new String(pwdPass.getPassword());
+
+        if (numeroCuenta.isEmpty() || clave.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese el número de cuenta y la clave",
+                "Error de validación",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        boolean cuentaEncontrada = false;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
+                if (cuenta.validarClave(clave)) {
+                    cuentaActual = cuenta;
+                    cuentaEncontrada = true;
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                        "Clave incorrecta",
+                        "Error de autenticación",
+                        JOptionPane.ERROR_MESSAGE);
+                    pwdPass.setText("");
+                    return;
+                }
+            }
+        }
+
+        if (!cuentaEncontrada) {
+            JOptionPane.showMessageDialog(this,
+                "Cuenta no encontrada",
+                "Error de autenticación",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        mostrarDatosCuenta();
+        String nombre="";
+        Cliente client =cuentaActual.getCliente();
+        if(client!=null){
+            nombre = client.getNombre();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Cliente no encontrado","Advertencia", 2);
+        }
+        txtNombre.setText(nombre);
+    }//GEN-LAST:event_btnEntrarActionPerformed
     private void mostrarDatosCuenta() {
         panRegistro.setVisible(false);
         panDatos.setVisible(true);
         panInicio.setVisible(true);
         lblBienvenido.setVisible(true);
+        //txtNombre.setText(cuentaActual.getCliente().getNombre());
+        //lblNombreBienvenidaAncestorAdded();
     }                                         
     private void actualizarSaldo() {
         if (cuentaActual != null) {
@@ -513,6 +541,7 @@ public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JPasswordField pwdPass;
     private javax.swing.JScrollPane scpMovimientos;
     private javax.swing.JTextField txtIdentificacion;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
     private ListaClientes listaClientes;

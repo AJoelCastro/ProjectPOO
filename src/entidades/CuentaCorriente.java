@@ -22,6 +22,18 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         this.titularCuenta = titularCuenta;
         this.clienteJur = clienteJur;
     }
+    
+    public CuentaCorriente(float saldoCuenta, int tipoMoneda, String clave,
+                           GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
+                           String numeroChequera, float comisionPorCheque, String titularCuenta, ClienteJuridico clienteJur) {
+        super("", clienteJur, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
+        this.limiteSobregiro = limiteSobregiro;
+        this.limiteCheques = limiteCheques;
+        this.numeroChequera = numeroChequera;
+        this.comisionPorCheque = comisionPorCheque;
+        this.titularCuenta = titularCuenta;
+        this.clienteJur = clienteJur;
+    }
 
     // Métodos de la interfaz OperacionesCuenta
     @Override
