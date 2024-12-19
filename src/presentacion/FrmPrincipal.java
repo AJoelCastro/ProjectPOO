@@ -34,9 +34,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnuLogNatural = new javax.swing.JMenu();
         mniLogAhorroNat = new javax.swing.JMenuItem();
         mniLogCorrienteNat = new javax.swing.JMenuItem();
-        mnuAbrirNatural = new javax.swing.JMenu();
-        mniAbrirAhorroNat = new javax.swing.JMenuItem();
-        mniAbrirCorrienteNat = new javax.swing.JMenuItem();
+        mniAbrirNatural = new javax.swing.JMenuItem();
         mniRegistrarNatural = new javax.swing.JMenuItem();
         mnuEmpresas = new javax.swing.JMenu();
         mnuLogJuridico = new javax.swing.JMenu();
@@ -89,15 +87,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         mnuPersonal.add(mnuLogNatural);
 
-        mnuAbrirNatural.setText("Abrir una cuenta");
-
-        mniAbrirAhorroNat.setText("Cuente Ahorro");
-        mnuAbrirNatural.add(mniAbrirAhorroNat);
-
-        mniAbrirCorrienteNat.setText("Cuenta Corriente");
-        mnuAbrirNatural.add(mniAbrirCorrienteNat);
-
-        mnuPersonal.add(mnuAbrirNatural);
+        mniAbrirNatural.setText("Abrir una cuenta");
+        mniAbrirNatural.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAbrirNaturalActionPerformed(evt);
+            }
+        });
+        mnuPersonal.add(mniAbrirNatural);
 
         mniRegistrarNatural.setText("Registrarse");
         mniRegistrarNatural.addActionListener(new java.awt.event.ActionListener() {
@@ -235,6 +231,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         centrarInternalFrame(ifrmCuentaCorriente);
     }//GEN-LAST:event_mniLogCorrientejurActionPerformed
 
+    private void mniAbrirNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirNaturalActionPerformed
+        IfrmAbrirNatural ifrmAbrirNatural = new IfrmAbrirNatural(listaClientes,listaCuentas);
+        centrarInternalFrame(ifrmAbrirNatural);
+    }//GEN-LAST:event_mniAbrirNaturalActionPerformed
+
     private void centrarInternalFrame (JInternalFrame interna) {
         int x,y;
         
@@ -289,9 +290,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JDesktopPane dpsFondo;
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mniAbrirAhorroJur;
-    private javax.swing.JMenuItem mniAbrirAhorroNat;
     private javax.swing.JMenuItem mniAbrirCorrienteJur;
-    private javax.swing.JMenuItem mniAbrirCorrienteNat;
+    private javax.swing.JMenuItem mniAbrirNatural;
     private javax.swing.JMenuItem mniAcerca;
     private javax.swing.JMenuItem mniLogAhorroJur;
     private javax.swing.JMenuItem mniLogAhorroNat;
@@ -301,7 +301,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniRegistrarJuridico;
     private javax.swing.JMenuItem mniRegistrarNatural;
     private javax.swing.JMenu mnuAbrirJuridico;
-    private javax.swing.JMenu mnuAbrirNatural;
     private javax.swing.JMenu mnuAyuda;
     private javax.swing.JMenu mnuEmpresas;
     private javax.swing.JMenu mnuListados;

@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package presentacion;
+import datos.*;
+import entidades.*;
+import javax.swing.*;
+import java.util.*;
 
 /**
  *
@@ -16,7 +20,24 @@ public class IfrmAbrirNatural extends javax.swing.JInternalFrame {
     public IfrmAbrirNatural() {
         initComponents();
     }
-
+    public IfrmAbrirNatural(ListaClientes listaClientes, ListaCuenta listaCuentas) {
+        initComponents();
+        this.listaClientes = listaClientes;
+        this.listaCuentas = listaCuentas;
+        panRegistro.setEnabled(false);
+        habilitarComponentesRegistro(false);
+    }
+    private void habilitarComponentesRegistro(boolean habilitar) {
+        jrbAhorro.setEnabled(habilitar);
+        jrbCorriente.setEnabled(habilitar);
+        txtDepositoInicial.setEnabled(habilitar);
+        txtClave.setEnabled(habilitar);
+        jrbSoles.setEnabled(habilitar);
+        jrbDolares.setEnabled(habilitar);
+        btnFinalizar.setEnabled(habilitar);
+        btnCancelar.setEnabled(habilitar);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,53 +49,53 @@ public class IfrmAbrirNatural extends javax.swing.JInternalFrame {
 
         btgCuenta = new javax.swing.ButtonGroup();
         btgMoneda = new javax.swing.ButtonGroup();
-        jPanel1 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        panRegistro = new javax.swing.JPanel();
+        jrbAhorro = new javax.swing.JRadioButton();
+        jrbCorriente = new javax.swing.JRadioButton();
+        lblTipoCuenta = new javax.swing.JLabel();
+        lblDepositoInicial = new javax.swing.JLabel();
+        txtDepositoInicial = new javax.swing.JTextField();
+        lblClave = new javax.swing.JLabel();
+        lblMoneda = new javax.swing.JLabel();
         jrbSoles = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jrbDolares = new javax.swing.JRadioButton();
+        txtClave = new javax.swing.JTextField();
+        btnFinalizar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        PanBusqueda = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        lblIdentificacion = new javax.swing.JLabel();
+        txtIdentificacion = new javax.swing.JTextField();
+        btnBusqueda = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
 
-        btgCuenta.add(jRadioButton1);
-        jRadioButton1.setText("Ahorro");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        btgCuenta.add(jrbAhorro);
+        jrbAhorro.setText("Ahorro");
+        jrbAhorro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                jrbAhorroActionPerformed(evt);
             }
         });
 
-        btgCuenta.add(jRadioButton2);
-        jRadioButton2.setText("Corriente");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        btgCuenta.add(jrbCorriente);
+        jrbCorriente.setText("Corriente");
+        jrbCorriente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jrbCorrienteActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Tipo de cuenta :");
+        lblTipoCuenta.setText("Tipo de cuenta :");
 
-        jLabel2.setText("Deposito inicial :");
+        lblDepositoInicial.setText("Deposito inicial :");
 
-        jLabel5.setText("Clave de acceso :");
+        lblClave.setText("Clave de acceso :");
 
-        jLabel6.setText("Tipo de moneda :");
+        lblMoneda.setText("Tipo de moneda :");
 
         btgMoneda.add(jrbSoles);
         jrbSoles.setText("Soles");
@@ -84,120 +105,130 @@ public class IfrmAbrirNatural extends javax.swing.JInternalFrame {
             }
         });
 
-        btgMoneda.add(jRadioButton3);
-        jRadioButton3.setText("Dolares");
+        btgMoneda.add(jrbDolares);
+        jrbDolares.setText("Dolares");
 
-        jButton2.setText("Finalizar");
+        btnFinalizar.setText("Finalizar");
+        btnFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalizarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Cancelar");
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panRegistroLayout = new javax.swing.GroupLayout(panRegistro);
+        panRegistro.setLayout(panRegistroLayout);
+        panRegistroLayout.setHorizontalGroup(
+            panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblDepositoInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTipoCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblClave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblMoneda, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panRegistroLayout.createSequentialGroup()
+                        .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panRegistroLayout.createSequentialGroup()
+                                .addComponent(jrbAhorro)
                                 .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2))
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jrbCorriente))
+                            .addComponent(txtDepositoInicial)
+                            .addComponent(txtClave)
+                            .addGroup(panRegistroLayout.createSequentialGroup()
                                 .addComponent(jrbSoles)
                                 .addGap(28, 28, 28)
-                                .addComponent(jRadioButton3)))
+                                .addComponent(jrbDolares)))
                         .addGap(53, 53, 53))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                    .addGroup(panRegistroLayout.createSequentialGroup()
+                        .addComponent(btnFinalizar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(btnCancelar)
                         .addGap(12, 12, 12))))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panRegistroLayout.setVerticalGroup(
+            panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroLayout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jLabel1))
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrbAhorro)
+                    .addComponent(jrbCorriente)
+                    .addComponent(lblTipoCuenta))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDepositoInicial)
+                    .addComponent(txtDepositoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClave)
+                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblMoneda)
                     .addComponent(jrbSoles)
-                    .addComponent(jRadioButton3))
+                    .addComponent(jrbDolares))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFinalizar)
+                    .addComponent(btnCancelar))
                 .addGap(14, 14, 14))
         );
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 255));
+        PanBusqueda.setBackground(new java.awt.Color(204, 204, 255));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Consulta cliente");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblTitulo.setText("Consulta cliente");
 
-        jLabel4.setText("DNI/Pasaporte");
+        lblIdentificacion.setText("DNI/Pasaporte");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtIdentificacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtIdentificacionActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Buscar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBusqueda.setText("Buscar");
+        btnBusqueda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBusquedaActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanBusquedaLayout = new javax.swing.GroupLayout(PanBusqueda);
+        PanBusqueda.setLayout(PanBusquedaLayout);
+        PanBusquedaLayout.setHorizontalGroup(
+            PanBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanBusquedaLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(PanBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblIdentificacion)
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBusqueda, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanBusquedaLayout.createSequentialGroup()
                 .addContainerGap(90, Short.MAX_VALUE)
-                .addComponent(jLabel3)
+                .addComponent(lblTitulo)
                 .addGap(90, 90, 90))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        PanBusquedaLayout.setVerticalGroup(
+            PanBusquedaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanBusquedaLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
-                .addComponent(jLabel3)
+                .addComponent(lblTitulo)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(lblIdentificacion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btnBusqueda)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -206,64 +237,177 @@ public class IfrmAbrirNatural extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(PanBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PanBusqueda, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(166, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jrbAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAhorroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_jrbAhorroActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jrbCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbCorrienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_jrbCorrienteActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtIdentificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdentificacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtIdentificacionActionPerformed
 
     private void jrbSolesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbSolesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jrbSolesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBusquedaActionPerformed
+        String identificacion = txtIdentificacion.getText().trim();
 
+        if (identificacion.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un número de identificación");
+            return;
+        }
+        
+        for (Cliente cliente : listaClientes.getListaClientes()) {
+            if (cliente instanceof ClienteNatural) {
+                ClienteNatural clienteNat = (ClienteNatural) cliente;
+                if (clienteNat.getIdentificacion().equals(identificacion)) {
+                    clienteSeleccionado = clienteNat;
+                    habilitarComponentesRegistro(true);
+                    JOptionPane.showMessageDialog(this, "Cliente encontrado: " + 
+                        clienteNat.getNombre() + " " + clienteNat.getApellido());
+                    return;
+                }
+            }
+        }
+
+        JOptionPane.showMessageDialog(this, "Cliente no encontrado");
+    }//GEN-LAST:event_btnBusquedaActionPerformed
+
+    private void btnFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalizarActionPerformed
+        if (clienteSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar un cliente primero");
+            return;
+        }
+        
+        if (!jrbAhorro.isSelected() && !jrbCorriente.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de cuenta");
+            return;
+        }
+
+        if (!jrbSoles.isSelected() && !jrbDolares.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Seleccione un tipo de moneda");
+            return;
+        }
+
+        String strMonto = txtDepositoInicial.getText().trim();
+        String clave = txtClave.getText().trim();
+
+        if (strMonto.isEmpty() || clave.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Complete todos los campos");
+            return;
+        }
+        
+        if (!ListaCuenta.validacionClave(clave)) {
+            JOptionPane.showMessageDialog(this, "La clave debe tener 8 dígitos numéricos");
+            return;
+        }
+
+        try {
+            float monto = Float.parseFloat(strMonto);
+            if (monto <= 0) {
+                JOptionPane.showMessageDialog(this, "El monto debe ser mayor a cero");
+                return;
+            }
+            
+            int tipoMoneda = jrbSoles.isSelected() ? 0 : 1;
+            if (jrbAhorro.isSelected()) {
+                CuentaAhorro cuenta = new CuentaAhorro(
+                    "",
+                    clienteSeleccionado,
+                    monto,
+                    tipoMoneda,
+                    clave,
+                    new GregorianCalendar(),
+                    1,
+                    5,
+                    new GregorianCalendar()
+                );
+                listaCuentas.agregarCuenta(cuenta);
+                JOptionPane.showMessageDialog(null, "Cuenta de ahorro creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave);
+            } else if (jrbCorriente.isSelected()) {
+                CuentaCorriente cuenta = new CuentaCorriente(
+                    clienteSeleccionado,
+                    monto,
+                    tipoMoneda,
+                    clave,
+                    new GregorianCalendar(),
+                    5000.00f,
+                    100,
+                    "CHQ001",
+                    10.00f,
+                    clienteSeleccionado.getNombre() + " " + clienteSeleccionado.getApellido(),
+                    null
+                );
+                listaCuentas.agregarCuenta(cuenta);
+                JOptionPane.showMessageDialog(null, "Cuenta corriente creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave);
+            }
+            JOptionPane.showMessageDialog(this, "Cuenta creada exitosamente");
+            limpiarFormulario();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Monto inválido");
+        }
+    }//GEN-LAST:event_btnFinalizarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        limpiarFormulario();
+        dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void limpiarFormulario() {
+        txtIdentificacion.setText("");
+        txtDepositoInicial.setText("");
+        txtClave.setText("");
+        btgCuenta.clearSelection();
+        btgMoneda.clearSelection();
+        clienteSeleccionado = null;
+        habilitarComponentesRegistro(false);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PanBusqueda;
     private javax.swing.ButtonGroup btgCuenta;
     private javax.swing.ButtonGroup btgMoneda;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JButton btnBusqueda;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnFinalizar;
+    private javax.swing.JRadioButton jrbAhorro;
+    private javax.swing.JRadioButton jrbCorriente;
+    private javax.swing.JRadioButton jrbDolares;
     private javax.swing.JRadioButton jrbSoles;
+    private javax.swing.JLabel lblClave;
+    private javax.swing.JLabel lblDepositoInicial;
+    private javax.swing.JLabel lblIdentificacion;
+    private javax.swing.JLabel lblMoneda;
+    private javax.swing.JLabel lblTipoCuenta;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel panRegistro;
+    private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtDepositoInicial;
+    private javax.swing.JTextField txtIdentificacion;
     // End of variables declaration//GEN-END:variables
+    private ListaClientes listaClientes;
+    private ListaCuenta listaCuentas;
+    private ClienteNatural clienteSeleccionado;
+
 }

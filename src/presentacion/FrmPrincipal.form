@@ -33,23 +33,14 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="mnuAbrirNatural">
+            <MenuItem class="javax.swing.JMenuItem" name="mniAbrirNatural">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir una cuenta"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirAhorroNat">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cuente Ahorro"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirCorrienteNat">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cuenta Corriente"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniAbrirNaturalActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniRegistrarNatural">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrarse"/>
