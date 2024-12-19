@@ -10,8 +10,12 @@ import java.util.*;
  * @author artur
  */
 public class ListaClientes {
-    private ArrayList<Cliente> listaClientes = new ArrayList<>();
+    private ArrayList<Cliente> listaClientes=new ArrayList<>();
      
+    public ListaClientes(){
+        
+    }
+    
     public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
@@ -30,14 +34,12 @@ public class ListaClientes {
         return null;
     }
     
-    public int buscarPorApellido(String apellido) {
-        Cliente clienteB;
-        for(int i=0; i<listaClientes.size(); i++) {
-            clienteB = listaClientes.get(i);
-            if(clienteB.getApellido().compareToIgnoreCase(apellido)==0)
-                return i;
+    public Cliente buscarPorApellido(String apellido) {
+        for(Cliente client: listaClientes) {
+            if(client.getApellido().compareToIgnoreCase(apellido)==0)
+                return client;
         }
-        return -1;
+        return null;
     }
     
     public int getTamanio() {
