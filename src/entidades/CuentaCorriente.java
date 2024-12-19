@@ -25,9 +25,13 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         this.titularCuenta = titularCuenta;
         this.clienteJur = clienteJur;
     }
-    
+
     public void setNumeroChequera(String numeroChequera) {
         this.numeroChequera = numeroChequera;
+    }
+
+    public String getNroChequera() {
+        return numeroChequera;
     }
 
     // Métodos de la interfaz OperacionesCuenta
@@ -101,7 +105,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                 + "\tSaldo actual: " + getSaldoCuenta() + "\n"
                 + "\tLímite de sobregiro: " + limiteSobregiro + "\n"
                 + "\tLímite de cheques: " + limiteCheques + "\n"
-                + "\tNúmero de chequera: " + numeroChequera + "\n"
+                + "\tNúmero de chequera: " + getNroChequera() +"\n"
                 + "\tComisión por cheque: " + comisionPorCheque + "\n"
                 + "\tTitular de la cuenta: " + titularCuenta;
     }
@@ -128,10 +132,6 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         public void setNroCheque(String nroCheque) {
             this.nroCheque = nroCheque;
         }
-        
-        public String getNroChequera() {
-            return numeroChequera;
-        }
 
         public float getMonto() {
             return monto;
@@ -156,7 +156,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         }
 
         public String generarNumeroChequera() {
-            int numDig = 0, num,dato;
+            int numDig = 0, num, dato;
             String numChequera = "";
             num = dato = ++contChequeras;
             numChequera = "CHQ2024";
@@ -165,20 +165,21 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                 num /= 10;
             }
             numDig++;
-            for(int i=0;i<3-numDig;i++) {
+            for (int i = 0; i < 3 - numDig; i++) {
                 numChequera += "0";
             }
             numChequera += dato;
             return numChequera;
         }
-        
+
         public boolean habilitarChequera() {
-            if(generarNumeroChequera().compareToIgnoreCase("CHQ2024999")!=0) {
+            if (generarNumeroChequera().compareToIgnoreCase("CHQ2024999") != 0) {
                 setNumeroChequera(generarNumeroChequera());
                 limiteCheques = 0;
-            return true; }
-            else
-            return false;
+                return true;
+            } else {
+                return false;
+            }
         }
 
         public boolean emitirCheque(float monto) {
@@ -218,7 +219,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                         cheque.setEstado("Cobrado");
                         cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + cheque.getMonto());
                         System.out.println("El cheque ha sido cobrado exitosamente.");
-                        listC.obtenerCuenta(buscado).setSaldoCuenta(listC.obtenerCuenta(buscado).getSaldoCuenta() - cheque.getMonto()*comisionPorCheque);
+                        listC.obtenerCuenta(buscado).setSaldoCuenta(listC.obtenerCuenta(buscado).getSaldoCuenta() - cheque.getMonto() * comisionPorCheque);
                         return true;
                     } else {
                         System.out.println("Fondos insuficientes en la cuenta para cobrar este cheque.");
