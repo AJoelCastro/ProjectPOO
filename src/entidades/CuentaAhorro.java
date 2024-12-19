@@ -96,7 +96,6 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         }
     }
 
-    
     public boolean retirar(float monto) {
         if (monto <= 0) {
             System.out.println("El monto a retirar debe ser mayor a cero.");
