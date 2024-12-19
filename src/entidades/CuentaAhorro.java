@@ -4,8 +4,9 @@
  */
 package entidades;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -14,21 +15,24 @@ import java.util.ArrayList;
 public class CuentaAhorro extends Cuenta implements InteresMensual {
     private static float tasaInteresAnual = 0.04f;
     private ClienteNatural clienteNat;
+    private ClienteJuridico clienteJur;
     private int limiteRetiros;
-    private LocalDate fechaCorte; 
+    private GregorianCalendar fechaCorte; 
     private ArrayList<String> beneficiarios; 
- 
     // Constructor con parametros
-    public CuentaAhorro(){
-        
-    }
-    public CuentaAhorro(String numeroCuenta, ClienteNatural clienteNat,float saldoCuenta, int tipoMoneda, String clave, LocalDate fechaCreacion , int tipoCuenta, int limiteRetiros, LocalDate fechaCorte) { 
+    public CuentaAhorro(String numeroCuenta, ClienteNatural clienteNat,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
         super(numeroCuenta, clienteNat ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
         this.limiteRetiros = limiteRetiros;
         this.fechaCorte = fechaCorte;
         this.beneficiarios = new ArrayList<>();
     }
     
+    public CuentaAhorro(String numeroCuenta, ClienteJuridico clienteJur,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
+        super(numeroCuenta, clienteJur ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
+        this.limiteRetiros = limiteRetiros;
+        this.fechaCorte = fechaCorte;
+        this.beneficiarios = new ArrayList<>();
+    }
     
     public static void modificarTasaInteresAnual(float tasaInteresA) {
         tasaInteresAnual = tasaInteresA;
@@ -36,10 +40,6 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     
     public static float obtenerTasaInteresAnual() {
         return tasaInteresAnual;
-    }
-    
-     public String getApellidoCliente() {
-        return clienteNat.getApellido();
     }
 
     public ClienteNatural getClienteNat() {
@@ -50,6 +50,14 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         this.clienteNat = clienteNat;
     }
 
+    public ClienteJuridico getClienteJur() {
+        return clienteJur;
+    }
+
+    public void setClienteJur(ClienteJuridico clienteJur) {
+        this.clienteJur = clienteJur;
+    }
+
     public int getLimiteRetiros() {
         return limiteRetiros;
     }
@@ -58,11 +66,11 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         this.limiteRetiros = limiteRetiros;
     }
 
-    public LocalDate getFechaCorte() {
+    public GregorianCalendar getFechaCorte() {
         return fechaCorte;
     }
 
-    public void setFechaCorte(LocalDate fechaCorte) {
+    public void setFechaCorte(GregorianCalendar fechaCorte) {
         this.fechaCorte = fechaCorte;
     }
 
@@ -72,34 +80,60 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
 
     public void setBeneficiarios(ArrayList<String> beneficiarios) {
         this.beneficiarios = beneficiarios;
-
-    }    
-
     }
-
-
-    @Override
-    public String generarNumeroCuenta() {
-        int numDig=0, num=0, dato=0;
-        String numCuenta = "";
-        while (num > 9) {
-            numDig++;
-            num /= 10;
-        }
-        numDig++;
-        for(int i=0;i<10-numDig; i++)
-            numCuenta += "0";
-        numCuenta += dato;        
-        return numCuenta;
-
     public String getApellidoCliente() {
         return clienteNat.getApellido();
-
     }
     
-
     @Override
     public void calcularInteresMensual() {
-        
+
     }   
+    
+    public void depositar(float monto) {
+        if (monto > 0) {
+            setSaldoCuenta(getSaldoCuenta() + monto);
+            System.out.println("Depósito realizado: " + monto + " Nuevo saldo: " + getSaldoCuenta());
+        } else {
+            System.out.println("El monto a depositar debe ser mayor a cero.");
+        }
+    }
+
+    public boolean retirar(float monto) {
+        if (monto <= 0) {
+            System.out.println("El monto a retirar debe ser mayor a cero.");
+            return false;
+        }
+
+        float saldoDisponible = getSaldoCuenta();
+        if (monto <= saldoDisponible) {
+            setSaldoCuenta(getSaldoCuenta() - monto);
+            System.out.println("Retiro exitoso: " + monto + " Nuevo saldo: " + getSaldoCuenta());
+            return true;
+        } else {
+            System.out.println("Fondos insuficientes. Saldo disponible (incluyendo sobregiro): " + saldoDisponible);
+            return false;
+        }
+    }
+
+    public boolean transferir(float monto, Cuenta cuentaDestino) {
+        if (monto <= 0) {
+            System.out.println("El monto a transferir debe ser mayor a cero.");
+            return false;
+        }
+
+        float saldoDisponible = getSaldoCuenta();
+        if (monto <= saldoDisponible) {
+            setSaldoCuenta(getSaldoCuenta() - monto);
+            cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + monto);
+            System.out.println("Transferencia exitosa: " + monto +
+                    " Nuevo saldo: " + getSaldoCuenta() +
+                    " Saldo cuenta destino: " + cuentaDestino.getSaldoCuenta());
+            return true;
+        } else {
+            System.out.println("Fondos insuficientes para realizar la transferencia.");
+            return false;
+        }
+    }
+    
 }  // fin de la clase CuentaAhorro

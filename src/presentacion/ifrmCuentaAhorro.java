@@ -4,57 +4,34 @@
  */
 package presentacion;
 
-import datos.ListaClientes;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import datos.ListaCuenta;
-import entidades.Cliente;
-import entidades.ClienteNatural;
-import entidades.Cuenta;
-import entidades.CuentaAhorro;
-import java.time.LocalDate;
+import datos.*;
+import entidades.*;
+import java.awt.*;
+import javax.swing.*;
+import java.util.*;
 
 /**
  *
- * @author artur
+ * @author sanar
  */
-public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
+public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
 
-    private ListaCuenta lista;
-    private ListaClientes listaClientes;
-    private Cuenta cuenta;
-    private CuentaAhorro cuentaAhorro;
-    private Cliente cliente;
     /**
-     * Creates new form ifrmCuentaAhorro
-     * @param lista
-     * @param listaClientes
+     * Creates new form IfrmPersonal
      */
-    public ifrmCuentaAhorro(ListaCuenta lista, ListaClientes listaClientes) {
+    public IfrmCuentaAhorro() {
         initComponents();
-        this.lista=lista;
-        this.listaClientes=listaClientes;
     }
-    public void activar(boolean estado){
-        txtNombres.setEnabled(estado);
-        txtApellidos.setEnabled(estado);
-        txtSaldo.setEnabled(estado);
-        txtMoneda.setEnabled(estado);
-        txtClave.setEnabled(estado);
-        txtLimite.setEnabled(estado);
-        txtABeneficiarios.setEnabled(estado);
-        btnNuevo.setEnabled(!estado);
-        btnRegistrar.setEnabled(estado);
-    }
-    
-    public void limpiar(){
-        txtNombres.setText(null);
-        txtApellidos.setText(null);
-        txtSaldo.setText(null);
-        txtMoneda.setText(null);
-        txtClave.setText(null);
-        txtLimite.setText(null);
-        txtABeneficiarios.setText(null);
+    public IfrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
+        initComponents();
+        this.listaClientes = listaClientes;
+        this.listaCuentas = listaCuentas;
+        this.listaMovimientos = listaMovimientos;
+        
+        panDatos.setVisible(false);
+        lblBienvenido.setVisible(false);
+        btnSaldo.setText("Mostrar saldo");
+
     }
 
     /**
@@ -66,294 +43,481 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblNombres = new javax.swing.JLabel();
+        panInicio = new javax.swing.JPanel();
+        panRegistro = new javax.swing.JPanel();
+        lblIdentificacion = new javax.swing.JLabel();
+        txtIdentificacion = new javax.swing.JTextField();
+        pwdPass = new javax.swing.JPasswordField();
+        btnEntrar = new javax.swing.JButton();
+        lblPassword = new javax.swing.JLabel();
+        lblBienvenido = new javax.swing.JLabel();
+        panDatos = new javax.swing.JPanel();
+        panSaldo = new javax.swing.JPanel();
         txtSaldo = new javax.swing.JTextField();
-        lblMoneda = new javax.swing.JLabel();
-        txtNombres = new javax.swing.JTextField();
-        lblSaldo1 = new javax.swing.JLabel();
-        lblClave = new javax.swing.JLabel();
-        lblLimite = new javax.swing.JLabel();
-        txtLimite = new javax.swing.JTextField();
-        lblApellidos = new javax.swing.JLabel();
-        txtApellidos = new javax.swing.JTextField();
-        btnNuevo = new javax.swing.JButton();
-        btnRegistrar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        lblBeneficiarios = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtABeneficiarios = new javax.swing.JTextArea();
-        txtMoneda = new javax.swing.JTextField();
-        txtClave = new javax.swing.JTextField();
+        btnSaldo = new javax.swing.JButton();
+        scpMovimientos = new javax.swing.JScrollPane();
+        btnDeposito = new javax.swing.JButton();
+        btnRetiro = new javax.swing.JButton();
+        btnTransferencia = new javax.swing.JButton();
+        btnMovimientos = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 0, 0));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setPreferredSize(new java.awt.Dimension(511, 401));
 
-        lblNombres.setText("Nombre");
+        panInicio.setBackground(new java.awt.Color(0, 153, 153));
 
-        txtSaldo.setEnabled(false);
+        panRegistro.setBackground(new java.awt.Color(0, 153, 153));
 
-        lblMoneda.setText("Moneda");
+        lblIdentificacion.setForeground(new java.awt.Color(255, 255, 255));
+        lblIdentificacion.setText("Identificacion de usuario");
 
-        txtNombres.setEnabled(false);
+        txtIdentificacion.setForeground(new java.awt.Color(102, 102, 102));
+        txtIdentificacion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
-        lblSaldo1.setText("Saldo");
-
-        lblClave.setText("Clave");
-
-        lblLimite.setText("Limite de retiros");
-
-        txtLimite.setEnabled(false);
-
-        lblApellidos.setText("Apellido");
-
-        txtApellidos.setEnabled(false);
-
-        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add_file.gif"))); // NOI18N
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+        btnEntrar.setBackground(new java.awt.Color(0, 102, 102));
+        btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEntrar.setText("Entrar");
+        btnEntrar.setToolTipText("");
+        btnEntrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        btnEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
+                btnEntrarActionPerformed(evt);
             }
         });
 
-        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/save.gif"))); // NOI18N
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setEnabled(false);
-        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+        lblPassword.setForeground(new java.awt.Color(255, 255, 255));
+        lblPassword.setText("Contraseña");
+
+        javax.swing.GroupLayout panRegistroLayout = new javax.swing.GroupLayout(panRegistro);
+        panRegistro.setLayout(panRegistroLayout);
+        panRegistroLayout.setHorizontalGroup(
+            panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblIdentificacion)
+                    .addComponent(lblPassword)
+                    .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(pwdPass))
+                .addContainerGap(24, Short.MAX_VALUE))
+        );
+        panRegistroLayout.setVerticalGroup(
+            panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panRegistroLayout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lblIdentificacion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblPassword)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pwdPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+
+        lblBienvenido.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
+        lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblBienvenido.setText("==BIENVENIDO==");
+
+        javax.swing.GroupLayout panInicioLayout = new javax.swing.GroupLayout(panInicio);
+        panInicio.setLayout(panInicioLayout);
+        panInicioLayout.setHorizontalGroup(
+            panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(lblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panInicioLayout.setVerticalGroup(
+            panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panInicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panSaldo.setBackground(new java.awt.Color(0, 153, 153));
+        panSaldo.setPreferredSize(new java.awt.Dimension(170, 34));
+
+        txtSaldo.setEditable(false);
+        txtSaldo.setBackground(new java.awt.Color(0, 153, 153));
+        txtSaldo.setForeground(new java.awt.Color(255, 255, 255));
+        txtSaldo.setBorder(null);
+
+        btnSaldo.setForeground(new java.awt.Color(0, 102, 102));
+        btnSaldo.setText("Mostrar saldo");
+        btnSaldo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnSaldo.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnSaldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarActionPerformed(evt);
+                btnSaldoActionPerformed(evt);
             }
         });
 
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/24-em-cross.png"))); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        javax.swing.GroupLayout panSaldoLayout = new javax.swing.GroupLayout(panSaldo);
+        panSaldo.setLayout(panSaldoLayout);
+        panSaldoLayout.setHorizontalGroup(
+            panSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnSaldo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panSaldoLayout.setVerticalGroup(
+            panSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panSaldoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSaldo))
+                .addContainerGap(11, Short.MAX_VALUE))
+        );
+
+        btnDeposito.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnDeposito.setForeground(new java.awt.Color(0, 102, 102));
+        btnDeposito.setText("DEPOSITO");
+        btnDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnDepositoActionPerformed(evt);
             }
         });
 
-        lblBeneficiarios.setText("Beneficiarios");
-
-        txtABeneficiarios.setColumns(20);
-        txtABeneficiarios.setRows(5);
-        txtABeneficiarios.setEnabled(false);
-        jScrollPane1.setViewportView(txtABeneficiarios);
-
-        txtMoneda.setEnabled(false);
-        txtMoneda.addActionListener(new java.awt.event.ActionListener() {
+        btnRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnRetiro.setForeground(new java.awt.Color(0, 102, 102));
+        btnRetiro.setText("RETIRO");
+        btnRetiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtMonedaActionPerformed(evt);
+                btnRetiroActionPerformed(evt);
             }
         });
 
-        txtClave.setEnabled(false);
+        btnTransferencia.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        btnTransferencia.setForeground(new java.awt.Color(0, 102, 102));
+        btnTransferencia.setText("TRANSFERENCIA");
+        btnTransferencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTransferenciaActionPerformed(evt);
+            }
+        });
+
+        btnMovimientos.setForeground(new java.awt.Color(0, 102, 102));
+        btnMovimientos.setText("Mostrar Movimientos");
+        btnMovimientos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMovimientos.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        btnMovimientos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMovimientosActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
+        panDatos.setLayout(panDatosLayout);
+        panDatosLayout.setHorizontalGroup(
+            panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(139, 139, 139))
+            .addGroup(panDatosLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panDatosLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(btnMovimientos))
+                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(scpMovimientos)
+                        .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                        .addGroup(panDatosLayout.createSequentialGroup()
+                            .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        panDatosLayout.setVerticalGroup(
+            panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panDatosLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnMovimientos)
+                .addGap(12, 12, 12)
+                .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(138, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(81, 81, 81))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(lblBeneficiarios)
-                                .addGap(30, 30, 30)
-                                .addComponent(jScrollPane1))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblClave, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtClave))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblSaldo1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(0, 0, Short.MAX_VALUE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(lblMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtMoneda)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(lblApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtNombres, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
-                                            .addComponent(txtApellidos)))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblLimite)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(74, Short.MAX_VALUE))))
+                .addComponent(panInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panInicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblApellidos)
-                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSaldo1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMoneda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClave, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblBeneficiarios)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnNuevo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnSalir)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(panDatos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(84, 84, 84))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        String nombre, apellido, clave, benef;
-        ArrayList<String> listaBeneficiarios;
-        int tipoCuenta=1, moneda, limiteRetiros;
-        float saldo;
-        LocalDate fechaCorte;
-        LocalDate fechaCreacion;
-        nombre= txtNombres.getText();
-        if (!ListaClientes.validacionLetras(nombre)) {
-        JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras y espacios.", "Error",0);
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        String numeroCuenta = txtIdentificacion.getText().trim();
+        String clave = new String(pwdPass.getPassword());
         
-        }
-        if (!ListaClientes.validacionLetras(nombre)) {
-        JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras y espacios.", "Error",0);
-        
-        }
-        apellido = txtApellidos.getText();
-        if (!ListaClientes.validacionLetras(apellido)) {
-        JOptionPane.showMessageDialog(this, "El apellido solo debe contener letras y espacios.", "Error", 0);
-        
-        }
-        if (apellido == null || apellido.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor ingres su apellido", "Indicacion",2);
-            
-        }
-        saldo = Float.parseFloat(txtSaldo.getText());
-        if(saldo==0){
-            JOptionPane.showMessageDialog(this, "Por favor ingrese el saldo inicial", "Indicacion", 2);
-            
-        }
-        moneda =Integer.parseInt(txtMoneda.getText());
-        if(moneda==0){
-            JOptionPane.showMessageDialog(this,"Por favor ingrese el tipo de moneda: Soles o Dolares","Indicacion", 2);
-            
-        }
-        clave = txtClave.getText();
-        if(!ListaCuenta.validacionClave(clave)){
-            JOptionPane.showMessageDialog(this, "La clave debe de tener 8 caracteres", "Error", 0);
-            
-        }
-        if(clave==null||clave.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Por favor ingrese su clave", "Indicacion", 2);
-            
-        }
-        limiteRetiros = Integer.parseInt(txtLimite.getText());
-        if(limiteRetiros==0){
-            JOptionPane.showMessageDialog(this, "Por favor ingrese la cantidad de retiros maxima", "Indicacion", 2);
-            
-        }
-        benef= txtABeneficiarios.getText();
-        String[] benefi = benef.split("\n");
-        listaBeneficiarios = new ArrayList<>();
-        for (String beneficiario: benefi){
-            beneficiario = beneficiario.trim();
-            if(!beneficiario.isEmpty()){
-                listaBeneficiarios.add(beneficiario);
-            }
-        }
-        if(benef==null || benef.isEmpty()){
-            JOptionPane.showMessageDialog(this, "Por favor ingrese los beneficiarios", "Indicacion", 2);
+        if (numeroCuenta.isEmpty() || clave.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor ingrese el número de cuenta y la clave",
+                "Error de validación",
+                JOptionPane.WARNING_MESSAGE);
             return;
         }
         
-        cliente=listaClientes.buscarPorApellido(apellido);
-        if(cliente==null){
-            JOptionPane.showMessageDialog(this, "El cliente no fue encontrado","Eror",0);
+        boolean cuentaEncontrada = false;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
+                if (cuenta.validarClave(clave)) {
+                    cuentaActual = cuenta;
+                    cuentaEncontrada = true;
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                        "Clave incorrecta",
+                        "Error de autenticación",
+                        JOptionPane.ERROR_MESSAGE);
+                    pwdPass.setText("");
+                    return;
+                }
+            }
         }
-        fechaCreacion = LocalDate.now();
-        fechaCorte = LocalDate.now();
-        CuentaAhorro c = new CuentaAhorro();
-        String numC=c.generarNumeroCuenta();
-        cuentaAhorro = new CuentaAhorro(numC, (ClienteNatural) cliente, saldo, moneda, clave, fechaCreacion, tipoCuenta, limiteRetiros, fechaCorte);
-        limpiar();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
+        
+        if (!cuentaEncontrada) {
+            JOptionPane.showMessageDialog(this,
+                "Cuenta no encontrada",
+                "Error de autenticación",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        mostrarDatosCuenta();
+    
+    }//GEN-LAST:event_btnEntrarActionPerformed
 
-    private void txtMonedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtMonedaActionPerformed
+    private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
+        if (saldoVisible) {
+            txtSaldo.setText("");
+            btnSaldo.setText("Mostrar saldo");
+        } else {
+            if (cuentaActual != null) {
+                String moneda = cuentaActual.getTipoMoneda() == 0 ? "S/." : "US$";
+                txtSaldo.setText(moneda + " " + String.format("%.2f", cuentaActual.getSaldoCuenta()));
+            } else {
+                txtSaldo.setText("Saldo no disponible");
+            }
+            btnSaldo.setText("Ocultar saldo");
+        }
+        saldoVisible = !saldoVisible;
+    }//GEN-LAST:event_btnSaldoActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
+    private void btnMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientosActionPerformed
+        if (cuentaActual == null) {
+            JOptionPane.showMessageDialog(this, "Seleccione una cuenta primero.");
+            return;
+        }
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        ArrayList<ListaMovimientos.Movimiento> movimientos = listaMovimientos.obtenerHistorialMovimientos(cuentaActual);
 
-        activar(true);
-        txtNombres.requestFocus();
-    }//GEN-LAST:event_btnNuevoActionPerformed
+        String[] columnNames = {"Tipo", "Monto", "Fecha", "Cuenta Destino"};
+        Object[][] data = new Object[movimientos.size()][4];
 
+        for (int i = 0; i < movimientos.size(); i++) {
+            ListaMovimientos.Movimiento mov = movimientos.get(i);
+            data[i][0] = mov.getTipoMovimiento();
+            data[i][1] = String.format("%.2f", mov.getMonto());
+            data[i][2] = mov.getFechaFormateada();
+            data[i][3] = mov.getCuentaDestino() != null ? mov.getCuentaDestino().getNumeroCuenta() : "-";
+        }
+
+        JTable tblMovimientos = new JTable(data, columnNames);
+        scpMovimientos.setViewportView(tblMovimientos);
+    }//GEN-LAST:event_btnMovimientosActionPerformed
+
+    private void btnRetiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetiroActionPerformed
+        if (cuentaActual == null) {
+            return;
+        }
+
+        String montoStr = JOptionPane.showInputDialog(this, 
+            "Ingrese el monto a retirar:",
+            "Retiro",
+            JOptionPane.PLAIN_MESSAGE);
+
+        if (montoStr == null || montoStr.trim().isEmpty()) {
+            return;
+        }
+
+        try {
+            float monto = Float.parseFloat(montoStr);
+            if (listaMovimientos.registrarRetiro(cuentaActual, monto)) {
+                actualizarSaldo();
+                btnMovimientosActionPerformed(null);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese un monto válido",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnRetiroActionPerformed
+
+    private void btnDepositoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositoActionPerformed
+        if (cuentaActual == null) {
+            return;
+        }
+
+        String montoStr = JOptionPane.showInputDialog(this, 
+            "Ingrese el monto a depositar:",
+            "Depósito",
+            JOptionPane.PLAIN_MESSAGE);
+
+        if (montoStr == null || montoStr.trim().isEmpty()) {
+            return;
+        }
+
+        try {
+            float monto = Float.parseFloat(montoStr);
+            if (listaMovimientos.registrarDeposito(cuentaActual, monto)) {
+                actualizarSaldo();
+                btnMovimientosActionPerformed(null);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese un monto válido",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDepositoActionPerformed
+
+    private void btnTransferenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTransferenciaActionPerformed
+        if (cuentaActual == null) {
+            return;
+        }
+        
+        JPanel panel = new JPanel(new GridLayout(2, 2, 5, 5));
+        JTextField txtCuentaDestino = new JTextField(15);
+        JTextField txtMonto = new JTextField(15);
+
+        panel.add(new JLabel("Cuenta destino:"));
+        panel.add(txtCuentaDestino);
+        panel.add(new JLabel("Monto:"));
+        panel.add(txtMonto);
+
+        int result = JOptionPane.showConfirmDialog(this, panel, 
+            "Transferencia", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result != JOptionPane.OK_OPTION) {
+            return;
+        }
+
+        String numeroCuentaDestino = txtCuentaDestino.getText().trim();
+        String montoStr = txtMonto.getText().trim();
+
+        if (numeroCuentaDestino.isEmpty() || montoStr.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor complete todos los campos",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        Cuenta cuentaDestino = null;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta.getNumeroCuenta().equals(numeroCuentaDestino)) {
+                cuentaDestino = cuenta;
+                break;
+            }
+        }
+
+        if (cuentaDestino == null) {
+            JOptionPane.showMessageDialog(this,
+                "Cuenta destino no encontrada",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            float monto = Float.parseFloat(montoStr);
+            if (listaMovimientos.registrarTransferencia(cuentaActual, cuentaDestino, monto)) {
+                actualizarSaldo();
+                btnMovimientosActionPerformed(null);
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese un monto válido",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnTransferenciaActionPerformed
+    private void mostrarDatosCuenta() {
+        panRegistro.setVisible(false);
+        panDatos.setVisible(true);
+        panInicio.setVisible(true);
+        lblBienvenido.setVisible(true);
+    }                                         
+    private void actualizarSaldo() {
+        if (cuentaActual != null) {
+            String moneda = cuentaActual.getTipoMoneda() == 0 ? "S/." : "US$";
+            txtSaldo.setText(moneda + " " + String.format("%.2f", cuentaActual.getSaldoCuenta()));
+        }
+    }    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNuevo;
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblApellidos;
-    private javax.swing.JLabel lblBeneficiarios;
-    private javax.swing.JLabel lblClave;
-    private javax.swing.JLabel lblLimite;
-    private javax.swing.JLabel lblMoneda;
-    private javax.swing.JLabel lblNombres;
-    private javax.swing.JLabel lblSaldo1;
-    private javax.swing.JTextArea txtABeneficiarios;
-    private javax.swing.JTextField txtApellidos;
-    private javax.swing.JTextField txtClave;
-    private javax.swing.JTextField txtLimite;
-    private javax.swing.JTextField txtMoneda;
-    private javax.swing.JTextField txtNombres;
+    private javax.swing.JButton btnDeposito;
+    private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnMovimientos;
+    private javax.swing.JButton btnRetiro;
+    private javax.swing.JButton btnSaldo;
+    private javax.swing.JButton btnTransferencia;
+    private javax.swing.JLabel lblBienvenido;
+    private javax.swing.JLabel lblIdentificacion;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JPanel panDatos;
+    private javax.swing.JPanel panInicio;
+    private javax.swing.JPanel panRegistro;
+    private javax.swing.JPanel panSaldo;
+    private javax.swing.JPasswordField pwdPass;
+    private javax.swing.JScrollPane scpMovimientos;
+    private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
+    private ListaClientes listaClientes;
+    private ListaCuenta listaCuentas;
+    private ListaMovimientos listaMovimientos;
+    private Cuenta cuentaActual;
+    private boolean saldoVisible = false;
 }

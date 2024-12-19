@@ -1,31 +1,47 @@
 package entidades;
 
+import java.util.GregorianCalendar;
+
+
+public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
+    private float limiteSobregiro;         
+    private int limiteCheques;             
+    private String numeroChequera;         
+    private float comisionPorCheque;       
+
 import datos.*;
-
-import java.time.LocalDate;
-
+import java.util.Random;
 
 public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     private float limiteSobregiro;
     private int limiteCheques;
     private String numeroChequera;
-    private float comisionPorCheque;
+    private static float comisionPorCheque = 0.05f;
+
     private String titularCuenta;
     private ClienteJuridico clienteJur;
+    private static int contChequeras = 0;
 
     // Constructor
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
 
-                           LocalDate fechaCreacion, float limiteSobregiro, int limiteCheques,
-                           String numeroChequera, float comisionPorCheque, String titularCuenta) {
+                           GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
+                           String numeroChequera, float comisionPorCheque, String titularCuenta, ClienteJuridico clienteJur) {
+
+            GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
+            String numeroChequera, String titularCuenta, ClienteJuridico clienteJur) {
+
         super("", cliente, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
         this.limiteSobregiro = limiteSobregiro;
         this.limiteCheques = limiteCheques;
         this.numeroChequera = numeroChequera;
-        this.comisionPorCheque = comisionPorCheque;
         this.titularCuenta = titularCuenta;
         this.clienteJur = clienteJur;
+    }
+    
+    public void setNumeroChequera(String numeroChequera) {
+        this.numeroChequera = numeroChequera;
     }
 
     // Métodos de la interfaz OperacionesCuenta
@@ -64,13 +80,13 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
             return false;
         }
 
-        float saldoDisponible = getSaldoCuenta() + getLimiteSobregiro();
+        float saldoDisponible = getSaldoCuenta() + limiteSobregiro;
         if (monto <= saldoDisponible) {
             setSaldoCuenta(getSaldoCuenta() - monto);
             cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + monto);
-            System.out.println("Transferencia exitosa: " + monto
-                    + " Nuevo saldo: " + getSaldoCuenta()
-                    + " Saldo cuenta destino: " + cuentaDestino.getSaldoCuenta());
+            System.out.println("Transferencia exitosa: " + monto +
+                    " Nuevo saldo: " + getSaldoCuenta() +
+                    " Saldo cuenta destino: " + cuentaDestino.getSaldoCuenta());
             return true;
         } else {
             System.out.println("Fondos insuficientes para realizar la transferencia.");
@@ -86,14 +102,24 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
     public void setLimiteSobregiro(float limiteSobregiro) {
         this.limiteSobregiro = limiteSobregiro;
     }
-
     public String getApellidoRepLegal() {
         return clienteJur.getApellido();
     }
 
     @Override
     public String toString() {
-        return "Cuenta Corriente:\n" 
+
+        return "Cuenta Corriente:\n" +
+               "\tNúmero de cuenta: " + getNumeroCuenta() + "\n" +
+               "\tFecha de apertura: " + getFechaCreacionCorta() + "\n" +
+               "\tSaldo actual: " + getSaldoCuenta() + "\n" +
+               "\tLímite de sobregiro: " + limiteSobregiro + "\n" +
+               "\tLímite de cheques: " + limiteCheques + "\n" +
+               "\tNúmero de chequera: " + numeroChequera + "\n" +
+               "\tComisión por cheque: " + comisionPorCheque + "\n" +
+               "\tTitular de la cuenta: " + titularCuenta;
+
+        return "Cuenta Corriente:\n"
                 + "\tNúmero de cuenta: " + getNumeroCuenta() + "\n"
                 + "\tFecha de apertura: " + getFechaCreacionCorta() + "\n"
                 + "\tSaldo actual: " + getSaldoCuenta() + "\n"
@@ -143,19 +169,51 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
             this.estado = estado;
         }
 
-        public boolean emitirCheque(String nroCheque, float monto) {
+        public String generarNroCheque() {
+            Random random = new Random();
+            int numeroR = 10000 + random.nextInt(90000);
+            return String.valueOf(numeroR);
+        }
+
+        public String generarNumeroChequera() {
+            int numDig = 0, num,dato;
+            String numChequera = "";
+            num = dato = ++contChequeras;
+            numChequera = "CHQ2024";
+            while (num > 9) {
+                numDig++;
+                num /= 10;
+            }
+            numDig++;
+            for(int i=0;i<3-numDig;i++) {
+                numChequera += "0";
+            }
+            numChequera += dato;
+            return numChequera;
+        }
+        
+        public boolean habilitarChequera() {
+            if(generarNumeroChequera().compareToIgnoreCase("CHQ2024999")!=0) {
+                setNumeroChequera(generarNumeroChequera());
+                limiteCheques = 0;
+            return true; }
+            else
+            return false;
+        }
+
+        public boolean emitirCheque(float monto) {
             if (monto <= 0) {
                 System.out.println("El monto del cheque debe ser mayor a cero.");
                 return false;
             }
             if (listaCheques.getTamanio() >= limiteCheques) {
-                System.out.println("Límite de cheques alcanzado. No puede emitir más cheques.");
+                System.out.println("Límite de cheques alcanzado. No puede emitir más cheques. Habilite una nueva Chequera");
                 return false;
             }
 
             float saldoDisponible = getSaldoCuenta() + getLimiteSobregiro();
             if (monto <= saldoDisponible) {
-                Cheques cheque = new Cheques(nroCheque, monto, "Emitido", getFechaCreacionCorta());
+                Cheques cheque = new Cheques(generarNroCheque(), monto, "Emitido", getFechaCreacionCorta());
                 listaCheques.AgregarCheque(cheque);
                 setSaldoCuenta(getSaldoCuenta() - monto);
                 System.out.println("Cheque emitido: " + cheque.toString());
@@ -191,23 +249,21 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                     listC.obtenerCuenta(buscado).setSaldoCuenta(cheque.getMonto() + listC.obtenerCuenta(buscado).getSaldoCuenta());
                     return false;
                 }
-            }else {
+            } else {
                 System.out.println("El cheque no está disponible para cobro... \nEstado actual:" + cheque.getEstado());
                 return false;
             }
         }
+
         @Override
         public String toString() {
-           
-          return "Cuenta Corriente:\n" +
-                 "\tNúmero de cuenta: " + getNumeroCuenta() + "\n" +
-                 "\tFecha de apertura: " + fechaCreacion + "\n" +
-                 "\tSaldo actual: " + getSaldoCuenta() + "\n" +
-                 "\tLímite de sobregiro: " + limiteSobregiro + "\n" +
-                 "\tLímite de cheques: " + limiteCheques + "\n" +
-                 "\tNúmero de chequera: " + numeroChequera + "\n" +
-                 "\tComisión por cheque: " + comisionPorCheque + "\n" +
-                 "\tTitular de la cuenta: " + titularCuenta;
+            return "Cheque:\n"
+                    + "\tNumero de cheque:" + getNroCheque() + "\n"
+                    + "\tMonto:" + getMonto() + "\n"
+                    + "\tEstado:" + getEstado() + "\n"
+                    + "\tEmitido por:" + getApellidoRepLegal() + "\n"
+                    + "\tFecha de emision:" + getFechaCreacionCorta();
         }
+
     }
 }
