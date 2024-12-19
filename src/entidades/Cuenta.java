@@ -4,8 +4,7 @@
  */
 package entidades;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
+import java.util.*;
 
 /**
  *
@@ -14,13 +13,14 @@ import java.util.GregorianCalendar;
 public abstract class Cuenta {
     private String numeroCuenta;
     private float saldoCuenta;
-    private int tipoMoneda; // 0: soles, 1: dolares
+    private int tipoMoneda;
     private String clave;
     private GregorianCalendar fechaCreacion;
-    private int tipoCuenta; // 0: Cuenta Corriente, 1: Cuenta Ahorro
+    private int tipoCuenta;
     private static int totalCtaAhorro = 0;
     private static int totalCtaCorriente = 0;
     private Cliente cliente;
+    private static final Set<String> numerosGenerados = new HashSet<>();
 
     // Constructor con parametros
     public Cuenta(String numeroCuenta, Cliente cliente, float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta){ 
@@ -37,26 +37,28 @@ public abstract class Cuenta {
     }
     
     private String generarNumeroCuenta() {
-        int numDig=0, num=0, dato=0;
         String numCuenta = "";
-        switch(tipoCuenta) {
-            case 1:
-                num = dato = totalCtaAhorro;
-                numCuenta = "A";
-                break;
-            case 2:
-                num = dato = totalCtaCorriente;
-                numCuenta = "C";
-                break;
-        }
-        while (num > 9) {
-            numDig++;
-            num /= 10;
-        }
-        numDig++;
-        for(int i=0;i<10-numDig; i++)
-            numCuenta += "0";
-        numCuenta += dato;        
+        Random random = new Random();
+
+        do {
+            StringBuilder sb = new StringBuilder();
+            switch (tipoCuenta) {
+                case 1:
+                    sb.append("A");
+                    break;
+                case 0:
+                    sb.append("C");
+                    break;
+            }
+            
+            for (int i = 0; i < 9; i++) {
+                sb.append(random.nextInt(10));
+            }
+
+            numCuenta = sb.toString();
+        } while (numerosGenerados.contains(numCuenta));
+
+        numerosGenerados.add(numCuenta);
         return numCuenta;
     }   
     

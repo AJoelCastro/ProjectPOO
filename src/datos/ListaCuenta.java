@@ -49,6 +49,8 @@ public class ListaCuenta {
         return -1;
     }
     
+
+
     public int buscarPorNroCuenta(String nroCuenta) {
         Cuenta cuentaB;
         for(int i=0; i<listaCuentas.size(); i++) {
@@ -67,6 +69,7 @@ public class ListaCuenta {
         return -1;
     }
     
+
     public int getTamanio() {
         return listaCuentas.size();
     }

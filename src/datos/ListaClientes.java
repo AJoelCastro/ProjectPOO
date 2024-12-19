@@ -40,6 +40,36 @@ public class ListaClientes {
         return -1;
     }
     
+    public int buscarPorIdentificacion(String identificacion) {
+        for (int i = 0; i < listaClientes.size(); i++) {
+            Cliente clienteB = listaClientes.get(i);
+            if (clienteB instanceof ClienteNatural) {
+                ClienteNatural clienteNatural = (ClienteNatural) clienteB;
+                if (clienteNatural.getIdentificacion().equalsIgnoreCase(identificacion)) {
+                    return i;
+                }
+            }
+        }
+        return -1;
+    }
+    public ClienteJuridico buscarPorRuc(String ruc) {
+        if (ruc == null || ruc.trim().isEmpty()) {
+            return null;
+        }
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente instanceof ClienteJuridico) {
+                ClienteJuridico clienteJur = (ClienteJuridico) cliente;
+                if (clienteJur.getRuc().equalsIgnoreCase(ruc)) {
+                    return clienteJur;
+                }
+            }
+        }
+        return null;
+    }
+
+
+    
     public int getTamanio() {
         return listaClientes.size();
     }
