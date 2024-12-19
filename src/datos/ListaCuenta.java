@@ -49,6 +49,24 @@ public class ListaCuenta {
         return -1;
     }
     
+     public int buscarPorNroCuenta(String nroCuenta) {
+        Cuenta cuentaB;
+        for(int i=0; i<listaCuentas.size(); i++) {
+            cuentaB = listaCuentas.get(i);
+            switch(cuentaB.getTipoCuenta()) {
+                case 1: 
+                    if(((CuentaAhorro)cuentaB).getNumeroCuenta().compareToIgnoreCase(nroCuenta)==0)
+                        return i;
+                    break;
+                case 2: 
+                    if(((CuentaCorriente)cuentaB).getNumeroCuenta().compareToIgnoreCase(nroCuenta)==0)
+                        return i;
+                    break;
+            }
+        }
+        return -1;
+    }
+    
     public int getTamanio() {
         return listaCuentas.size();
     }

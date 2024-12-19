@@ -10,29 +10,29 @@ import javax.swing.*;
  *
  * @author Administrador
  */
-public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
+public class ifrmConsultarCuenta extends javax.swing.JPanel {
 
     DefaultListModel Mov = new DefaultListModel();
     /**
      * Creates new form ifrmConsultarCuentaAhorro
      */
-    public ifrmConsultarCuentaAhorro() {
+    public ifrmConsultarCuenta() {
         initComponents();
         txtSaldo.setEditable(false);
         Mov = new DefaultListModel();
-        jlistMov.setModel(Mov);
+        jlistMovimientos.setModel(Mov);
     }
 
     private void limpiar(){
         txtClave.setText(null);
-        txtApellido.setText(null);
+        txtNroCuenta.setText(null);
         txtSaldo.setText(null);
-        jlistMov.setToolTipText(null);
+        jlistMovimientos.setToolTipText(null);
     }
     
     private void activar(boolean estado) {
         txtSaldo.setEnabled(estado);
-        jlistMov.setEnabled(estado);
+        jlistMovimientos.setEnabled(estado);
     }
     
     /**
@@ -45,26 +45,26 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
-        lblApellido = new javax.swing.JLabel();
-        txtApellido = new javax.swing.JTextField();
+        lblNroCuenta = new javax.swing.JLabel();
+        txtNroCuenta = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         txtClave = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jlistMov = new javax.swing.JList<>();
-        jLabel2 = new javax.swing.JLabel();
+        jlistMovimientos = new javax.swing.JList<>();
+        lblSaldo = new javax.swing.JLabel();
         txtSaldo = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblMovimientos = new javax.swing.JLabel();
         lblClave = new javax.swing.JLabel();
 
-        jInternalFrame1.setTitle("Consultar Cuenta Ahorro");
+        jInternalFrame1.setTitle("Consultar Cuenta ");
         jInternalFrame1.setVisible(true);
 
-        lblApellido.setText("Apellido");
+        lblNroCuenta.setText("Numero de Cuenta");
 
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+        txtNroCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
+                txtNroCuentaActionPerformed(evt);
             }
         });
 
@@ -84,14 +84,14 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
             }
         });
 
-        jlistMov.setEnabled(false);
-        jScrollPane1.setViewportView(jlistMov);
+        jlistMovimientos.setEnabled(false);
+        jScrollPane1.setViewportView(jlistMovimientos);
 
-        jLabel2.setText("Saldo");
+        lblSaldo.setText("Saldo");
 
         txtSaldo.setEnabled(false);
 
-        jLabel3.setText("Movimientos");
+        lblMovimientos.setText("Movimientos");
 
         lblClave.setText("Clave");
 
@@ -102,42 +102,43 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(63, 82, Short.MAX_VALUE)
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(291, 291, 291))
-                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                    .addComponent(lblApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                    .addComponent(lblClave, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addComponent(btnBuscar)
-                                .addGap(26, 26, 26)
-                                .addComponent(btnLimpiar))))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
                         .addGap(253, 253, 253)
-                        .addComponent(jLabel3)))
+                        .addComponent(lblMovimientos))
+                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtClave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                .addComponent(lblNroCuenta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
+                        .addContainerGap(127, Short.MAX_VALUE)
+                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblClave, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                    .addComponent(lblSaldo)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(291, 291, 291))
+                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                    .addComponent(btnBuscar)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(btnLimpiar))))))
                 .addGap(84, 84, 84))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addGap(114, 114, 114)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblApellido))
+                    .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNroCuenta))
                 .addGap(18, 18, 18)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,10 +149,10 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
                     .addComponent(btnLimpiar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(lblSaldo)
                     .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addComponent(jLabel3)
+                .addComponent(lblMovimientos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -169,32 +170,32 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+    private void txtNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroCuentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoActionPerformed
+    }//GEN-LAST:event_txtNroCuentaActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         ListaCuenta listCuenta = new ListaCuenta();
-        String apellido = txtApellido.getText();
+        String nroCuenta = txtNroCuenta.getText();
         String clave = txtClave.getText();
         int busqueda;
-        if (!ListaClientes.validacionLetras(apellido)) {
-        JOptionPane.showMessageDialog(this, "El apellido solo debe contener letras y espacios.", "Error", 0);
+        if (!ListaClientes.validacionLetras(nroCuenta)) {
+        JOptionPane.showMessageDialog(this, "El Numero de cuenta solo debe contener numeros y una letra al inicio.", "Error", 0);
         return; 
         }
         if (!ListaCuenta.validacionClave(clave)) {
         JOptionPane.showMessageDialog(this, "La clave debe contener solo numeros y no espacios.", "Error", 0);
         return; 
         }
-        if (apellido == null || apellido.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Por favor ingrese su Apellido", "Indicacion", 2);
+        if (nroCuenta == null || nroCuenta.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese su Numero de Cuenta", "Indicacion", 2);
             return;
         }
         if (clave == null || clave.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese su Clave", "Indicacion", 2);
             return;
         }
-        busqueda = listCuenta.buscarPorApellido(apellido);
+        busqueda = listCuenta.buscarPorNroCuenta(nroCuenta);
         if (busqueda==-1) {
             JOptionPane.showMessageDialog(this, "No se encontro al cliente", "Error", 0);
         return;
@@ -220,14 +221,14 @@ public class ifrmConsultarCuentaAhorro extends javax.swing.JPanel {
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> jlistMov;
-    private javax.swing.JLabel lblApellido;
+    private javax.swing.JList<String> jlistMovimientos;
     private javax.swing.JLabel lblClave;
-    private javax.swing.JTextField txtApellido;
+    private javax.swing.JLabel lblMovimientos;
+    private javax.swing.JLabel lblNroCuenta;
+    private javax.swing.JLabel lblSaldo;
     private javax.swing.JTextField txtClave;
+    private javax.swing.JTextField txtNroCuenta;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
 }

@@ -104,9 +104,19 @@ public class FrmPresentacion extends javax.swing.JFrame {
         mnuRegistroCuenta.setText("Registro Cuenta");
 
         mniCuentaAhorro.setText(" Cuenta Ahorro");
+        mniCuentaAhorro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCuentaAhorroActionPerformed(evt);
+            }
+        });
         mnuRegistroCuenta.add(mniCuentaAhorro);
 
         mniCuentaCorriente.setText("Cuenta Corriente");
+        mniCuentaCorriente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniCuentaCorrienteActionPerformed(evt);
+            }
+        });
         mnuRegistroCuenta.add(mniCuentaCorriente);
 
         mnuOpciones.add(mnuRegistroCuenta);
@@ -186,6 +196,16 @@ public class FrmPresentacion extends javax.swing.JFrame {
         centrarInternalFrame(ifrListadoClienteJuridico);
     }//GEN-LAST:event_mniClieneteJuridicoActionPerformed
 
+    private void mniCuentaAhorroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCuentaAhorroActionPerformed
+        ifrmCuentaAhorro ifrmCuentaAhorro= new ifrmCuentaAhorro(listaCuenta, listaClientes);
+        centrarInternalFrame(ifrmCuentaAhorro);
+    }//GEN-LAST:event_mniCuentaAhorroActionPerformed
+
+    private void mniCuentaCorrienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniCuentaCorrienteActionPerformed
+        ifrmCuentaCorriente ifrmCuentaCorriente= new ifrmCuentaCorriente(listaCuenta);
+        centrarInternalFrame(ifrmCuentaCorriente);
+    }//GEN-LAST:event_mniCuentaCorrienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -229,16 +249,14 @@ public class FrmPresentacion extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniClieneteNatural;
     private javax.swing.JMenuItem mniClienteJuridico;
     private javax.swing.JMenuItem mniClienteNatural;
-
     private javax.swing.JMenuItem mniCuentaAhorro;
     private javax.swing.JMenuItem mniCuentaCorriente;
-
     private javax.swing.JMenu mnuClientes;
     private javax.swing.JMenu mnuListado;
-
     private javax.swing.JMenu mnuOpciones;
     private javax.swing.JMenu mnuRegistroCliente;
     private javax.swing.JMenu mnuRegistroCuenta;
     // End of variables declaration//GEN-END:variables
 private ListaClientes listaClientes = new ListaClientes();
+private ListaCuenta listaCuenta = new ListaCuenta();
 }
