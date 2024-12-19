@@ -113,7 +113,6 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         }
     }
 
-    
     public boolean transferir(float monto, Cuenta cuentaDestino) {
         if (monto <= 0) {
             System.out.println("El monto a transferir debe ser mayor a cero.");
