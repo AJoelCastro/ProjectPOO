@@ -128,6 +128,10 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         public void setNroCheque(String nroCheque) {
             this.nroCheque = nroCheque;
         }
+        
+        public String getNroChequera() {
+            return numeroChequera;
+        }
 
         public float getMonto() {
             return monto;
@@ -214,6 +218,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                         cheque.setEstado("Cobrado");
                         cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + cheque.getMonto());
                         System.out.println("El cheque ha sido cobrado exitosamente.");
+                        listC.obtenerCuenta(buscado).setSaldoCuenta(listC.obtenerCuenta(buscado).getSaldoCuenta() - cheque.getMonto()*comisionPorCheque);
                         return true;
                     } else {
                         System.out.println("Fondos insuficientes en la cuenta para cobrar este cheque.");
@@ -234,6 +239,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         @Override
         public String toString() {
             return "Cheque:\n"
+                    + "\tNumero de Chequera:" + getNroChequera() + "\n"
                     + "\tNumero de cheque:" + getNroCheque() + "\n"
                     + "\tMonto:" + getMonto() + "\n"
                     + "\tEstado:" + getEstado() + "\n"
