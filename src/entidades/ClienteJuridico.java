@@ -17,7 +17,7 @@ public class ClienteJuridico extends Cliente {
     private ArrayList<Cuenta> cuentas;
 
     public ClienteJuridico(String razonSocial, String ruc, String documentoDeConstitucion, String telefono, String correoElectronico, String direccion, String nombre, String apellido, int tipoCliente) {
-        super(telefono, correoElectronico, direccion, nombre, apellido, tipoCliente);
+        super(telefono, correoElectronico, direccion, nombre, apellido, 2);
         this.razonSocial = razonSocial;
         this.ruc = ruc;
         this.documentoDeConstitucion = documentoDeConstitucion;

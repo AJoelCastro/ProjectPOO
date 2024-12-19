@@ -1,6 +1,6 @@
 package entidades;
 
-import java.util.GregorianCalendar;
+import java.time.LocalDate;
 
 public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
     private float limiteSobregiro;         
@@ -11,7 +11,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     // Constructor
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
-                           GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
+                           LocalDate fechaCreacion, float limiteSobregiro, int limiteCheques,
                            String numeroChequera, float comisionPorCheque, String titularCuenta) {
         super("", cliente, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
         this.limiteSobregiro = limiteSobregiro;
@@ -84,7 +84,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
     public String toString() {
         return "Cuenta Corriente:\n" +
                "\tNúmero de cuenta: " + getNumeroCuenta() + "\n" +
-               "\tFecha de apertura: " + getFechaCreacionCorta() + "\n" +
+               "\tFecha de apertura: " + fechaCreacion + "\n" +
                "\tSaldo actual: " + getSaldoCuenta() + "\n" +
                "\tLímite de sobregiro: " + limiteSobregiro + "\n" +
                "\tLímite de cheques: " + limiteCheques + "\n" +
