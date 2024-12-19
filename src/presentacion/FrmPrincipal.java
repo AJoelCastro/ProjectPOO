@@ -182,7 +182,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniAcercaActionPerformed
 
     private void mniRegistrarNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRegistrarNaturalActionPerformed
-        IfrmClienteNatural ifrmClienteNatural = new IfrmClienteNatural(listaClientes);
+        ifrmClienteNatural ifrmClienteNatural = new ifrmClienteNatural(listaClientes);
         centrarInternalFrame(ifrmClienteNatural);
     }//GEN-LAST:event_mniRegistrarNaturalActionPerformed
 
@@ -197,7 +197,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniLogAhorroNatActionPerformed
 
     private void mniLogCorrienteNatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogCorrienteNatActionPerformed
-        IfrmCuentaCorriente ifrmCuentaCorriente = new IfrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
+        ifrmCuentaCorriente ifrmCuentaCorriente = new ifrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
         centrarInternalFrame(ifrmCuentaCorriente);
     }//GEN-LAST:event_mniLogCorrienteNatActionPerformed
 
@@ -207,7 +207,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniLogAhorroJurActionPerformed
 
     private void mniLogCorrientejurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogCorrientejurActionPerformed
-        IfrmCuentaCorriente ifrmCuentaCorriente = new IfrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
+        ifrmCuentaCorriente ifrmCuentaCorriente = new ifrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
         centrarInternalFrame(ifrmCuentaCorriente);
     }//GEN-LAST:event_mniLogCorrientejurActionPerformed
 
