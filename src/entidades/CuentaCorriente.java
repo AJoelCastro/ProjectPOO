@@ -3,6 +3,8 @@ package entidades;
 import java.util.GregorianCalendar;
 import datos.*;
 import java.util.Random;
+import javax.swing.*;
+
 
 public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
@@ -184,11 +186,11 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
         public boolean emitirCheque(float monto) {
             if (monto <= 0) {
-                System.out.println("El monto del cheque debe ser mayor a cero.");
+                JOptionPane.showMessageDialog(null,"El monto del cheque debe ser mayor a cero.", "Error", 0);
                 return false;
             }
             if (listaCheques.getTamanio() >= limiteCheques) {
-                System.out.println("Límite de cheques alcanzado. No puede emitir más cheques. Habilite una nueva Chequera");
+                JOptionPane.showMessageDialog(null,"Límite de cheques alcanzado. No puede emitir más cheques. Habilite una nueva Chequera", "Error", 0);
                 return false;
             }
 
@@ -197,10 +199,10 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                 Cheques cheque = new Cheques(generarNroCheque(), monto, "Emitido", getFechaCreacionCorta());
                 listaCheques.AgregarCheque(cheque);
                 setSaldoCuenta(getSaldoCuenta() - monto);
-                System.out.println("Cheque emitido: " + cheque.toString());
+                JOptionPane.showMessageDialog(null,"Cheque emitido: " + cheque.toString(),"Emision de Cheque", 1);
                 return true;
             } else {
-                System.out.println("Fondos insuficientes para emitir el cheque.");
+                JOptionPane.showMessageDialog(null,"Fondos insuficientes para emitir el cheque.","Error", 0);
                 return false;
             }
         }
@@ -210,7 +212,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
             ListaCuenta listC = new ListaCuenta();
             int buscado = listC.buscarPorApellido(apellido);
             if (cheque == null) {
-                System.out.println("El cheque no existe");
+                JOptionPane.showMessageDialog(null,"El cheque no existe","Error", 0);
                 return false;
             }
             if (cheque.getEstado().compareToIgnoreCase("Emitido") == 0) {
@@ -218,21 +220,21 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
                     if (cheque.getMonto() <= listC.obtenerCuenta(buscado).getSaldoCuenta()) {
                         cheque.setEstado("Cobrado");
                         cuentaDestino.setSaldoCuenta(cuentaDestino.getSaldoCuenta() + cheque.getMonto());
-                        System.out.println("El cheque ha sido cobrado exitosamente.");
+                        JOptionPane.showMessageDialog(null,"El cheque ha sido cobrado exitosamente.","Cobro de Cheque", 1);
                         listC.obtenerCuenta(buscado).setSaldoCuenta(listC.obtenerCuenta(buscado).getSaldoCuenta() - cheque.getMonto() * comisionPorCheque);
                         return true;
                     } else {
-                        System.out.println("Fondos insuficientes en la cuenta para cobrar este cheque.");
+                        JOptionPane.showMessageDialog(null,"Fondos insuficientes en la cuenta para cobrar este cheque.","Error", 0);
                         listC.obtenerCuenta(buscado).setSaldoCuenta(cheque.getMonto() + listC.obtenerCuenta(buscado).getSaldoCuenta());
                         return false;
                     }
                 } else {
-                    System.out.println("El apellido no se encuentra...");
+                    JOptionPane.showMessageDialog(null,"El apellido no se encuentra...","Error", 0);
                     listC.obtenerCuenta(buscado).setSaldoCuenta(cheque.getMonto() + listC.obtenerCuenta(buscado).getSaldoCuenta());
                     return false;
                 }
             } else {
-                System.out.println("El cheque no está disponible para cobro... \nEstado actual:" + cheque.getEstado());
+                JOptionPane.showMessageDialog(null,"El cheque no está disponible para cobro... \nEstado actual:" + cheque.getEstado(),"Error", 0);
                 return false;
             }
         }
