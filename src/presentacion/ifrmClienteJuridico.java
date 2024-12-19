@@ -115,6 +115,11 @@ public class ifrmClienteJuridico extends javax.swing.JInternalFrame {
         txtDocumento.setEnabled(false);
 
         txtNombres.setEnabled(false);
+        txtNombres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresActionPerformed(evt);
+            }
+        });
 
         txtApellidos.setEnabled(false);
 
@@ -266,7 +271,7 @@ public class ifrmClienteJuridico extends javax.swing.JInternalFrame {
         if (!ListaClientes.validacionLetras(nombre)) {
         JOptionPane.showMessageDialog(this, "El nombre solo debe contener letras y espacios.", "Error",0);
         return; 
-    }
+        }
         if (nombre == null || nombre.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor ingrese su nombre", "indicacion", 2);
             return;
@@ -275,7 +280,7 @@ public class ifrmClienteJuridico extends javax.swing.JInternalFrame {
         if (!ListaClientes.validacionLetras(apellido)) {
         JOptionPane.showMessageDialog(this, "El apellido solo debe contener letras y espacios.", "Error", 0);
         return; 
-         }
+        }
         if (apellido == null || apellido.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor ingres su apellido", "Indicacion",2);
             return;
@@ -364,6 +369,10 @@ public class ifrmClienteJuridico extends javax.swing.JInternalFrame {
     private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
 // 
     }//GEN-LAST:event_txtDireccionActionPerformed
+
+    private void txtNombresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
