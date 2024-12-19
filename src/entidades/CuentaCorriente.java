@@ -7,7 +7,8 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
     private int limiteCheques;             
     private String numeroChequera;         
     private float comisionPorCheque;       
-    private String titularCuenta;          
+    private String titularCuenta;
+    private ClienteJuridico clienteJur;
 
     // Constructor
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
@@ -19,6 +20,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         this.numeroChequera = numeroChequera;
         this.comisionPorCheque = comisionPorCheque;
         this.titularCuenta = titularCuenta;
+        this.clienteJur = clienteJur;
     }
 
     // Métodos de la interfaz OperacionesCuenta
@@ -78,6 +80,9 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     public void setLimiteSobregiro(float limiteSobregiro) {
         this.limiteSobregiro = limiteSobregiro;
+    }
+    public String getApellidoRepLegal() {
+        return clienteJur.getApellido();
     }
 
     @Override

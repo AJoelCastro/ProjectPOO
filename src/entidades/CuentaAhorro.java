@@ -70,6 +70,7 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         this.beneficiarios = beneficiarios;
     }
 
+
     @Override
     public String generarNumeroCuenta() {
         int numDig=0, num=0, dato=0;
@@ -83,6 +84,10 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
             numCuenta += "0";
         numCuenta += dato;        
         return numCuenta;
+
+    public String getApellidoCliente() {
+        return clienteNat.getApellido();
+
     }
     
     @Override
