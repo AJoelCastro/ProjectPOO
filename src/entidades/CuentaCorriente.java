@@ -1,7 +1,9 @@
 package entidades;
 
-import java.util.GregorianCalendar;
 import datos.*;
+
+import java.time.LocalDate;
+
 
 public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
@@ -14,8 +16,9 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     // Constructor
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
-            GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
-            String numeroChequera, float comisionPorCheque, String titularCuenta, ClienteJuridico clienteJur) {
+
+                           LocalDate fechaCreacion, float limiteSobregiro, int limiteCheques,
+                           String numeroChequera, float comisionPorCheque, String titularCuenta) {
         super("", cliente, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
         this.limiteSobregiro = limiteSobregiro;
         this.limiteCheques = limiteCheques;
@@ -86,19 +89,6 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     public String getApellidoRepLegal() {
         return clienteJur.getApellido();
-    }
-
-    @Override
-    public String toString() {
-        return "Cuenta Corriente:\n"
-                + "\tNúmero de cuenta: " + getNumeroCuenta() + "\n"
-                + "\tFecha de apertura: " + getFechaCreacionCorta() + "\n"
-                + "\tSaldo actual: " + getSaldoCuenta() + "\n"
-                + "\tLímite de sobregiro: " + limiteSobregiro + "\n"
-                + "\tLímite de cheques: " + limiteCheques + "\n"
-                + "\tNúmero de chequera: " + numeroChequera + "\n"
-                + "\tComisión por cheque: " + comisionPorCheque + "\n"
-                + "\tTitular de la cuenta: " + titularCuenta;
     }
 
     public class Cheques {
@@ -195,12 +185,16 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
         }
         @Override
         public String toString() {
-            return "Cheque:\n"
-                    + "\tNumero de cheque:" + getNroCheque() + "\n"
-                    + "\tMonto:" + getMonto() + "\n"
-                    + "\tEstado:" + getEstado() + "\n"
-                    + "\tEmitido por:" + getApellidoRepLegal() + "\n"
-                    + "\tFecha de emision:" + getFechaCreacionCorta();
+           
+          return "Cuenta Corriente:\n" +
+                 "\tNúmero de cuenta: " + getNumeroCuenta() + "\n" +
+                 "\tFecha de apertura: " + fechaCreacion + "\n" +
+                 "\tSaldo actual: " + getSaldoCuenta() + "\n" +
+                 "\tLímite de sobregiro: " + limiteSobregiro + "\n" +
+                 "\tLímite de cheques: " + limiteCheques + "\n" +
+                 "\tNúmero de chequera: " + numeroChequera + "\n" +
+                 "\tComisión por cheque: " + comisionPorCheque + "\n" +
+                 "\tTitular de la cuenta: " + titularCuenta;
         }
     }
 }

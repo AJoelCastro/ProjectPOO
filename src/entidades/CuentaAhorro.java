@@ -4,8 +4,8 @@
  */
 package entidades;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
 
 /**
  *
@@ -14,24 +14,21 @@ import java.util.GregorianCalendar;
 public class CuentaAhorro extends Cuenta implements InteresMensual {
     private static float tasaInteresAnual = 0.04f;
     private ClienteNatural clienteNat;
-    private ClienteJuridico clienteJur;
     private int limiteRetiros;
-    private GregorianCalendar fechaCorte; 
+    private LocalDate fechaCorte; 
     private ArrayList<String> beneficiarios; 
+ 
     // Constructor con parametros
-    public CuentaAhorro(String numeroCuenta, ClienteNatural clienteNat,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
+    public CuentaAhorro(){
+        
+    }
+    public CuentaAhorro(String numeroCuenta, ClienteNatural clienteNat,float saldoCuenta, int tipoMoneda, String clave, LocalDate fechaCreacion , int tipoCuenta, int limiteRetiros, LocalDate fechaCorte) { 
         super(numeroCuenta, clienteNat ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
         this.limiteRetiros = limiteRetiros;
         this.fechaCorte = fechaCorte;
         this.beneficiarios = new ArrayList<>();
     }
     
-    public CuentaAhorro(String numeroCuenta, ClienteJuridico clienteJur,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
-        super(numeroCuenta, clienteJur ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
-        this.limiteRetiros = limiteRetiros;
-        this.fechaCorte = fechaCorte;
-        this.beneficiarios = new ArrayList<>();
-    }
     
     public static void modificarTasaInteresAnual(float tasaInteresA) {
         tasaInteresAnual = tasaInteresA;
@@ -53,14 +50,6 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         this.clienteNat = clienteNat;
     }
 
-    public ClienteJuridico getClienteJur() {
-        return clienteJur;
-    }
-
-    public void setClienteJur(ClienteJuridico clienteJur) {
-        this.clienteJur = clienteJur;
-    }
-
     public int getLimiteRetiros() {
         return limiteRetiros;
     }
@@ -69,11 +58,11 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
         this.limiteRetiros = limiteRetiros;
     }
 
-    public GregorianCalendar getFechaCorte() {
+    public LocalDate getFechaCorte() {
         return fechaCorte;
     }
 
-    public void setFechaCorte(GregorianCalendar fechaCorte) {
+    public void setFechaCorte(LocalDate fechaCorte) {
         this.fechaCorte = fechaCorte;
     }
 
@@ -84,12 +73,29 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     public void setBeneficiarios(ArrayList<String> beneficiarios) {
         this.beneficiarios = beneficiarios;
     }
+
+
+    @Override
+    public String generarNumeroCuenta() {
+        int numDig=0, num=0, dato=0;
+        String numCuenta = "";
+        while (num > 9) {
+            numDig++;
+            num /= 10;
+        }
+        numDig++;
+        for(int i=0;i<10-numDig; i++)
+            numCuenta += "0";
+        numCuenta += dato;        
+        return numCuenta;
+
     public String getApellidoCliente() {
         return clienteNat.getApellido();
+
     }
     
     @Override
     public void calcularInteresMensual() {
-
+        
     }   
 }  // fin de la clase CuentaAhorro
