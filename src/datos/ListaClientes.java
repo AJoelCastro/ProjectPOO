@@ -52,6 +52,22 @@ public class ListaClientes {
         }
         return -1;
     }
+    public ClienteJuridico buscarPorRuc(String ruc) {
+        if (ruc == null || ruc.trim().isEmpty()) {
+            return null;
+        }
+
+        for (Cliente cliente : listaClientes) {
+            if (cliente instanceof ClienteJuridico) {
+                ClienteJuridico clienteJur = (ClienteJuridico) cliente;
+                if (clienteJur.getRuc().equalsIgnoreCase(ruc)) {
+                    return clienteJur;
+                }
+            }
+        }
+        return null;
+    }
+
 
     
     public int getTamanio() {

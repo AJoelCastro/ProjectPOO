@@ -333,7 +333,7 @@ public class ifrmClienteJuridico extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Por favor ingrese el numero de documento de constitucion de la empresa", "Indicacion", 2);
             return;
         }
-        ClienteJuridico clienteJuridico = new ClienteJuridico(razonSocial, tipoRuc, documento, telefono, email, direccion, nombre, apellido, tipoCliente);
+        ClienteJuridico clienteJuridico = new ClienteJuridico(razonSocial, ruc, documento, telefono, email, direccion, nombre, apellido, tipoCliente);
         lista.agregarCliente(clienteJuridico);
         JOptionPane.showMessageDialog(this, "Los datos fueron registrados", "Registro de cliente", 1);
 

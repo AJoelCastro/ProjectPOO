@@ -40,9 +40,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnuLogJuridico = new javax.swing.JMenu();
         mniLogAhorroJur = new javax.swing.JMenuItem();
         mniLogCorrientejur = new javax.swing.JMenuItem();
-        mnuAbrirJuridico = new javax.swing.JMenu();
-        mniAbrirAhorroJur = new javax.swing.JMenuItem();
-        mniAbrirCorrienteJur = new javax.swing.JMenuItem();
+        mniAbrirJuridico = new javax.swing.JMenuItem();
         mniRegistrarJuridico = new javax.swing.JMenuItem();
         mnuListados = new javax.swing.JMenu();
         mniNatural = new javax.swing.JMenuItem();
@@ -106,6 +104,11 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnbMenu.add(mnuPersonal);
 
         mnuEmpresas.setText("Empresas e Instituciones");
+        mnuEmpresas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEmpresasActionPerformed(evt);
+            }
+        });
 
         mnuLogJuridico.setText("Iniciar sesion");
 
@@ -127,16 +130,13 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         mnuEmpresas.add(mnuLogJuridico);
 
-        mnuAbrirJuridico.setText("Abrir una cuenta");
-
-        mniAbrirAhorroJur.setText("Cuenta Ahorro ");
-        mniAbrirAhorroJur.setToolTipText("");
-        mnuAbrirJuridico.add(mniAbrirAhorroJur);
-
-        mniAbrirCorrienteJur.setText("Cuente Corriente");
-        mnuAbrirJuridico.add(mniAbrirCorrienteJur);
-
-        mnuEmpresas.add(mnuAbrirJuridico);
+        mniAbrirJuridico.setText("Abrir una cuenta");
+        mniAbrirJuridico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAbrirJuridicoActionPerformed(evt);
+            }
+        });
+        mnuEmpresas.add(mniAbrirJuridico);
 
         mniRegistrarJuridico.setText("Registrarse");
         mniRegistrarJuridico.addActionListener(new java.awt.event.ActionListener() {
@@ -236,6 +236,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         centrarInternalFrame(ifrmAbrirNatural);
     }//GEN-LAST:event_mniAbrirNaturalActionPerformed
 
+    private void mnuEmpresasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEmpresasActionPerformed
+        
+    }//GEN-LAST:event_mnuEmpresasActionPerformed
+
+    private void mniAbrirJuridicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirJuridicoActionPerformed
+        IfrmAbrirJuridico ifrmAbrirJuridico = new IfrmAbrirJuridico(listaClientes,listaCuentas);
+        centrarInternalFrame(ifrmAbrirJuridico);
+    }//GEN-LAST:event_mniAbrirJuridicoActionPerformed
+
     private void centrarInternalFrame (JInternalFrame interna) {
         int x,y;
         
@@ -289,8 +298,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpsFondo;
     private javax.swing.JMenuBar mnbMenu;
-    private javax.swing.JMenuItem mniAbrirAhorroJur;
-    private javax.swing.JMenuItem mniAbrirCorrienteJur;
+    private javax.swing.JMenuItem mniAbrirJuridico;
     private javax.swing.JMenuItem mniAbrirNatural;
     private javax.swing.JMenuItem mniAcerca;
     private javax.swing.JMenuItem mniLogAhorroJur;
@@ -300,7 +308,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniNatural;
     private javax.swing.JMenuItem mniRegistrarJuridico;
     private javax.swing.JMenuItem mniRegistrarNatural;
-    private javax.swing.JMenu mnuAbrirJuridico;
     private javax.swing.JMenu mnuAyuda;
     private javax.swing.JMenu mnuEmpresas;
     private javax.swing.JMenu mnuListados;

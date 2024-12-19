@@ -55,6 +55,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Empresas e Instituciones"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuEmpresasActionPerformed"/>
+          </Events>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="mnuLogJuridico">
               <Properties>
@@ -79,24 +82,14 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="mnuAbrirJuridico">
+            <MenuItem class="javax.swing.JMenuItem" name="mniAbrirJuridico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Abrir una cuenta"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirAhorroJur">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cuenta Ahorro "/>
-                    <Property name="toolTipText" type="java.lang.String" value=""/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="mniAbrirCorrienteJur">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Cuente Corriente"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniAbrirJuridicoActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mniRegistrarJuridico">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrarse"/>

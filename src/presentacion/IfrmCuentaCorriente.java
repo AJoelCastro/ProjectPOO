@@ -46,11 +46,14 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
         btnRetiro = new javax.swing.JButton();
         btnDeposito = new javax.swing.JButton();
         btnTransferencia = new javax.swing.JButton();
-        btnMovimientos = new javax.swing.JButton();
         panSaldo = new javax.swing.JPanel();
-        btnSaldo = new javax.swing.JButton();
         txtSaldo = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -148,35 +151,14 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnMovimientos.setText("Mostrar movimientos");
-        btnMovimientos.setBorder(null);
-        btnMovimientos.setBorderPainted(false);
-        btnMovimientos.setContentAreaFilled(false);
-        btnMovimientos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMovimientos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMovimientosActionPerformed(evt);
-            }
-        });
-
         panSaldo.setBackground(new java.awt.Color(0, 102, 102));
-
-        btnSaldo.setForeground(new java.awt.Color(255, 255, 255));
-        btnSaldo.setText("Mostrar saldo");
-        btnSaldo.setBorder(null);
-        btnSaldo.setBorderPainted(false);
-        btnSaldo.setContentAreaFilled(false);
-        btnSaldo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnSaldo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaldoActionPerformed(evt);
-            }
-        });
 
         txtSaldo.setEditable(false);
         txtSaldo.setBackground(new java.awt.Color(0, 102, 102));
         txtSaldo.setForeground(new java.awt.Color(255, 255, 255));
         txtSaldo.setBorder(null);
+
+        jButton4.setText("jButton4");
 
         javax.swing.GroupLayout panSaldoLayout = new javax.swing.GroupLayout(panSaldo);
         panSaldo.setLayout(panSaldoLayout);
@@ -184,7 +166,7 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
             panSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panSaldoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -194,12 +176,25 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
             .addGroup(panSaldoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panSaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jButton6.setText("jButton6");
+        jButton6.setText("Emisión de cheques");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Cobro de cheques");
+
+        jButton3.setText("Devolución de cheques");
+
+        jButton2.setText("Verificación de cheques");
+
+        jButton5.setText("jButton5");
 
         javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
         panDatos.setLayout(panDatosLayout);
@@ -208,34 +203,47 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
             .addGroup(panDatosLayout.createSequentialGroup()
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDatosLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panDatosLayout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panDatosLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
-                                .addComponent(btnMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jButton5))
                             .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
                                     .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(scpMovimientos))))
-                    .addGroup(panDatosLayout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(scpMovimientos)
+                                .addGroup(panDatosLayout.createSequentialGroup()
+                                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panDatosLayout.createSequentialGroup()
-                .addGap(86, 86, 86)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
+                .addGap(11, 11, 11)
                 .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -243,7 +251,7 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
@@ -277,23 +285,15 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addGroup(layout.createSequentialGroup()
                     .addGap(265, 265, 265)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(266, Short.MAX_VALUE)))
+                    .addContainerGap(268, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMovimientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimientosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMovimientosActionPerformed
-
     private void pwdPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pwdPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pwdPassActionPerformed
-
-    private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSaldoActionPerformed
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         String numeroCuenta = txtIdentificacion.getText().trim();
@@ -368,14 +368,21 @@ public class IfrmCuentaCorriente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeposito;
     private javax.swing.JButton btnEntrar;
-    private javax.swing.JButton btnMovimientos;
     private javax.swing.JButton btnRetiro;
-    private javax.swing.JButton btnSaldo;
     private javax.swing.JButton btnTransferencia;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblBienvenido;

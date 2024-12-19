@@ -24,6 +24,16 @@ public class ListaMovimientos {
             this.cuentaDestino = cuentaDestino;
             this.fechaMovimiento = new GregorianCalendar();
         }
+        public String getFechaFormateada() {
+            int dia = fechaMovimiento.get(Calendar.DAY_OF_MONTH);
+            int mes = fechaMovimiento.get(Calendar.MONTH) + 1;
+            int anio = fechaMovimiento.get(Calendar.YEAR);
+            int hora = fechaMovimiento.get(Calendar.HOUR_OF_DAY);
+            int minuto = fechaMovimiento.get(Calendar.MINUTE);
+
+            return String.format("%02d/%02d/%04d %02d:%02d", dia, mes, anio, hora, minuto);
+        }
+
 
         @Override
         public String toString() {
@@ -158,4 +168,5 @@ public class ListaMovimientos {
     public ArrayList<Movimiento> obtenerTodosLosMovimientos() {
         return new ArrayList<>(listaMovimientos);
     }
+
 }
