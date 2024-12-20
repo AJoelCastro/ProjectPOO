@@ -30,7 +30,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         dpsFondo = new javax.swing.JDesktopPane();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         mnbMenu = new javax.swing.JMenuBar();
         mnuPersonal = new javax.swing.JMenu();
         mnuLogNatural = new javax.swing.JMenu();
@@ -50,33 +49,15 @@ public class FrmPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bank of America");
 
-        jDesktopPane1.setBackground(new java.awt.Color(204, 204, 204));
-        jDesktopPane1.setEnabled(false);
-
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1077, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 655, Short.MAX_VALUE)
-        );
-
-        dpsFondo.setLayer(jDesktopPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
         javax.swing.GroupLayout dpsFondoLayout = new javax.swing.GroupLayout(dpsFondo);
         dpsFondo.setLayout(dpsFondoLayout);
         dpsFondoLayout.setHorizontalGroup(
             dpsFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dpsFondoLayout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGap(0, 1051, Short.MAX_VALUE)
         );
         dpsFondoLayout.setVerticalGroup(
             dpsFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
 
         mnuPersonal.setText("Personal");
@@ -188,10 +169,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(dpsFondo)
-                .addContainerGap())
+            .addComponent(dpsFondo)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +286,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dpsFondo;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mniAbrirJuridico;
     private javax.swing.JMenuItem mniAbrirNatural;
