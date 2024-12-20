@@ -32,6 +32,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         panDatos.setVisible(false);
         lblBienvenido.setVisible(false);
         btnSaldo.setText("Mostrar saldo");
+        lblNombre.setVisible(false);
 
     }
 
@@ -54,6 +55,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         lblPassword = new javax.swing.JLabel();
         pwdPass = new javax.swing.JPasswordField();
         txtIdentificacion = new javax.swing.JTextField();
+        lblNombre = new javax.swing.JLabel();
         panDatos = new javax.swing.JPanel();
         scpMovimientos = new javax.swing.JScrollPane();
         btnRetiro = new javax.swing.JButton();
@@ -69,6 +71,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         rbtSoles = new javax.swing.JRadioButton();
         rbtDolares = new javax.swing.JRadioButton();
         btnDevolucion = new javax.swing.JButton();
+        btnHabilitar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -140,6 +143,11 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addContainerGap(76, Short.MAX_VALUE))
         );
 
+        lblNombre.setFont(new java.awt.Font("Book Antiqua", 0, 36)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout panInicioLayout = new javax.swing.GroupLayout(panInicio);
         panInicio.setLayout(panInicioLayout);
         panInicioLayout.setHorizontalGroup(
@@ -147,10 +155,11 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
             .addGroup(panInicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                     .addGroup(panInicioLayout.createSequentialGroup()
                         .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lblBienvenido, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE))
+                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panInicioLayout.setVerticalGroup(
@@ -160,7 +169,9 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         btnRetiro.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -263,6 +274,13 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
             }
         });
 
+        btnHabilitar.setText("Habilitar chequera");
+        btnHabilitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHabilitarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
         panDatos.setLayout(panDatosLayout);
         panDatosLayout.setHorizontalGroup(
@@ -283,9 +301,9 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(scpMovimientos)
                                 .addGroup(panDatosLayout.createSequentialGroup()
-                                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnCobroCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnEmisionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btnCobroCheques, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnEmisionCheques, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(btnVerificacionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -298,6 +316,10 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(rbtDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(9, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnHabilitar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(111, 111, 111))
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,7 +332,9 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEmisionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
                     .addComponent(btnDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnHabilitar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(btnMovimientos)
@@ -399,6 +423,8 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         panDatos.setVisible(true);
         panInicio.setVisible(true);
         lblBienvenido.setVisible(true);
+        lblNombre.setVisible(true);
+        lblNombre.setText(cuentaActual.getCliente().getNombre());
     }                                         
     private void actualizarSaldo() {
         if (cuentaActual != null) {
@@ -547,53 +573,6 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
-    private void btnEmisionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmisionChequesActionPerformed
-         if (!(cuentaActual instanceof CuentaCorriente)) {
-            JOptionPane.showMessageDialog(this,
-                "Esta operación solo está disponible para cuentas corrientes",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        CuentaCorriente cuentaCorriente = (CuentaCorriente) cuentaActual;
-
-        if (cuentaCorriente.getNroChequera() == null) {
-            JOptionPane.showMessageDialog(this,
-                "Debe habilitar una chequera antes de emitir cheques",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        // Panel para ingresar datos del cheque
-        JPanel panel = new JPanel(new GridLayout(2, 2, 5, 5));
-        JTextField txtMonto = new JTextField(15);
-        panel.add(new JLabel("Monto del cheque:"));
-        panel.add(txtMonto);
-
-        int result = JOptionPane.showConfirmDialog(this, panel,
-            "Emisión de Cheque", JOptionPane.OK_CANCEL_OPTION);
-
-        if (result != JOptionPane.OK_OPTION) {
-            return;
-        }
-
-        try {
-            float monto = Float.parseFloat(txtMonto.getText().trim());
-            CuentaCorriente.Cheques cheque = cuentaCorriente.new Cheques(null, 0, null, null);
-            if (cheque.emitirCheque(monto, listaCheques)) {
-                actualizarSaldo();
-                mostrarListaCheques();
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                "Por favor ingrese un monto válido",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnEmisionChequesActionPerformed
-
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
         if (saldoVisible) {
             txtSaldo.setText("");
@@ -635,221 +614,141 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
 
     private void btnCobroChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobroChequesActionPerformed
         if (cuentaActual == null) {
-            JOptionPane.showMessageDialog(this,
-                "Debe iniciar sesión primero",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        JPanel panel = new JPanel(new GridLayout(3, 2, 5, 5));
-        JTextField txtNroCheque = new JTextField(15);
-        JTextField txtApellidoEmisor = new JTextField(15);
-
-        panel.add(new JLabel("Número de cheque:"));
-        panel.add(txtNroCheque);
-        panel.add(new JLabel("Apellido del emisor:"));
-        panel.add(txtApellidoEmisor);
-
-        int result = JOptionPane.showConfirmDialog(this, panel,
-            "Cobro de Cheque",
-            JOptionPane.OK_CANCEL_OPTION);
-
-        if (result != JOptionPane.OK_OPTION) {
+        String nroCheque = JOptionPane.showInputDialog(this, "Ingrese el número de cheque a cobrar:");
+        if (nroCheque == null || nroCheque.trim().isEmpty()) {
             return;
         }
 
-        String nroCheque = txtNroCheque.getText().trim();
-        String apellidoEmisor = txtApellidoEmisor.getText().trim();
-
-        if (nroCheque.isEmpty() || apellidoEmisor.isEmpty()) {
-            JOptionPane.showMessageDialog(this,
-                "Por favor complete todos los campos",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+        Cheques cheque = listaCheques.buscarChequePorNumero(nroCheque);
+        if (cheque == null) {
+            JOptionPane.showMessageDialog(this, "Cheque no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        boolean cobroExitoso = false;
-        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
-            if (cuenta instanceof CuentaCorriente) {
-                CuentaCorriente cuentaCorriente = (CuentaCorriente) cuenta;
-                if (cuentaCorriente.getCliente().getApellido().equalsIgnoreCase(apellidoEmisor)) {
-                    CuentaCorriente.Cheques cheque = cuentaCorriente.new Cheques(null, 0, null, null);
-                    if (cheque.cobrarCheque(nroCheque, apellidoEmisor, cuentaActual, listaCheques)) {
-                        cobroExitoso = true;
-                        actualizarSaldo();
-                        break;
-                    }
-                }
+        if (cheque.getCuentaOrigen() instanceof CuentaCorriente) {
+            CuentaCorriente ctaOrigen = (CuentaCorriente) cheque.getCuentaOrigen();
+            if (ctaOrigen.cobrarCheque(nroCheque, cuentaActual,listaCheques)) {
+                actualizarSaldo();
             }
-        }
-
-        if (!cobroExitoso) {
-            JOptionPane.showMessageDialog(this,
-                "No se pudo realizar el cobro del cheque",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnCobroChequesActionPerformed
 
     private void btnVerificacionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificacionChequesActionPerformed
-        String nroCheque = JOptionPane.showInputDialog(this,
-            "Ingrese el número de cheque a verificar:",
-            "Verificación de Cheque",
-            JOptionPane.PLAIN_MESSAGE);
-
+        String nroCheque = JOptionPane.showInputDialog(this, "Ingrese el número de cheque a verificar:");
         if (nroCheque == null || nroCheque.trim().isEmpty()) {
             return;
         }
 
-        boolean chequeEncontrado = false;
-        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
-            if (cuenta instanceof CuentaCorriente) {
-                CuentaCorriente cuentaCorriente = (CuentaCorriente) cuenta;
-                ListaCheques listaCheques = cuentaCorriente.getListaCheques();
-
-                for (CuentaCorriente.Cheques cheque : listaCheques.getListaCheques()) {
-                    if (cheque.getNroCheque().equals(nroCheque)) {
-                        chequeEncontrado = true;
-                        StringBuilder info = new StringBuilder();
-                        info.append("Información del cheque:\n")
-                            .append("Número: ").append(cheque.getNroCheque()).append("\n")
-                            .append("Estado: ").append(cheque.getEstado()).append("\n")
-                            .append("Monto: ").append(String.format("%.2f", cheque.getMonto())).append("\n")
-                            .append("Fecha de emisión: ").append(cheque.fechaEmision).append("\n")
-                            .append("Emisor: ").append(cuenta.getCliente().getApellido()).append("\n")
-                            .append("Fondos disponibles: ").append(String.format("%.2f", cuenta.getSaldoCuenta()));
-
-                        JOptionPane.showMessageDialog(this,
-                            info.toString(),
-                            "Verificación de Cheque",
-                            JOptionPane.INFORMATION_MESSAGE);
-                        break;
-                    }
-                }
-                if (chequeEncontrado) break;
-            }
+        Cheques cheque = listaCheques.buscarChequePorNumero(nroCheque);
+        if (cheque == null) {
+            JOptionPane.showMessageDialog(this, "Cheque no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
-        if (!chequeEncontrado) {
-            JOptionPane.showMessageDialog(this,
-                "No se encontró el cheque especificado",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+        StringBuilder mensaje = new StringBuilder("Información del cheque:\n");
+        mensaje.append("\nNúmero: ").append(cheque.getNroCheque());
+        mensaje.append("\nMonto: ").append(cheque.getMonto());
+        mensaje.append("\nEstado: ").append(cheque.getEstado());
+        mensaje.append("\nCuenta origen: ").append(cheque.getCuentaOrigen().getNumeroCuenta());
+        mensaje.append("\nFecha emisión: ").append(cheque.getFechaEmision());
+
+        if (cheque.verificarValidez() && cheque.verificarFondos()) {
+            mensaje.append("\n\nEl cheque es válido y tiene fondos suficientes.");
+        } else {
+            mensaje.append("\n\nEl cheque no es válido o no tiene fondos suficientes.");
         }
+
+        JOptionPane.showMessageDialog(this, mensaje.toString(), "Verificación de Cheque", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnVerificacionChequesActionPerformed
 
     private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
-        String nroCheque = JOptionPane.showInputDialog(this,
-            "Ingrese el número de cheque a devolver:",
-            "Devolución de Cheque",
-            JOptionPane.PLAIN_MESSAGE);
-
+        String nroCheque = JOptionPane.showInputDialog(this, "Ingrese el número de cheque a devolver:");
         if (nroCheque == null || nroCheque.trim().isEmpty()) {
             return;
         }
 
-        String[] motivos = {
-            "Fondos insuficientes",
-            "Firma incorrecta",
-            "Cheque alterado",
-            "Cuenta cerrada",
-            "Otro motivo"
-        };
-
-        String motivo = (String) JOptionPane.showInputDialog(this,
-            "Seleccione el motivo de la devolución:",
-            "Motivo de Devolución",
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            motivos,
-            motivos[0]);
-
-        if (motivo == null) {
+        Cheques cheque = listaCheques.buscarChequePorNumero(nroCheque);
+        if (cheque == null) {
+            JOptionPane.showMessageDialog(this, "Cheque no encontrado", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        boolean chequeEncontrado = false;
-        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
-            if (cuenta instanceof CuentaCorriente) {
-                CuentaCorriente cuentaCorriente = (CuentaCorriente) cuenta;
-                ListaCheques listaCheques = cuentaCorriente.getListaCheques();
-
-                for (CuentaCorriente.Cheques cheque : listaCheques.getListaCheques()) {
-                    if (cheque.getNroCheque().equals(nroCheque)) {
-                        chequeEncontrado = true;
-                        if (cheque.getEstado().equals("Emitido")) {
-                            cheque.setEstado("Devuelto - " + motivo);
-                            if (cheque.getEstado().equals("Cobrado")) {
-                                cuenta.setSaldoCuenta(cuenta.getSaldoCuenta() + cheque.getMonto());
-                            }
-                            JOptionPane.showMessageDialog(this,
-                                "Cheque devuelto exitosamente\nMotivo: " + motivo,
-                                "Devolución de Cheque",
-                                JOptionPane.INFORMATION_MESSAGE);
-                        } else {
-                            JOptionPane.showMessageDialog(this,
-                                "El cheque no puede ser devuelto porque su estado actual es: " + cheque.getEstado(),
-                                "Error",
-                                JOptionPane.ERROR_MESSAGE);
-                        }
-                        break;
-                    }
-                }
-                if (chequeEncontrado) break;
-            }
+        if (!cheque.getEstado().equals("Emitido")) {
+            JOptionPane.showMessageDialog(this, "Solo se pueden devolver cheques en estado 'Emitido'", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
-        if (!chequeEncontrado) {
-            JOptionPane.showMessageDialog(this,
-                "No se encontró el cheque especificado",
-                "Error",
-                JOptionPane.ERROR_MESSAGE);
+        String motivo = JOptionPane.showInputDialog(this, "Ingrese el motivo de la devolución:");
+        if (motivo != null && !motivo.trim().isEmpty()) {
+            cheque.marcarComoRechazado(motivo);
+            JOptionPane.showMessageDialog(this, "Cheque devuelto exitosamente", "Devolución de Cheque", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnDevolucionActionPerformed
-    private void mostrarListaCheques() {
+
+    private void btnEmisionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmisionChequesActionPerformed
+        if (cuentaActual == null || !(cuentaActual instanceof CuentaCorriente)) {
+            JOptionPane.showMessageDialog(this, "Debe iniciar sesión con una cuenta corriente", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        CuentaCorriente ctaCorriente = (CuentaCorriente) cuentaActual;
+        if (ctaCorriente.getNroChequera() == null || ctaCorriente.getNroChequera().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe habilitar una chequera primero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String montoStr = JOptionPane.showInputDialog(this, "Ingrese el monto del cheque:");
+        if (montoStr == null || montoStr.trim().isEmpty()) {
+            return;
+        }
+
+        try {
+            float monto = Float.parseFloat(montoStr);
+            if (ctaCorriente.emitirCheque(monto,listaCheques)) {
+                actualizarSaldo();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Monto inválido", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEmisionChequesActionPerformed
+
+    private void btnHabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHabilitarActionPerformed
+        if (cuentaActual == null) {
+            JOptionPane.showMessageDialog(this, "Debe iniciar sesión primero", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         if (!(cuentaActual instanceof CuentaCorriente)) {
+            JOptionPane.showMessageDialog(this, "Esta operación solo está disponible para cuentas corrientes", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        CuentaCorriente cuentaCorriente = (CuentaCorriente) cuentaActual;
-        ListaCheques listaCheques = cuentaCorriente.getListaCheques();
-
-        if (listaCheques.getTamanio() == 0) {
-            JOptionPane.showMessageDialog(this,
-                "No hay cheques emitidos para esta cuenta",
-                "Información",
+        CuentaCorriente ctaCorriente = (CuentaCorriente) cuentaActual;
+        if (ctaCorriente.habilitarChequera()) {
+            JOptionPane.showMessageDialog(this, 
+                "Chequera habilitada exitosamente\nNúmero de chequera: " + ctaCorriente.getNroChequera(), 
+                "Habilitación de Chequera", 
                 JOptionPane.INFORMATION_MESSAGE);
-            return;
+                btnHabilitar.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(this, 
+                "No se pudo habilitar la chequera. Se ha alcanzado el límite máximo.", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
         }
-
-        StringBuilder info = new StringBuilder("Cheques emitidos:\n\n");
-        for (CuentaCorriente.Cheques cheque : listaCheques.getListaCheques()) {
-            info.append("Número: ").append(cheque.getNroCheque())
-                .append("\nMonto: ").append(String.format("%.2f", cheque.getMonto()))
-                .append("\nEstado: ").append(cheque.getEstado())
-                .append("\nFecha: ").append(cheque.fechaEmision)
-                .append("\n\n");
-        }
-
-        JTextArea textArea = new JTextArea(info.toString());
-        textArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(textArea);
-        scrollPane.setPreferredSize(new Dimension(300, 200));
-
-        JOptionPane.showMessageDialog(this,
-            scrollPane,
-            "Lista de Cheques",
-            JOptionPane.INFORMATION_MESSAGE);
-    }
-
+    }//GEN-LAST:event_btnHabilitarActionPerformed
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCobroCheques;
     private javax.swing.JButton btnDeposito;
     private javax.swing.JButton btnDevolucion;
     private javax.swing.JButton btnEmisionCheques;
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JButton btnHabilitar;
     private javax.swing.JButton btnMovimientos;
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnSaldo;
@@ -859,6 +758,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JPanel panDatos;
     private javax.swing.JPanel panInicio;
