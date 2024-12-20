@@ -44,8 +44,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mniAbrirJuridico = new javax.swing.JMenuItem();
         mniRegistrarJuridico = new javax.swing.JMenuItem();
         mnuReportes = new javax.swing.JMenu();
-        mnuAyuda = new javax.swing.JMenu();
-        mniAcerca = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bank of America");
@@ -150,18 +148,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnuReportes.setText("Reportes");
         mnbMenu.add(mnuReportes);
 
-        mnuAyuda.setText("Ayuda");
-
-        mniAcerca.setText("Acerca de");
-        mniAcerca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniAcercaActionPerformed(evt);
-            }
-        });
-        mnuAyuda.add(mniAcerca);
-
-        mnbMenu.add(mnuAyuda);
-
         setJMenuBar(mnbMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -177,10 +163,6 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void mniAcercaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAcercaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniAcercaActionPerformed
 
     private void mniRegistrarNaturalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniRegistrarNaturalActionPerformed
         ifrmClienteNatural ifrmClienteNatural = new ifrmClienteNatural(listaClientes);
@@ -281,14 +263,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mniAbrirJuridico;
     private javax.swing.JMenuItem mniAbrirNatural;
-    private javax.swing.JMenuItem mniAcerca;
     private javax.swing.JMenuItem mniLogAhorroJur;
     private javax.swing.JMenuItem mniLogAhorroNat;
     private javax.swing.JMenuItem mniLogCorrienteNat;
     private javax.swing.JMenuItem mniLogCorrientejur;
     private javax.swing.JMenuItem mniRegistrarJuridico;
     private javax.swing.JMenuItem mniRegistrarNatural;
-    private javax.swing.JMenu mnuAyuda;
     private javax.swing.JMenu mnuEmpresas;
     private javax.swing.JMenu mnuLogJuridico;
     private javax.swing.JMenu mnuLogNatural;

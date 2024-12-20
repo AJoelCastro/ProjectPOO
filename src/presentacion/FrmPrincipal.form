@@ -105,21 +105,6 @@
             <Property name="text" type="java.lang.String" value="Reportes"/>
           </Properties>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="mnuAyuda">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Ayuda"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="mniAcerca">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Acerca de"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniAcercaActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>
