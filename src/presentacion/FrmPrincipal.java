@@ -229,8 +229,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void mniAbrirReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirReportesActionPerformed
         // TODO add your handling code here:
-        ifrmEstadosCuenta ifrmEstadosCuenta = new ifrmEstadosCuenta(listaCuentas, listaMovimientos);
-        centrarInternalFrame(ifrmEstadosCuenta);
+        ifrmEstadoCuenta ifrmEstadoCuenta = new ifrmEstadoCuenta(listaCuentas, listaMovimientos);
+        centrarInternalFrame(ifrmEstadoCuenta);
     }//GEN-LAST:event_mniAbrirReportesActionPerformed
 
     private void centrarInternalFrame (JInternalFrame interna) {
