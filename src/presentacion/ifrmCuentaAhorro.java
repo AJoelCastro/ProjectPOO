@@ -15,7 +15,7 @@ import java.util.*;
  * @author sanar
  */
 public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
-    
+
     /**
      * Creates new form IfrmPersonal
      */

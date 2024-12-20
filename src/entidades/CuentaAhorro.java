@@ -13,23 +13,12 @@ import javax.swing.*;
  */
 public class CuentaAhorro extends Cuenta implements InteresMensual {
     private static float tasaInteresAnual = 0.04f;
-    private ClienteNatural clienteNat;
-    private ClienteJuridico clienteJur;
     private int limiteRetiros;
-    private GregorianCalendar fechaCorte; 
     private ArrayList<String> beneficiarios; 
     // Constructor con parametros
-    public CuentaAhorro(String numeroCuenta, ClienteNatural clienteNat,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
-        super(numeroCuenta, clienteNat ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
+    public CuentaAhorro(Cliente cliente,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion, int limiteRetiros) { 
+        super("", cliente ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , 1);
         this.limiteRetiros = limiteRetiros;
-        this.fechaCorte = fechaCorte;
-        this.beneficiarios = new ArrayList<>();
-    }
-    
-    public CuentaAhorro(String numeroCuenta, ClienteJuridico clienteJur,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion , int tipoCuenta, int limiteRetiros, GregorianCalendar fechaCorte) { 
-        super(numeroCuenta, clienteJur ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , tipoCuenta);
-        this.limiteRetiros = limiteRetiros;
-        this.fechaCorte = fechaCorte;
         this.beneficiarios = new ArrayList<>();
     }
     
@@ -40,23 +29,7 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     public static float obtenerTasaInteresAnual() {
         return tasaInteresAnual;
     }
-
-    public ClienteNatural getClienteNat() {
-        return clienteNat;
-    }
-
-    public void setClienteNat(ClienteNatural clienteNat) {
-        this.clienteNat = clienteNat;
-    }
-
-    public ClienteJuridico getClienteJur() {
-        return clienteJur;
-    }
-
-    public void setClienteJur(ClienteJuridico clienteJur) {
-        this.clienteJur = clienteJur;
-    }
-
+    
     public int getLimiteRetiros() {
         return limiteRetiros;
     }
@@ -64,24 +37,13 @@ public class CuentaAhorro extends Cuenta implements InteresMensual {
     public void setLimiteRetiros(int limiteRetiros) {
         this.limiteRetiros = limiteRetiros;
     }
-
-    public GregorianCalendar getFechaCorte() {
-        return fechaCorte;
-    }
-
-    public void setFechaCorte(GregorianCalendar fechaCorte) {
-        this.fechaCorte = fechaCorte;
-    }
-
+    
     public ArrayList<String> getBeneficiarios() {
         return beneficiarios;
     }
 
     public void setBeneficiarios(ArrayList<String> beneficiarios) {
         this.beneficiarios = beneficiarios;
-    }
-    public String getApellidoCliente() {
-        return clienteNat.getApellido();
     }
     
     @Override
@@ -154,4 +116,4 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
     }
 }
     
-}  // fin de la clase CuentaAhorro
+}

@@ -12,21 +12,13 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
     private int limiteCheques;
     private String numeroChequera;
     private static float comisionPorCheque = 0.05f;
-
-    private String titularCuenta;
-    private ClienteJuridico clienteJur;
     private static int contChequeras = 0;
-
-    // Constructor
+    
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
-                           GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques,
-                           String numeroChequera, float comisionPorCheque, String titularCuenta, ClienteJuridico clienteJur) {
+                           GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques) {
         super("", cliente, saldoCuenta, tipoMoneda, clave, fechaCreacion, 0); // Tipo cuenta = 0 (Corriente)
         this.limiteSobregiro = limiteSobregiro;
         this.limiteCheques = limiteCheques;
-        this.numeroChequera = numeroChequera;
-        this.titularCuenta = titularCuenta;
-        this.clienteJur = clienteJur;
     }
     
     public CuentaCorriente(float saldoCuenta, int tipoMoneda, String clave,
@@ -122,9 +114,6 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
     public void setLimiteSobregiro(float limiteSobregiro) {
         this.limiteSobregiro = limiteSobregiro;
     }
-    public String getApellidoRepLegal() {
-        return clienteJur.getApellido();
-    }
 
     @Override
     public String toString() {
@@ -135,8 +124,7 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
                 + "\tLímite de sobregiro: " + limiteSobregiro + "\n"
                 + "\tLímite de cheques: " + limiteCheques + "\n"
                 + "\tNúmero de chequera: " + getNroChequera() +"\n"
-                + "\tComisión por cheque: " + comisionPorCheque + "\n"
-                + "\tTitular de la cuenta: " + titularCuenta;
+                + "\tComisión por cheque: " + comisionPorCheque + "\n";
     }
     
 
@@ -205,7 +193,6 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
         public boolean habilitarChequera() {
             if (generarNumeroChequera().compareToIgnoreCase("CHQ2024999") != 0) {
                 setNumeroChequera(generarNumeroChequera());
-                limiteCheques = 0;
                 return true;
             } else {
                 return false;
@@ -276,7 +263,7 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
                     + "\tNumero de cheque:" + getNroCheque() + "\n"
                     + "\tMonto:" + getMonto() + "\n"
                     + "\tEstado:" + getEstado() + "\n"
-                    + "\tEmitido por:" + getApellidoRepLegal() + "\n"
+                    + "\tEmitido por:" + getCliente().getApellido() + "\n"
                     + "\tFecha de emision:" + getFechaCreacionCorta();
         }
 

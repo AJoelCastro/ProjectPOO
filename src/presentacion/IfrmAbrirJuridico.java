@@ -308,15 +308,12 @@ public class IfrmAbrirJuridico extends javax.swing.JInternalFrame {
 
             if (jrbAhorro.isSelected()) {
                 CuentaAhorro cuenta = new CuentaAhorro(
-                    "",
                     clienteSeleccionado,
                     monto,
                     tipoMoneda,
                     clave,
                     new GregorianCalendar(),
-                    1,
-                    5,
-                    new GregorianCalendar()
+                    10
                 );
                 listaCuentas.agregarCuenta(cuenta);
                 String mensaje = "Cuenta corriente creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave;
@@ -329,12 +326,8 @@ public class IfrmAbrirJuridico extends javax.swing.JInternalFrame {
                     tipoMoneda,
                     clave,
                     new GregorianCalendar(),
-                    5000.00f,
-                    100,
-                    "CHQ001",
-                    10.00f,
-                    clienteSeleccionado.getNombre() + " " + clienteSeleccionado.getApellido(),
-                    clienteSeleccionado
+                    10.000f,
+                    10
                 );
                 listaCuentas.agregarCuenta(cuenta);
                 String mensaje = "Cuenta corriente creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave;
