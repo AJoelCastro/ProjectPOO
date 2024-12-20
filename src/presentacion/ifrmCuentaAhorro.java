@@ -15,12 +15,15 @@ import java.util.*;
  * @author sanar
  */
 public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
-
+    
     /**
      * Creates new form IfrmPersonal
      */
     public ifrmCuentaAhorro() {
         initComponents();
+        buttonGroup1.add(rbtSoles);
+        buttonGroup1.add(rbtDolares);
+        
     }
     public ifrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
         initComponents();
@@ -43,6 +46,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         panInicio = new javax.swing.JPanel();
         panRegistro = new javax.swing.JPanel();
         lblIdentificacion = new javax.swing.JLabel();
@@ -61,6 +65,8 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         btnRetiro = new javax.swing.JButton();
         btnTransferencia = new javax.swing.JButton();
         btnMovimientos = new javax.swing.JButton();
+        rbtSoles = new javax.swing.JRadioButton();
+        rbtDolares = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 0, 0));
         setClosable(true);
@@ -235,27 +241,39 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(rbtSoles);
+        rbtSoles.setSelected(true);
+        rbtSoles.setText("Soles");
+
+        buttonGroup1.add(rbtDolares);
+        rbtDolares.setText("Dolares");
+
         javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
         panDatos.setLayout(panDatosLayout);
         panDatosLayout.setHorizontalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
             .addGroup(panDatosLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDatosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnMovimientos))
-                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(scpMovimientos)
-                        .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                        .addGroup(panDatosLayout.createSequentialGroup()
-                            .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(36, 36, 36)
+                        .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(scpMovimientos)
+                                .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                                .addGroup(panDatosLayout.createSequentialGroup()
+                                    .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panDatosLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rbtSoles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panDatosLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
@@ -265,15 +283,19 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMovimientos)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtSoles)
+                    .addComponent(rbtDolares))
+                .addGap(16, 16, 16)
                 .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -353,6 +375,9 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
         try {
             float monto = Float.parseFloat(montoStr);
+            if(rbtDolares.isSelected()){
+                monto=(float) (monto*3.8);
+            }
             if (listaMovimientos.registrarRetiro(cuentaActual, monto)) {
                 actualizarSaldo();
                 btnMovimientosActionPerformed(null);
@@ -381,6 +406,9 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
         try {
             float monto = Float.parseFloat(montoStr);
+            if(rbtDolares.isSelected()){
+                monto=(float) (monto*3.8);
+            }
             if (listaMovimientos.registrarDeposito(cuentaActual, monto)) {
                 actualizarSaldo();
                 btnMovimientosActionPerformed(null);
@@ -406,6 +434,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         panel.add(txtCuentaDestino);
         panel.add(new JLabel("Monto:"));
         panel.add(txtMonto);
+        
 
         int result = JOptionPane.showConfirmDialog(this, panel, 
             "Transferencia", JOptionPane.OK_CANCEL_OPTION);
@@ -513,8 +542,6 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         panDatos.setVisible(true);
         panInicio.setVisible(true);
         lblBienvenido.setVisible(true);
-        //txtNombre.setText(cuentaActual.getCliente().getNombre());
-        //lblNombreBienvenidaAncestorAdded();
     }                                         
     private void actualizarSaldo() {
         if (cuentaActual != null) {
@@ -531,6 +558,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnSaldo;
     private javax.swing.JButton btnTransferencia;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblPassword;
@@ -539,6 +567,8 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panRegistro;
     private javax.swing.JPanel panSaldo;
     private javax.swing.JPasswordField pwdPass;
+    private javax.swing.JRadioButton rbtDolares;
+    private javax.swing.JRadioButton rbtSoles;
     private javax.swing.JScrollPane scpMovimientos;
     private javax.swing.JTextField txtIdentificacion;
     private javax.swing.JTextField txtNombre;
