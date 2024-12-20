@@ -13,6 +13,7 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
     private String numeroChequera;
     private static float comisionPorCheque = 0.05f;
     private static int contChequeras = 0;
+    private ListaCheques listaCheques = new ListaCheques();
     
     public CuentaCorriente(Cliente cliente, float saldoCuenta, int tipoMoneda, String clave,
                            GregorianCalendar fechaCreacion, float limiteSobregiro, int limiteCheques) {
@@ -27,6 +28,9 @@ public class CuentaCorriente extends Cuenta implements OperacionesCuenta {
 
     public String getNroChequera() {
         return numeroChequera;
+    }
+    public ListaCheques getListaCheques() {
+        return listaCheques;
     }
 
 @Override
@@ -122,7 +126,8 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
         private float monto;
         private String estado;
         private ListaCheques listaCheques = new ListaCheques();
-        private String fechaEmision;
+        public String fechaEmision;
+        
 
         public Cheques(String nroCheque, float monto, String estado, String fechaEmision) {
             this.nroCheque = nroCheque;
@@ -187,7 +192,7 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
             }
         }
 
-        public boolean emitirCheque(float monto) {
+        public boolean emitirCheque(float monto,ListaCheques listaCheques) {
             if (monto <= 0) {
                 JOptionPane.showMessageDialog(null,"El monto del cheque debe ser mayor a cero.", "Error", 0);
                 return false;
@@ -210,7 +215,7 @@ public boolean transferir(float monto, Cuenta cuentaDestino) {
             }
         }
 
-        public boolean cobrarCheque(String nroCheque, String apellido, Cuenta cuentaDestino) {
+        public boolean cobrarCheque(String nroCheque, String apellido, Cuenta cuentaDestino,ListaCheques listaCheques) {
             Cheques cheque = listaCheques.buscarChequePorNumero(nroCheque);
             ListaCuenta listC = new ListaCuenta();
             int buscado = listC.buscarPorApellido(apellido);

@@ -22,11 +22,12 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         buttonGroup1.add(rbtSoles);
         buttonGroup1.add(rbtDolares);
     }
-    public ifrmCuentaCorriente(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
+    public ifrmCuentaCorriente(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos,ListaCheques listaCheques) {
         initComponents();
         this.listaClientes = listaClientes;
         this.listaCuentas = listaCuentas;
         this.listaMovimientos = listaMovimientos;
+        this.listaCheques = listaCheques;
         
         panDatos.setVisible(false);
         lblBienvenido.setVisible(false);
@@ -547,7 +548,50 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
     private void btnEmisionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmisionChequesActionPerformed
-        //
+         if (!(cuentaActual instanceof CuentaCorriente)) {
+            JOptionPane.showMessageDialog(this,
+                "Esta operación solo está disponible para cuentas corrientes",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        CuentaCorriente cuentaCorriente = (CuentaCorriente) cuentaActual;
+
+        if (cuentaCorriente.getNroChequera() == null) {
+            JOptionPane.showMessageDialog(this,
+                "Debe habilitar una chequera antes de emitir cheques",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Panel para ingresar datos del cheque
+        JPanel panel = new JPanel(new GridLayout(2, 2, 5, 5));
+        JTextField txtMonto = new JTextField(15);
+        panel.add(new JLabel("Monto del cheque:"));
+        panel.add(txtMonto);
+
+        int result = JOptionPane.showConfirmDialog(this, panel,
+            "Emisión de Cheque", JOptionPane.OK_CANCEL_OPTION);
+
+        if (result != JOptionPane.OK_OPTION) {
+            return;
+        }
+
+        try {
+            float monto = Float.parseFloat(txtMonto.getText().trim());
+            CuentaCorriente.Cheques cheque = cuentaCorriente.new Cheques(null, 0, null, null);
+            if (cheque.emitirCheque(monto, listaCheques)) {
+                actualizarSaldo();
+                mostrarListaCheques();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese un monto válido",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnEmisionChequesActionPerformed
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
@@ -590,17 +634,215 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnMovimientosActionPerformed
 
     private void btnCobroChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobroChequesActionPerformed
-        
+        if (cuentaActual == null) {
+            JOptionPane.showMessageDialog(this,
+                "Debe iniciar sesión primero",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        JPanel panel = new JPanel(new GridLayout(3, 2, 5, 5));
+        JTextField txtNroCheque = new JTextField(15);
+        JTextField txtApellidoEmisor = new JTextField(15);
+
+        panel.add(new JLabel("Número de cheque:"));
+        panel.add(txtNroCheque);
+        panel.add(new JLabel("Apellido del emisor:"));
+        panel.add(txtApellidoEmisor);
+
+        int result = JOptionPane.showConfirmDialog(this, panel,
+            "Cobro de Cheque",
+            JOptionPane.OK_CANCEL_OPTION);
+
+        if (result != JOptionPane.OK_OPTION) {
+            return;
+        }
+
+        String nroCheque = txtNroCheque.getText().trim();
+        String apellidoEmisor = txtApellidoEmisor.getText().trim();
+
+        if (nroCheque.isEmpty() || apellidoEmisor.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor complete todos los campos",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        boolean cobroExitoso = false;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta instanceof CuentaCorriente) {
+                CuentaCorriente cuentaCorriente = (CuentaCorriente) cuenta;
+                if (cuentaCorriente.getCliente().getApellido().equalsIgnoreCase(apellidoEmisor)) {
+                    CuentaCorriente.Cheques cheque = cuentaCorriente.new Cheques(null, 0, null, null);
+                    if (cheque.cobrarCheque(nroCheque, apellidoEmisor, cuentaActual, listaCheques)) {
+                        cobroExitoso = true;
+                        actualizarSaldo();
+                        break;
+                    }
+                }
+            }
+        }
+
+        if (!cobroExitoso) {
+            JOptionPane.showMessageDialog(this,
+                "No se pudo realizar el cobro del cheque",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnCobroChequesActionPerformed
 
     private void btnVerificacionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificacionChequesActionPerformed
-        
+        String nroCheque = JOptionPane.showInputDialog(this,
+            "Ingrese el número de cheque a verificar:",
+            "Verificación de Cheque",
+            JOptionPane.PLAIN_MESSAGE);
+
+        if (nroCheque == null || nroCheque.trim().isEmpty()) {
+            return;
+        }
+
+        boolean chequeEncontrado = false;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta instanceof CuentaCorriente) {
+                CuentaCorriente cuentaCorriente = (CuentaCorriente) cuenta;
+                ListaCheques listaCheques = cuentaCorriente.getListaCheques();
+
+                for (CuentaCorriente.Cheques cheque : listaCheques.getListaCheques()) {
+                    if (cheque.getNroCheque().equals(nroCheque)) {
+                        chequeEncontrado = true;
+                        StringBuilder info = new StringBuilder();
+                        info.append("Información del cheque:\n")
+                            .append("Número: ").append(cheque.getNroCheque()).append("\n")
+                            .append("Estado: ").append(cheque.getEstado()).append("\n")
+                            .append("Monto: ").append(String.format("%.2f", cheque.getMonto())).append("\n")
+                            .append("Fecha de emisión: ").append(cheque.fechaEmision).append("\n")
+                            .append("Emisor: ").append(cuenta.getCliente().getApellido()).append("\n")
+                            .append("Fondos disponibles: ").append(String.format("%.2f", cuenta.getSaldoCuenta()));
+
+                        JOptionPane.showMessageDialog(this,
+                            info.toString(),
+                            "Verificación de Cheque",
+                            JOptionPane.INFORMATION_MESSAGE);
+                        break;
+                    }
+                }
+                if (chequeEncontrado) break;
+            }
+        }
+
+        if (!chequeEncontrado) {
+            JOptionPane.showMessageDialog(this,
+                "No se encontró el cheque especificado",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnVerificacionChequesActionPerformed
 
     private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDevolucionActionPerformed
+        String nroCheque = JOptionPane.showInputDialog(this,
+            "Ingrese el número de cheque a devolver:",
+            "Devolución de Cheque",
+            JOptionPane.PLAIN_MESSAGE);
 
+        if (nroCheque == null || nroCheque.trim().isEmpty()) {
+            return;
+        }
+
+        String[] motivos = {
+            "Fondos insuficientes",
+            "Firma incorrecta",
+            "Cheque alterado",
+            "Cuenta cerrada",
+            "Otro motivo"
+        };
+
+        String motivo = (String) JOptionPane.showInputDialog(this,
+            "Seleccione el motivo de la devolución:",
+            "Motivo de Devolución",
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            motivos,
+            motivos[0]);
+
+        if (motivo == null) {
+            return;
+        }
+
+        boolean chequeEncontrado = false;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta instanceof CuentaCorriente) {
+                CuentaCorriente cuentaCorriente = (CuentaCorriente) cuenta;
+                ListaCheques listaCheques = cuentaCorriente.getListaCheques();
+
+                for (CuentaCorriente.Cheques cheque : listaCheques.getListaCheques()) {
+                    if (cheque.getNroCheque().equals(nroCheque)) {
+                        chequeEncontrado = true;
+                        if (cheque.getEstado().equals("Emitido")) {
+                            cheque.setEstado("Devuelto - " + motivo);
+                            if (cheque.getEstado().equals("Cobrado")) {
+                                cuenta.setSaldoCuenta(cuenta.getSaldoCuenta() + cheque.getMonto());
+                            }
+                            JOptionPane.showMessageDialog(this,
+                                "Cheque devuelto exitosamente\nMotivo: " + motivo,
+                                "Devolución de Cheque",
+                                JOptionPane.INFORMATION_MESSAGE);
+                        } else {
+                            JOptionPane.showMessageDialog(this,
+                                "El cheque no puede ser devuelto porque su estado actual es: " + cheque.getEstado(),
+                                "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;
+                    }
+                }
+                if (chequeEncontrado) break;
+            }
+        }
+
+        if (!chequeEncontrado) {
+            JOptionPane.showMessageDialog(this,
+                "No se encontró el cheque especificado",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnDevolucionActionPerformed
+    private void mostrarListaCheques() {
+        if (!(cuentaActual instanceof CuentaCorriente)) {
+            return;
+        }
+
+        CuentaCorriente cuentaCorriente = (CuentaCorriente) cuentaActual;
+        ListaCheques listaCheques = cuentaCorriente.getListaCheques();
+
+        if (listaCheques.getTamanio() == 0) {
+            JOptionPane.showMessageDialog(this,
+                "No hay cheques emitidos para esta cuenta",
+                "Información",
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        StringBuilder info = new StringBuilder("Cheques emitidos:\n\n");
+        for (CuentaCorriente.Cheques cheque : listaCheques.getListaCheques()) {
+            info.append("Número: ").append(cheque.getNroCheque())
+                .append("\nMonto: ").append(String.format("%.2f", cheque.getMonto()))
+                .append("\nEstado: ").append(cheque.getEstado())
+                .append("\nFecha: ").append(cheque.fechaEmision)
+                .append("\n\n");
+        }
+
+        JTextArea textArea = new JTextArea(info.toString());
+        textArea.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        scrollPane.setPreferredSize(new Dimension(300, 200));
+
+        JOptionPane.showMessageDialog(this,
+            scrollPane,
+            "Lista de Cheques",
+            JOptionPane.INFORMATION_MESSAGE);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCobroCheques;
@@ -634,5 +876,5 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
     private ListaMovimientos listaMovimientos;
     private Cuenta cuentaActual;
     private boolean saldoVisible = false;
-
+    private ListaCheques listaCheques;
 }
