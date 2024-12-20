@@ -421,8 +421,15 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
 
         try {
             float monto = Float.parseFloat(montoStr);
-            if(rbtDolares.isSelected()){
-                monto=(float) (monto*3.8);
+            if(cuentaActual.getTipoMoneda()==0){    
+                if(rbtDolares.isSelected()){
+                    monto=(float) (monto*3.8);
+                }
+            }
+            else{
+                if(rbtSoles.isSelected()){
+                    monto=(float) (monto/3.8);
+                }
             }
             if (listaMovimientos.registrarRetiro(cuentaActual, monto)) {
                 actualizarSaldo();
@@ -452,8 +459,15 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
 
         try {
             float monto = Float.parseFloat(montoStr);
-            if(rbtDolares.isSelected()){
-                monto=(float) (monto*3.8);
+            if(cuentaActual.getTipoMoneda()==0){    
+                if(rbtDolares.isSelected()){
+                    monto=(float) (monto*3.8);
+                }
+            }
+            else{
+                if(rbtSoles.isSelected()){
+                    monto=(float) (monto/3.8);
+                }
             }
             if (listaMovimientos.registrarDeposito(cuentaActual, monto)) {
                 actualizarSaldo();
