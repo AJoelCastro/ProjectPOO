@@ -51,6 +51,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         btnEntrar = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
         lblBienvenido = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
         panDatos = new javax.swing.JPanel();
         panSaldo = new javax.swing.JPanel();
         txtSaldo = new javax.swing.JTextField();
@@ -130,11 +131,13 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         panInicio.setLayout(panInicioLayout);
         panInicioLayout.setHorizontalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(panInicioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(panRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addComponent(lblBienvenido, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         panInicioLayout.setVerticalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,6 +146,8 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addComponent(panRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -487,6 +492,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         panDatos.setVisible(true);
         panInicio.setVisible(true);
         lblBienvenido.setVisible(true);
+        lblNombre.setText(cuentaActual.getCliente().getNombre());
     }                                         
     private void actualizarSaldo() {
         if (cuentaActual != null) {
@@ -505,6 +511,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnTransferencia;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JPanel panDatos;
     private javax.swing.JPanel panInicio;

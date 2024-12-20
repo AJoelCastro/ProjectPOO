@@ -14,8 +14,8 @@ import javax.swing.*;
 public class CuentaAhorro extends Cuenta implements InteresMensual {
     private static float tasaInteresAnual = 0.04f;
     private int limiteRetiros;
-    private ArrayList<String> beneficiarios; 
-    // Constructor con parametros
+    private ArrayList<String> beneficiarios;
+    
     public CuentaAhorro(Cliente cliente,float saldoCuenta, int tipoMoneda, String clave, GregorianCalendar fechaCreacion, int limiteRetiros) { 
         super("", cliente ,saldoCuenta,  tipoMoneda,  clave,  fechaCreacion , 1);
         this.limiteRetiros = limiteRetiros;
