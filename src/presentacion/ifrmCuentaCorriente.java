@@ -58,10 +58,10 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         panSaldo = new javax.swing.JPanel();
         txtSaldo = new javax.swing.JTextField();
         btnSaldo = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnEmisionCheques = new javax.swing.JButton();
+        btnCobroCheques = new javax.swing.JButton();
+        btnDevolucionCheques = new javax.swing.JButton();
+        btnVerificacionCheques = new javax.swing.JButton();
         btnMovimientos = new javax.swing.JButton();
 
         setClosable(true);
@@ -216,18 +216,33 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addContainerGap(11, Short.MAX_VALUE))
         );
 
-        jButton6.setText("Emisión de cheques");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEmisionCheques.setText("Emisión de cheques");
+        btnEmisionCheques.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEmisionChequesActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Cobro de cheques");
+        btnCobroCheques.setText("Cobro de cheques");
+        btnCobroCheques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCobroChequesActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Devolución de cheques");
+        btnDevolucionCheques.setText("Devolución de cheques");
+        btnDevolucionCheques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionChequesActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Verificación de cheques");
+        btnVerificacionCheques.setText("Verificación de cheques");
+        btnVerificacionCheques.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerificacionChequesActionPerformed(evt);
+            }
+        });
 
         btnMovimientos.setText("Mostrar movimientos");
         btnMovimientos.addActionListener(new java.awt.event.ActionListener() {
@@ -260,12 +275,12 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                                 .addComponent(scpMovimientos)
                                 .addGroup(panDatosLayout.createSequentialGroup()
                                     .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
+                                        .addComponent(btnCobroCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnEmisionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addComponent(btnVerificacionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnDevolucionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
@@ -273,12 +288,12 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
             .addGroup(panDatosLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnVerificacionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(btnCobroCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEmisionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+                    .addComponent(btnDevolucionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -489,9 +504,9 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnTransferenciaActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnEmisionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmisionChequesActionPerformed
+        //
+    }//GEN-LAST:event_btnEmisionChequesActionPerformed
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
         if (saldoVisible) {
@@ -532,18 +547,30 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         scpMovimientos.setViewportView(tblMovimientos);
     }//GEN-LAST:event_btnMovimientosActionPerformed
 
+    private void btnCobroChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCobroChequesActionPerformed
+        
+    }//GEN-LAST:event_btnCobroChequesActionPerformed
+
+    private void btnVerificacionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerificacionChequesActionPerformed
+        
+    }//GEN-LAST:event_btnVerificacionChequesActionPerformed
+
+    private void btnDevolucionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionChequesActionPerformed
+        
+    }//GEN-LAST:event_btnDevolucionChequesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCobroCheques;
     private javax.swing.JButton btnDeposito;
+    private javax.swing.JButton btnDevolucionCheques;
+    private javax.swing.JButton btnEmisionCheques;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnMovimientos;
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnSaldo;
     private javax.swing.JButton btnTransferencia;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btnVerificacionCheques;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;

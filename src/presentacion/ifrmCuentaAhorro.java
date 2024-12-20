@@ -14,15 +14,15 @@ import java.util.*;
  *
  * @author sanar
  */
-public class IfrmCuentaAhorro extends javax.swing.JInternalFrame {
+public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form IfrmPersonal
      */
-    public IfrmCuentaAhorro() {
+    public ifrmCuentaAhorro() {
         initComponents();
     }
-    public IfrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
+    public ifrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
         initComponents();
         this.listaClientes = listaClientes;
         this.listaCuentas = listaCuentas;

@@ -29,6 +29,7 @@ public abstract class Cuenta {
         this.clave = clave;
         this.tipoMoneda = tipoMoneda;
         this.fechaCreacion = new GregorianCalendar();
+        this.cliente=cliente;
         if(tipoCuenta == 1)
             ++totalCtaAhorro;
         else

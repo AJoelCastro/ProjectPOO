@@ -335,18 +335,15 @@ public class IfrmAbrirNatural extends javax.swing.JInternalFrame {
             int tipoMoneda = jrbSoles.isSelected() ? 0 : 1;
             if (jrbAhorro.isSelected()) {
                 CuentaAhorro cuenta = new CuentaAhorro(
-                    "",
                     clienteSeleccionado,
                     monto,
                     tipoMoneda,
                     clave,
                     new GregorianCalendar(),
-                    1,
-                    5,
-                    new GregorianCalendar()
+                    10
                 );
                 listaCuentas.agregarCuenta(cuenta);
-                String mensaje = "Cuenta de ahorro creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave;
+                String mensaje = "Cuenta corriente creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave;
                 JOptionPane.showMessageDialog(null, mensaje);
                 copiarAlPortapapeles(cuenta.getNumeroCuenta());
             } else if (jrbCorriente.isSelected()) {
@@ -356,12 +353,8 @@ public class IfrmAbrirNatural extends javax.swing.JInternalFrame {
                     tipoMoneda,
                     clave,
                     new GregorianCalendar(),
-                    5000.00f,
-                    100,
-                    "CHQ001",
-                    10.00f,
-                    clienteSeleccionado.getNombre() + " " + clienteSeleccionado.getApellido(),
-                    null
+                    3000.00f,
+                    10
                 );
                 listaCuentas.agregarCuenta(cuenta);
                 String mensaje = "Cuenta corriente creada exitosamente.\nNúmero de cuenta: " + cuenta.getNumeroCuenta() + "\nClave: " + clave;
