@@ -195,7 +195,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniLogAhorroNatActionPerformed
 
     private void mniLogCorrienteNatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogCorrienteNatActionPerformed
-        ifrmCuentaCorriente ifrmCuentaCorriente = new ifrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
+        ifrmCuentaCorriente ifrmCuentaCorriente = new ifrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos,listaCheques);
         centrarInternalFrame(ifrmCuentaCorriente);
     }//GEN-LAST:event_mniLogCorrienteNatActionPerformed
 
@@ -205,7 +205,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniLogAhorroJurActionPerformed
 
     private void mniLogCorrientejurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogCorrientejurActionPerformed
-        ifrmCuentaCorriente ifrmCuentaCorriente = new ifrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos);
+        ifrmCuentaCorriente ifrmCuentaCorriente = new ifrmCuentaCorriente(listaClientes,listaCuentas,listaMovimientos,listaCheques);
         centrarInternalFrame(ifrmCuentaCorriente);
     }//GEN-LAST:event_mniLogCorrientejurActionPerformed
 
@@ -229,8 +229,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     private void mniAbrirReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirReportesActionPerformed
         // TODO add your handling code here:
-        ifrmEstadoCuenta ifrmEstadoCuenta = new ifrmEstadoCuenta(listaCuentas, listaMovimientos);
-        centrarInternalFrame(ifrmEstadoCuenta);
+        ifrmEstadosCuenta ifrmEstadosCuenta = new ifrmEstadosCuenta(listaCuentas, listaMovimientos);
+        centrarInternalFrame(ifrmEstadosCuenta);
     }//GEN-LAST:event_mniAbrirReportesActionPerformed
 
     private void centrarInternalFrame (JInternalFrame interna) {
@@ -305,4 +305,5 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private ListaClientes listaClientes = new ListaClientes();
     private ListaCuenta listaCuentas = new ListaCuenta();
     private ListaMovimientos listaMovimientos = new ListaMovimientos();
+    private ListaCheques listaCheques = new ListaCheques();
 }
