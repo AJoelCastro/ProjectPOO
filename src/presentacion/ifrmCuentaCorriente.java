@@ -63,11 +63,11 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         btnSaldo = new javax.swing.JButton();
         btnEmisionCheques = new javax.swing.JButton();
         btnCobroCheques = new javax.swing.JButton();
-        btnDevolucionCheques = new javax.swing.JButton();
         btnVerificacionCheques = new javax.swing.JButton();
         btnMovimientos = new javax.swing.JButton();
         rbtSoles = new javax.swing.JRadioButton();
         rbtDolares = new javax.swing.JRadioButton();
+        btnDevolucion = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -235,13 +235,6 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
             }
         });
 
-        btnDevolucionCheques.setText("Devolución de cheques");
-        btnDevolucionCheques.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDevolucionChequesActionPerformed(evt);
-            }
-        });
-
         btnVerificacionCheques.setText("Verificación de cheques");
         btnVerificacionCheques.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,6 +254,13 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(rbtDolares);
         rbtDolares.setText("Dolares");
+
+        btnDevolucion.setText("Devolucion de cheques");
+        btnDevolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDevolucionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
         panDatos.setLayout(panDatosLayout);
@@ -287,9 +287,8 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                                         .addComponent(btnEmisionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-
-                                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addComponent(btnVerificacionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(panDatosLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -297,12 +296,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                                     .addComponent(rbtSoles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addComponent(rbtDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-
-                                        .addComponent(btnVerificacionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnDevolucionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-
                 .addContainerGap(9, Short.MAX_VALUE))
-
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +308,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnEmisionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-                    .addComponent(btnDevolucionCheques, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDevolucion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -330,10 +324,7 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
                     .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-
-                .addGap(26, 26, 26))
-
+                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -592,30 +583,23 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnVerificacionChequesActionPerformed
 
-    private void btnDevolucionChequesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionChequesActionPerformed
-        
-    }//GEN-LAST:event_btnDevolucionChequesActionPerformed
+    private void btnDevolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDevolucionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnDevolucionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCobroCheques;
     private javax.swing.JButton btnDeposito;
-    private javax.swing.JButton btnDevolucionCheques;
+    private javax.swing.JButton btnDevolucion;
     private javax.swing.JButton btnEmisionCheques;
     private javax.swing.JButton btnEntrar;
     private javax.swing.JButton btnMovimientos;
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnSaldo;
     private javax.swing.JButton btnTransferencia;
-
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-
     private javax.swing.JButton btnVerificacionCheques;
-
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
@@ -636,4 +620,5 @@ public class ifrmCuentaCorriente extends javax.swing.JInternalFrame {
     private ListaMovimientos listaMovimientos;
     private Cuenta cuentaActual;
     private boolean saldoVisible = false;
+
 }
