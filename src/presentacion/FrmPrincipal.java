@@ -44,6 +44,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mniAbrirJuridico = new javax.swing.JMenuItem();
         mniRegistrarJuridico = new javax.swing.JMenuItem();
         mnuReportes = new javax.swing.JMenu();
+        mniAbrirReportes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bank of America");
@@ -146,6 +147,20 @@ public class FrmPrincipal extends javax.swing.JFrame {
         mnbMenu.add(mnuEmpresas);
 
         mnuReportes.setText("Reportes");
+        mnuReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuReportesActionPerformed(evt);
+            }
+        });
+
+        mniAbrirReportes.setText("Abrir reportes");
+        mniAbrirReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAbrirReportesActionPerformed(evt);
+            }
+        });
+        mnuReportes.add(mniAbrirReportes);
+
         mnbMenu.add(mnuReportes);
 
         setJMenuBar(mnbMenu);
@@ -208,6 +223,16 @@ public class FrmPrincipal extends javax.swing.JFrame {
         centrarInternalFrame(ifrmAbrirJuridico);
     }//GEN-LAST:event_mniAbrirJuridicoActionPerformed
 
+    private void mnuReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuReportesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuReportesActionPerformed
+
+    private void mniAbrirReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAbrirReportesActionPerformed
+        // TODO add your handling code here:
+        ifrmEstadosCuenta ifrmEstadosCuenta = new ifrmEstadosCuenta(listaCuentas, listaMovimientos);
+        centrarInternalFrame(ifrmEstadosCuenta);
+    }//GEN-LAST:event_mniAbrirReportesActionPerformed
+
     private void centrarInternalFrame (JInternalFrame interna) {
         int x,y;
         
@@ -221,6 +246,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
                 interna.setLocation(x,y);
                 interna.show();
                 };
+        
         
     }
     /**
@@ -263,6 +289,7 @@ public class FrmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar mnbMenu;
     private javax.swing.JMenuItem mniAbrirJuridico;
     private javax.swing.JMenuItem mniAbrirNatural;
+    private javax.swing.JMenuItem mniAbrirReportes;
     private javax.swing.JMenuItem mniLogAhorroJur;
     private javax.swing.JMenuItem mniLogAhorroNat;
     private javax.swing.JMenuItem mniLogCorrienteNat;

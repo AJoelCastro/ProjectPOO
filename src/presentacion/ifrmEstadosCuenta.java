@@ -3,29 +3,42 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package presentacion;
+import datos.ListaCuenta;
+import datos.ListaMovimientos;
+import datos.ListaMovimientos.Movimiento;
 import entidades.*;
+import java.util.ArrayList;
+import javax.swing.JTable;
 
 /**
  *
  * @author Administrador
  */
-public class ifrmEstadosCuenta extends javax.swing.JPanel {
-
+public class ifrmEstadosCuenta extends javax.swing.JInternalFrame {
+    private String nroCuenta;
+    private ListaCuenta listaCuentas;
+    private Cuenta cuenta;
+    private ListaMovimientos listaMovimientos;
     /**
      * Creates new form ifrmEstadosCuenta
      */
+    public ifrmEstadosCuenta(ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
+        this.listaCuentas=listaCuentas;
+        this.listaMovimientos=listaMovimientos;
+        initComponents();
+    }
     public ifrmEstadosCuenta() {
+        
         initComponents();
     }
 
     private void limpiar() {
         txtNroCuenta.setText(null);
-        jlistMovimientos.setToolTipText(null);
+        
     }
 
     private void activar(boolean estado) {
-        txtMes.setEnabled(estado);
-        jlistMovimientos.setEnabled(estado);
+        
     }
 
     /**
@@ -44,15 +57,18 @@ public class ifrmEstadosCuenta extends javax.swing.JPanel {
         jInternalFrame1 = new javax.swing.JInternalFrame();
         lblNroCuenta = new javax.swing.JLabel();
         txtNroCuenta = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        txtMes = new javax.swing.JTextField();
         lblEstadoCuenta = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jlistMovimientos = new javax.swing.JList<>();
         btnLimpiar = new javax.swing.JButton();
+        btnBuscar = new javax.swing.JButton();
+        scpMovimientos = new javax.swing.JScrollPane();
 
+        jInternalFrame1.setBackground(new java.awt.Color(102, 153, 255));
+        jInternalFrame1.setClosable(true);
+        jInternalFrame1.setIconifiable(true);
+        jInternalFrame1.setMaximizable(true);
+        jInternalFrame1.setResizable(true);
         jInternalFrame1.setTitle("Estados de Cuenta");
+        jInternalFrame1.setEnabled(false);
         jInternalFrame1.setVisible(true);
 
         lblNroCuenta.setText("Numero de Cuenta");
@@ -63,21 +79,7 @@ public class ifrmEstadosCuenta extends javax.swing.JPanel {
             }
         });
 
-        jRadioButton1.setText("Ultimo mes");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-
-        jRadioButton2.setText("Elegir mes");
-
-        txtMes.setEnabled(false);
-
-        lblEstadoCuenta.setText("Estado de Cuenta");
-
-        jlistMovimientos.setEnabled(false);
-        jScrollPane1.setViewportView(jlistMovimientos);
+        lblEstadoCuenta.setText("Reportes del ultimo mes");
 
         btnLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/419660.png"))); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -87,63 +89,54 @@ public class ifrmEstadosCuenta extends javax.swing.JPanel {
             }
         });
 
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGap(264, 264, 264)
-                        .addComponent(lblEstadoCuenta))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(205, 205, 205)
-                                .addComponent(jRadioButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(lblNroCuenta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpiar)))
-                .addContainerGap(35, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98))
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                            .addGap(78, 78, 78)
+                            .addComponent(lblNroCuenta)
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                    .addGap(34, 34, 34)
+                                    .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnLimpiar))
+                                .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                                    .addGap(26, 26, 26)
+                                    .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                            .addGap(246, 246, 246)
+                            .addComponent(lblEstadoCuenta))))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton2)
-                            .addComponent(txtMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(34, 34, 34))
-                    .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                        .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(lblNroCuenta)
-                                    .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                                .addGap(53, 53, 53)
-                                .addComponent(btnLimpiar)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)))
+                .addGap(32, 32, 32)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNroCuenta)
+                    .addComponent(txtNroCuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
+                .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnBuscar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblEstadoCuenta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -156,36 +149,57 @@ public class ifrmEstadosCuenta extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jInternalFrame1)
         );
+
+        jInternalFrame1.getAccessibleContext().setAccessibleName("");
+        jInternalFrame1.getAccessibleContext().setAccessibleParent(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNroCuentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNroCuentaActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+        
+    }//GEN-LAST:event_txtNroCuentaActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiar();
         activar(false);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        nroCuenta=txtNroCuenta.getText();
+        int pos = listaCuentas.buscarPorNroCuenta(nroCuenta);
+        listaCuentas.obtenerCuenta(pos);
+        cuenta = listaCuentas.obtenerCuenta(pos);
+        ArrayList<ListaMovimientos.Movimiento> movimientos = listaMovimientos.obtenerHistorialMovimientos(cuenta);
+
+        String[] columnNames = {"Tipo", "Monto", "Fecha", "Cuenta Destino"};
+        Object[][] data = new Object[movimientos.size()][4];
+
+        for (int i = 0; i < movimientos.size(); i++) {
+            ListaMovimientos.Movimiento mov = movimientos.get(i);
+            data[i][0] = mov.getTipoMovimiento();
+            data[i][1] = String.format("%.2f", mov.getMonto());
+            data[i][2] = mov.getFechaFormateada();
+            data[i][3] = mov.getCuentaDestino() != null ? mov.getCuentaDestino().getNumeroCuenta() : "-";
+        }
+
+        JTable tblMovimientos = new JTable(data, columnNames);
+        scpMovimientos.setViewportView(tblMovimientos);
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
     private javax.swing.ButtonGroup buttonGroup4;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> jlistMovimientos;
     private javax.swing.JLabel lblEstadoCuenta;
     private javax.swing.JLabel lblNroCuenta;
-    private javax.swing.JTextField txtMes;
+    private javax.swing.JScrollPane scpMovimientos;
     private javax.swing.JTextField txtNroCuenta;
     // End of variables declaration//GEN-END:variables
 }
