@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -35,15 +35,8 @@ public class ListaCuenta {
         Cuenta cuentaB;
         for(int i=0; i<listaCuentas.size(); i++) {
             cuentaB = listaCuentas.get(i);
-            switch(cuentaB.getTipoCuenta()) {
-                case 1: 
-                    if(((CuentaAhorro)cuentaB).getApellidoCliente().compareToIgnoreCase(Cliente)==0)
-                        return i;
-                    break;
-                case 2: 
-                    if(((CuentaCorriente)cuentaB).getApellidoRepLegal().compareToIgnoreCase(Cliente)==0)
-                        return i;
-                    break;
+            if(cuentaB.getCliente().getApellido().compareToIgnoreCase(Cliente)==0){
+                return i;
             }
         }
         return -1;
