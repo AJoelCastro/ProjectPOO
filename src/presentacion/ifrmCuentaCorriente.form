@@ -230,7 +230,7 @@
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="btnVerificacionCheques" max="32767" attributes="0"/>
-                                          <Component id="btnDevolucionCheques" max="32767" attributes="0"/>
+                                          <Component id="btnDevolucion" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -261,7 +261,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btnEmisionCheques" pref="51" max="32767" attributes="0"/>
-                      <Component id="btnDevolucionCheques" max="32767" attributes="0"/>
+                      <Component id="btnDevolucion" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace pref="67" max="32767" attributes="0"/>
                   <Component id="panSaldo" min="-2" max="-2" attributes="0"/>
@@ -281,7 +281,6 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="btnTransferencia" min="-2" pref="50" max="-2" attributes="0"/>
-
               </Group>
           </Group>
         </DimensionLayout>
@@ -397,14 +396,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCobroChequesActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="btnDevolucionCheques">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Devoluci&#xf3;n de cheques"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolucionChequesActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnVerificacionCheques">
           <Properties>
             <Property name="text" type="java.lang.String" value="Verificaci&#xf3;n de cheques"/>
@@ -436,6 +427,14 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Dolares"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnDevolucion">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Devolucion de cheques"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDevolucionActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
