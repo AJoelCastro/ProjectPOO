@@ -21,6 +21,9 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
      */
     public ifrmCuentaAhorro() {
         initComponents();
+        buttonGroup1.add(rbtSoles);
+        buttonGroup1.add(rbtDolares);
+        
     }
     public ifrmCuentaAhorro(ListaClientes listaClientes, ListaCuenta listaCuentas, ListaMovimientos listaMovimientos) {
         initComponents();
@@ -31,7 +34,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         panDatos.setVisible(false);
         lblBienvenido.setVisible(false);
         btnSaldo.setText("Mostrar saldo");
-
+        txtNombre.setVisible(true);
     }
 
     /**
@@ -43,6 +46,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         panInicio = new javax.swing.JPanel();
         panRegistro = new javax.swing.JPanel();
         lblIdentificacion = new javax.swing.JLabel();
@@ -51,7 +55,9 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         btnEntrar = new javax.swing.JButton();
         lblPassword = new javax.swing.JLabel();
         lblBienvenido = new javax.swing.JLabel();
+
         lblNombre = new javax.swing.JLabel();
+
         panDatos = new javax.swing.JPanel();
         panSaldo = new javax.swing.JPanel();
         txtSaldo = new javax.swing.JTextField();
@@ -61,6 +67,8 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         btnRetiro = new javax.swing.JButton();
         btnTransferencia = new javax.swing.JButton();
         btnMovimientos = new javax.swing.JButton();
+        rbtSoles = new javax.swing.JRadioButton();
+        rbtDolares = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 0, 0));
         setClosable(true);
@@ -104,7 +112,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                     .addComponent(txtIdentificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                     .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                     .addComponent(pwdPass))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         panRegistroLayout.setVerticalGroup(
             panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,6 +135,12 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         lblBienvenido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBienvenido.setText("==BIENVENIDO==");
 
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panInicioLayout = new javax.swing.GroupLayout(panInicio);
         panInicio.setLayout(panInicioLayout);
         panInicioLayout.setHorizontalGroup(
@@ -138,6 +152,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                     .addComponent(panRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+
         );
         panInicioLayout.setVerticalGroup(
             panInicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,6 +163,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addComponent(lblBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -227,28 +243,40 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(rbtSoles);
+        rbtSoles.setSelected(true);
+        rbtSoles.setText("Soles");
+
+        buttonGroup1.add(rbtDolares);
+        rbtDolares.setText("Dolares");
+
         javax.swing.GroupLayout panDatosLayout = new javax.swing.GroupLayout(panDatos);
         panDatos.setLayout(panDatosLayout);
         panDatosLayout.setHorizontalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
             .addGroup(panDatosLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panDatosLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(btnMovimientos))
-                    .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(scpMovimientos)
-                        .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
-                        .addGroup(panDatosLayout.createSequentialGroup()
-                            .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(scpMovimientos)
+                                .addComponent(panSaldo, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE)
+                                .addGroup(panDatosLayout.createSequentialGroup()
+                                    .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(panDatosLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnMovimientos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rbtSoles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rbtDolares, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(panDatosLayout.createSequentialGroup()
+                        .addGap(137, 137, 137)
+                        .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panDatosLayout.setVerticalGroup(
             panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,15 +285,19 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                 .addComponent(panSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMovimientos)
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
+                .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtSoles)
+                    .addComponent(rbtDolares))
+                .addGap(16, 16, 16)
                 .addComponent(scpMovimientos, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRetiro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDeposito, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnTransferencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(138, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,47 +321,6 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        String numeroCuenta = txtIdentificacion.getText().trim();
-        String clave = new String(pwdPass.getPassword());
-        
-        if (numeroCuenta.isEmpty() || clave.isEmpty()) {
-            JOptionPane.showMessageDialog(this, 
-                "Por favor ingrese el número de cuenta y la clave",
-                "Error de validación",
-                JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        boolean cuentaEncontrada = false;
-        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
-            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
-                if (cuenta.validarClave(clave)) {
-                    cuentaActual = cuenta;
-                    cuentaEncontrada = true;
-                    break;
-                } else {
-                    JOptionPane.showMessageDialog(this,
-                        "Clave incorrecta",
-                        "Error de autenticación",
-                        JOptionPane.ERROR_MESSAGE);
-                    pwdPass.setText("");
-                    return;
-                }
-            }
-        }
-        
-        if (!cuentaEncontrada) {
-            JOptionPane.showMessageDialog(this,
-                "Cuenta no encontrada",
-                "Error de autenticación",
-                JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        mostrarDatosCuenta();
-    
-    }//GEN-LAST:event_btnEntrarActionPerformed
 
     private void btnSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaldoActionPerformed
         if (saldoVisible) {
@@ -386,6 +377,9 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
         try {
             float monto = Float.parseFloat(montoStr);
+            if(rbtDolares.isSelected()){
+                monto=(float) (monto*3.8);
+            }
             if (listaMovimientos.registrarRetiro(cuentaActual, monto)) {
                 actualizarSaldo();
                 btnMovimientosActionPerformed(null);
@@ -414,6 +408,9 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
 
         try {
             float monto = Float.parseFloat(montoStr);
+            if(rbtDolares.isSelected()){
+                monto=(float) (monto*3.8);
+            }
             if (listaMovimientos.registrarDeposito(cuentaActual, monto)) {
                 actualizarSaldo();
                 btnMovimientosActionPerformed(null);
@@ -439,6 +436,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
         panel.add(txtCuentaDestino);
         panel.add(new JLabel("Monto:"));
         panel.add(txtMonto);
+        
 
         int result = JOptionPane.showConfirmDialog(this, panel, 
             "Transferencia", JOptionPane.OK_CANCEL_OPTION);
@@ -487,6 +485,60 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
                 JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnTransferenciaActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+        //txtNombre.setText(cuentaActual);
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
+        String numeroCuenta = txtIdentificacion.getText().trim();
+        String clave = new String(pwdPass.getPassword());
+
+        if (numeroCuenta.isEmpty() || clave.isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Por favor ingrese el número de cuenta y la clave",
+                "Error de validación",
+                JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        boolean cuentaEncontrada = false;
+        for (Cuenta cuenta : listaCuentas.getListaCuentas()) {
+            if (cuenta.getNumeroCuenta().equals(numeroCuenta)) {
+                if (cuenta.validarClave(clave)) {
+                    cuentaActual = cuenta;
+                    cuentaEncontrada = true;
+                    break;
+                } else {
+                    JOptionPane.showMessageDialog(this,
+                        "Clave incorrecta",
+                        "Error de autenticación",
+                        JOptionPane.ERROR_MESSAGE);
+                    pwdPass.setText("");
+                    return;
+                }
+            }
+        }
+
+        if (!cuentaEncontrada) {
+            JOptionPane.showMessageDialog(this,
+                "Cuenta no encontrada",
+                "Error de autenticación",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        mostrarDatosCuenta();
+        String nombre="";
+        Cliente client =cuentaActual.getCliente();
+        if(client!=null){
+            nombre = client.getNombre();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,"Cliente no encontrado","Advertencia", 2);
+        }
+        txtNombre.setText(nombre);
+    }//GEN-LAST:event_btnEntrarActionPerformed
     private void mostrarDatosCuenta() {
         panRegistro.setVisible(false);
         panDatos.setVisible(true);
@@ -509,6 +561,7 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRetiro;
     private javax.swing.JButton btnSaldo;
     private javax.swing.JButton btnTransferencia;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblIdentificacion;
     private javax.swing.JLabel lblNombre;
@@ -518,8 +571,11 @@ public class ifrmCuentaAhorro extends javax.swing.JInternalFrame {
     private javax.swing.JPanel panRegistro;
     private javax.swing.JPanel panSaldo;
     private javax.swing.JPasswordField pwdPass;
+    private javax.swing.JRadioButton rbtDolares;
+    private javax.swing.JRadioButton rbtSoles;
     private javax.swing.JScrollPane scpMovimientos;
     private javax.swing.JTextField txtIdentificacion;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSaldo;
     // End of variables declaration//GEN-END:variables
     private ListaClientes listaClientes;
